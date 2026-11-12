@@ -162,7 +162,6 @@
         
         <!-- Cabeçalho / Logo (Visível no Mobile < 900px para preservar 100% do layout de referência) -->
         <header class="desk:hidden px-7 pt-9 pb-6 border-b border-gray-200/80 flex items-center gap-4">
-          <!-- Ícone Quadrado Arredondado Verde Escuro com Ciclista -->
           <div class="w-[62px] h-[62px] rounded-2xl bg-[#123524] flex items-center justify-center shrink-0 shadow-sm">
             <svg class="w-10 h-10 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.3"/>
@@ -182,7 +181,6 @@
           
           <!-- ==================== TELA 1: LOGIN ==================== -->
           <section id="view-login" class="flex-1 desk:flex-initial flex flex-col transition-opacity duration-200">
-            <!-- Saudação Principal -->
             <div class="mb-7">
               <h1 class="text-[23px] desk:text-[26px] font-extrabold text-[#141715] tracking-tight leading-snug">
                 Bom ter você aqui.
@@ -192,12 +190,10 @@
               </p>
             </div>
 
-            <!-- Subtítulo da Seção -->
             <h2 class="text-[15.5px] font-semibold text-[#1E2321] mb-4">
               Acesse sua conta
             </h2>
 
-            <!-- Formulário de Login -->
             <form id="login-form" novalidate class="space-y-4">
               <!-- Campo E-mail -->
               <div>
@@ -242,7 +238,6 @@
                     required
                     class="w-full pl-10 pr-11 py-3 bg-white border border-gray-300 rounded-xl text-[14.5px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15 transition-all"
                   />
-                  <!-- Botão Olho (Mostrar/Ocultar Senha) -->
                   <button 
                     type="button" 
                     id="toggle-login-password"
@@ -322,7 +317,7 @@
             <form id="register-form" novalidate class="space-y-3.5">
               <div>
                 <label for="reg-name" class="block text-[12px] font-semibold text-gray-700 mb-1">Nome completo</label>
-                <input type="text" id="reg-name" placeholder="Ex: Jorge Ferreira" required class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
+                <input type="text" id="reg-name" placeholder="Ex: Jorge Silva" required class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
                 <p id="reg-name-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
               </div>
 
@@ -413,7 +408,7 @@
 
     </div>
 
-    <!-- Barra Inferior Verde Esmeralda (12px de altura em toda a base do container) -->
+    <!-- Barra Inferior Verde Esmeralda -->
     <div class="h-3 w-full bg-[#0B7A54] shrink-0"></div>
 
     <!-- ==================== MODAL / TOAST DE FEEDBACK INTERATIVO ==================== -->
@@ -499,10 +494,10 @@
       <div class="pt-4 border-t border-gray-100 space-y-3">
         <div class="flex items-center gap-3 px-2">
           <div id="desktop-user-avatar" class="w-9 h-9 rounded-full bg-[#123524] text-white font-bold text-xs flex items-center justify-center shrink-0">
-            JF
+            JS
           </div>
           <div class="min-w-0">
-            <p id="desktop-user-name" class="text-xs font-bold text-gray-800 truncate">Jorge Ferreira</p>
+            <p id="desktop-user-name" class="text-xs font-bold text-gray-800 truncate">Jorge Silva</p>
             <p id="desktop-user-email" class="text-[11px] text-gray-500 truncate">jorgefs@hotmail.com</p>
           </div>
         </div>
@@ -519,8 +514,8 @@
     <!-- ÁREA DE CONTEÚDO PRINCIPAL DO APP -->
     <div class="flex-1 flex flex-col justify-between min-h-screen sm:min-h-[800px] desk:min-h-[740px] overflow-y-auto">
       
-      <!-- Cabeçalho Compacto (Mobile < 900px, fiel à referência) -->
-      <header class="desk:hidden px-6 pt-6 pb-3 flex items-center justify-between">
+      <!-- Cabeçalho Compacto (Mobile < 900px, ocultado na aba Minha Conta para seguir a referência) -->
+      <header id="mobile-brand-header" class="desk:hidden px-6 pt-6 pb-3 flex items-center justify-between">
         <div class="flex items-center gap-3">
           <div class="w-10 h-10 rounded-xl bg-[#123524] flex items-center justify-center shrink-0 shadow-sm">
             <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -544,12 +539,12 @@
       </header>
 
       <!-- CONTEÚDO DAS ABAS -->
-      <div class="flex-1 px-6 desk:px-9 pt-2 desk:pt-8 pb-6">
+      <div class="flex-1 px-6 desk:px-9 pt-2 desk:pt-8 pb-6 flex flex-col">
 
         <!-- ==================== ABA 1: INÍCIO ==================== -->
         <section id="tab-inicio" class="space-y-5 desk:space-y-6">
           
-          <!-- Banner de Viagem Ativa (Aparece quando o usuário destrava uma bike) -->
+          <!-- Banner de Viagem Ativa -->
           <div id="active-ride-banner" class="hidden bg-[#123524] text-white rounded-2xl p-4 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
             <div class="flex items-center gap-3">
               <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-300 shrink-0">
@@ -607,15 +602,12 @@
                 </span>
               </div>
 
-              <!-- Cartão do Mapa Vetorial Minimalista (Fiel à imagem) -->
+              <!-- Cartão do Mapa Vetorial Minimalista -->
               <div class="relative w-full h-[215px] desk:h-[360px] rounded-2xl bg-[#E6E8E6] overflow-hidden border border-gray-200/90 shadow-inner select-none">
                 
-                <!-- SVG do Mapa Fictício com Quarteirões Verdes Pastel e Ruas Brancas -->
                 <svg id="fictional-map-svg" class="w-full h-full object-cover transition-transform duration-300 origin-center" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                  <!-- Fundo base cinza-claro urbano -->
                   <rect width="400" height="240" fill="#E5E7E5"/>
 
-                  <!-- Áreas Verdes / Parques e Quarteirões em Verde Pastel Claro (#C5D9CD / #B9D1C3) -->
                   <rect x="18" y="135" width="76" height="44" rx="8" fill="#C4D8CC"/>
                   <rect x="148" y="34" width="66" height="48" rx="8" fill="#BDD3C6"/>
                   <rect x="285" y="18" width="68" height="58" rx="8" fill="#BDD3C6"/>
@@ -623,7 +615,6 @@
                   <rect x="30" y="32" width="78" height="52" rx="8" fill="#DCE0DD"/>
                   <rect x="145" y="168" width="88" height="52" rx="8" fill="#DCE0DD"/>
 
-                  <!-- Ruas e Avenidas Brancas Cruzando o Mapa -->
                   <path d="M-20 112 L420 82" stroke="#F8F9F8" stroke-width="11" stroke-linecap="round"/>
                   <path d="M-20 195 L420 26" stroke="#F8F9F8" stroke-width="12" stroke-linecap="round"/>
                   <path d="M95 -10 L355 250" stroke="#F8F9F8" stroke-width="10" stroke-linecap="round"/>
@@ -631,12 +622,10 @@
                   <path d="M256 -10 L242 250" stroke="#F8F9F8" stroke-width="8" stroke-linecap="round"/>
                   <path d="M-10 56 L145 78" stroke="#F8F9F8" stroke-width="6" stroke-linecap="round"/>
 
-                  <!-- Indicador sutil da posição atual do usuário -->
                   <circle cx="195" cy="122" r="14" fill="#0B7A54" fill-opacity="0.14"/>
                   <circle cx="195" cy="122" r="5" fill="#2563EB" stroke="#FFFFFF" stroke-width="2"/>
                 </svg>
 
-                <!-- Botão Flutuante "Ver mapa completo" (Canto Superior Esquerdo, idêntico à foto) -->
                 <button 
                   type="button" 
                   onclick="switchTab('bicicletarios')"
@@ -645,15 +634,13 @@
                   Ver mapa completo
                 </button>
 
-                <!-- Controles de Zoom Fictício no Desktop -->
                 <div class="hidden desk:flex flex-col gap-1.5 absolute bottom-3.5 right-3.5 z-10">
                   <button type="button" onclick="zoomMap(0.15)" aria-label="Aumentar zoom" class="w-8 h-8 rounded-lg bg-white/95 hover:bg-white text-gray-700 font-bold shadow-sm border border-gray-200 flex items-center justify-center cursor-pointer">+</button>
                   <button type="button" onclick="zoomMap(-0.15)" aria-label="Diminuir zoom" class="w-8 h-8 rounded-lg bg-white/95 hover:bg-white text-gray-700 font-bold shadow-sm border border-gray-200 flex items-center justify-center cursor-pointer">−</button>
                 </div>
 
-                <!-- Marcador 1: "8" (Centro-esquerda — Praça Central) -->
                 <button 
-                  type="button"
+                  type="button" 
                   onclick="openStationModal('praca-central')"
                   aria-label="Praça Central: 8 bicicletas disponíveis"
                   style="top: 48%; left: 26%;"
@@ -662,9 +649,8 @@
                   8
                 </button>
 
-                <!-- Marcador 2: "12" (Superior-direita — Estação Jardim) -->
                 <button 
-                  type="button"
+                  type="button" 
                   onclick="openStationModal('estacao-jardim')"
                   aria-label="Estação Jardim: 12 bicicletas disponíveis"
                   style="top: 23%; left: 78%;"
@@ -673,9 +659,8 @@
                   12
                 </button>
 
-                <!-- Marcador 3: "5" (Centro-direita inferior — Parque das Flores) -->
                 <button 
-                  type="button"
+                  type="button" 
                   onclick="openStationModal('parque-flores')"
                   aria-label="Parque das Flores: 5 bicicletas disponíveis"
                   style="top: 66%; left: 71%;"
@@ -698,10 +683,8 @@
                 </p>
               </div>
 
-              <!-- Lista de Cards de Bicicletários -->
               <div id="home-stations-list" class="space-y-2.5">
-                
-                <!-- Card 1: Praça Central (8 bicicletas) -->
+                <!-- Card 1: Praça Central -->
                 <button 
                   type="button"
                   onclick="openStationModal('praca-central')"
@@ -730,7 +713,7 @@
                   </div>
                 </button>
 
-                <!-- Card 2: Parque das Flores (5 bicicletas) -->
+                <!-- Card 2: Parque das Flores -->
                 <button 
                   type="button"
                   onclick="openStationModal('parque-flores')"
@@ -759,7 +742,7 @@
                   </div>
                 </button>
 
-                <!-- Card 3: Estação Jardim (12 bicicletas — coerente com o pino 12 do mapa) -->
+                <!-- Card 3: Estação Jardim -->
                 <button 
                   type="button"
                   onclick="openStationModal('estacao-jardim')"
@@ -806,7 +789,6 @@
               </p>
             </div>
 
-            <!-- Campo de Busca -->
             <div class="relative w-full sm:w-64">
               <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
                 <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -822,7 +804,6 @@
             </div>
           </div>
 
-          <!-- Mapa Expandido Interativo -->
           <div class="relative w-full h-[220px] desk:h-[260px] rounded-2xl bg-[#E6E8E6] overflow-hidden border border-gray-200 shadow-inner">
             <svg class="w-full h-full object-cover" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
               <rect width="600" height="260" fill="#E5E7E5"/>
@@ -850,94 +831,212 @@
             </button>
           </div>
 
-          <!-- Grade Completa de Estações -->
           <div id="all-stations-grid" class="grid grid-cols-1 desk:grid-cols-2 gap-3">
             <!-- Preenchido via JS -->
           </div>
         </section>
 
-        <!-- ==================== ABA 3: MINHA CONTA ==================== -->
-        <section id="tab-conta" class="hidden space-y-5 max-w-2xl">
-          <div>
-            <h1 class="text-[22px] desk:text-[26px] font-extrabold text-[#111827] tracking-tight">
-              Minha conta
-            </h1>
-            <p class="text-[13px] text-gray-500">
-              Gerencie seu passe, histórico de viagens e impacto ambiental.
-            </p>
-          </div>
-
-          <!-- Cartão de Perfil -->
-          <div class="bg-white rounded-2xl p-5 border border-gray-200/90 shadow-sm flex items-center justify-between gap-4">
-            <div class="flex items-center gap-4">
-              <div id="account-avatar" class="w-14 h-14 rounded-2xl bg-[#123524] text-white font-extrabold text-lg flex items-center justify-center shrink-0">
-                JF
-              </div>
+        <!-- ==================== ABA 3: MINHA CONTA (ATUALIZADA COM BASE NA REFERÊNCIA) ==================== -->
+        <section id="tab-conta" class="hidden flex-1 flex flex-col justify-between max-w-2xl w-full desk:mx-auto pt-3 desk:pt-0">
+          
+          <div class="space-y-6">
+            <!-- Cabeçalho da Tela: Seta voltar + Título + Subtítulo -->
+            <div class="flex items-start gap-2.5">
+              <button 
+                type="button" 
+                onclick="switchTab('inicio')" 
+                aria-label="Voltar para o início"
+                class="mt-0.5 p-1 -ml-1 text-[#111827] hover:text-[#0B7A54] rounded-lg transition-colors cursor-pointer"
+              >
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="15 18 9 12 15 6"/>
+                </svg>
+              </button>
               <div>
-                <h2 id="account-name" class="text-base font-bold text-[#111827]">Jorge Ferreira</h2>
-                <p id="account-email" class="text-xs text-gray-500 mt-0.5">jorgefs@hotmail.com</p>
-                <span class="inline-flex items-center gap-1.5 mt-2 px-2.5 py-0.5 rounded-full bg-[#E8F3EE] text-[#0B7A54] text-[11px] font-semibold">
-                  Passe Mensal Ativo
-                </span>
+                <h1 class="text-[20px] desk:text-[24px] font-extrabold text-[#111827] tracking-tight leading-tight">
+                  Minha Conta
+                </h1>
+                <p class="text-[12.5px] desk:text-[13.5px] text-gray-500 mt-0.5">
+                  Consulte e gerencie suas informações.
+                </p>
               </div>
             </div>
-          </div>
 
-          <!-- Métricas de Impacto -->
-          <div class="grid grid-cols-3 gap-3">
-            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 text-center">
-              <span id="stat-trips" class="text-xl font-extrabold text-[#123524] block">14</span>
-              <span class="text-[11px] text-gray-500 font-medium">Viagens</span>
+            <!-- Ícone Central de Perfil Circular -->
+            <div class="flex justify-center pt-1 pb-1">
+              <div class="w-[74px] h-[74px] rounded-full bg-[#DCE9E2] border border-[#C6DDD1] flex items-center justify-center text-[#123524] shadow-xs">
+                <svg class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="12" cy="8" r="4"/>
+                  <path d="M5 20c1.6-3.8 4.4-5.5 7-5.5s5.4 1.7 7 5.5"/>
+                </svg>
+              </div>
             </div>
-            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 text-center">
-              <span class="text-xl font-extrabold text-[#0B7A54] block">42,8 km</span>
-              <span class="text-[11px] text-gray-500 font-medium">Pedalados</span>
-            </div>
-            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 text-center">
-              <span class="text-xl font-extrabold text-[#0B7A54] block">6,4 kg</span>
-              <span class="text-[11px] text-gray-500 font-medium">CO₂ evitado</span>
-            </div>
-          </div>
 
-          <!-- Últimas Viagens -->
-          <div class="bg-white rounded-2xl p-5 border border-gray-200/90 space-y-3">
-            <h3 class="text-sm font-bold text-[#111827]">Histórico recente</h3>
-            <div id="trip-history-list" class="divide-y divide-gray-100 text-xs">
-              <div class="py-2.5 flex items-center justify-between">
-                <div>
-                  <p class="font-semibold text-gray-800">Praça Central → Parque das Flores</p>
-                  <p class="text-gray-400 mt-0.5">Ontem • 18 min • Bike #04</p>
+            <!-- Grid Responsivo: Dados Pessoais & Segurança e Pagamento -->
+            <div class="grid grid-cols-1 desk:grid-cols-12 gap-6 items-start">
+              
+              <!-- Bloco: Dados pessoais -->
+              <div class="desk:col-span-7 space-y-3.5">
+                <div class="flex items-center justify-between">
+                  <h2 class="text-[14.5px] font-bold text-[#111827]">
+                    Dados pessoais
+                  </h2>
+                  <span id="profile-edit-badge" class="hidden text-[11px] font-semibold text-[#0B7A54] bg-[#E8F3EE] px-2.5 py-0.5 rounded-full">
+                    Modo de edição ativo
+                  </span>
                 </div>
-                <span class="font-semibold text-[#0B7A54]">Incluído no passe</span>
-              </div>
-              <div class="py-2.5 flex items-center justify-between">
+
+                <!-- Campo: NOME COMPLETO -->
                 <div>
-                  <p class="font-semibold text-gray-800">Estação Jardim → Praça Central</p>
-                  <p class="text-gray-400 mt-0.5">10 Nov • 24 min • Bike #11</p>
+                  <label for="profile-name-input" class="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1">
+                    NOME COMPLETO
+                  </label>
+                  <input 
+                    type="text" 
+                    id="profile-name-input" 
+                    value="Jorge Silva"
+                    readonly
+                    class="profile-field w-full px-3.5 py-2.5 bg-white border border-gray-200/90 rounded-xl text-[13.5px] font-medium text-[#1F2937] focus:outline-none transition-all"
+                  />
                 </div>
-                <span class="font-semibold text-[#0B7A54]">Incluído no passe</span>
+
+                <!-- Campo: E-MAIL -->
+                <div>
+                  <label for="profile-email-input" class="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1">
+                    E-MAIL
+                  </label>
+                  <input 
+                    type="email" 
+                    id="profile-email-input" 
+                    value="jorgefs@hotmail.com"
+                    readonly
+                    class="profile-field w-full px-3.5 py-2.5 bg-white border border-gray-200/90 rounded-xl text-[13.5px] font-medium text-[#1F2937] focus:outline-none transition-all"
+                  />
+                </div>
+
+                <!-- Campo: CPF / PASSAPORTE -->
+                <div>
+                  <label for="profile-doc-input" class="block text-[10px] font-bold uppercase tracking-wider text-gray-500 mb-1">
+                    CPF / PASSAPORTE
+                  </label>
+                  <input 
+                    type="text" 
+                    id="profile-doc-input" 
+                    value="678.690.048-69"
+                    readonly
+                    class="profile-field w-full px-3.5 py-2.5 bg-white border border-gray-200/90 rounded-xl text-[13.5px] font-medium text-[#1F2937] focus:outline-none transition-all"
+                  />
+                </div>
+              </div>
+
+              <!-- Bloco: Segurança e pagamento -->
+              <div class="desk:col-span-5 space-y-3">
+                <h2 class="text-[14.5px] font-bold text-[#111827]">
+                  Segurança e pagamento
+                </h2>
+
+                <div class="space-y-2.5">
+                  <!-- Item 1: Alterar senha -->
+                  <button 
+                    type="button"
+                    onclick="openAccountSubModal('password')"
+                    class="w-full text-left bg-white hover:bg-[#F9FBFA] border border-gray-200/90 hover:border-[#0B7A54]/40 rounded-xl px-3.5 py-3 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all cursor-pointer group"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-[#E8F3EE] text-[#0B7A54] flex items-center justify-center shrink-0">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <p class="text-[13px] font-bold text-[#1F2937] group-hover:text-[#123524]">
+                          Alterar senha
+                        </p>
+                        <p class="text-[11px] text-gray-400 mt-0.5">
+                          Atualize sua senha de acesso
+                        </p>
+                      </div>
+                    </div>
+                    <svg class="w-4 h-4 text-gray-400 group-hover:text-[#0B7A54] transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                  </button>
+
+                  <!-- Item 2: Cartão de crédito -->
+                  <button 
+                    type="button"
+                    onclick="openAccountSubModal('card')"
+                    class="w-full text-left bg-white hover:bg-[#F9FBFA] border border-gray-200/90 hover:border-[#0B7A54]/40 rounded-xl px-3.5 py-3 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all cursor-pointer group"
+                  >
+                    <div class="flex items-center gap-3">
+                      <div class="w-8 h-8 rounded-lg bg-[#E8F3EE] text-[#0B7A54] flex items-center justify-center shrink-0">
+                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                          <rect x="2" y="5" width="20" height="14" rx="2"/>
+                          <line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                      </div>
+                      <div>
+                        <p class="text-[13px] font-bold text-[#1F2937] group-hover:text-[#123524]">
+                          Cartão de crédito
+                        </p>
+                        <p id="saved-card-subtitle" class="text-[11px] text-gray-400 mt-0.5">
+                          Adicionar ou gerenciar cartão
+                        </p>
+                      </div>
+                    </div>
+                    <svg class="w-4 h-4 text-gray-400 group-hover:text-[#0B7A54] transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="9 18 15 12 9 6"/>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Botão Principal: Alterar dados cadastrais -->
+            <div class="pt-1 space-y-2.5">
+              <button 
+                type="button" 
+                id="toggle-edit-profile-btn"
+                onclick="toggleProfileEdit()"
+                class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] active:scale-[0.99] text-white font-semibold text-[14px] rounded-xl shadow-sm transition-all cursor-pointer"
+              >
+                Alterar dados cadastrais
+              </button>
+
+              <p id="profile-save-feedback" class="hidden text-center text-xs font-semibold text-[#0B7A54]">
+                Dados cadastrais atualizados com sucesso!
+              </p>
+
+              <!-- Ação discreta de Sair da Conta -->
+              <div class="text-center pt-1">
+                <button 
+                  type="button" 
+                  onclick="logoutApp()" 
+                  class="inline-flex items-center gap-1.5 text-[11.5px] font-medium text-gray-400 hover:text-red-600 transition-colors cursor-pointer"
+                >
+                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                  </svg>
+                  <span>Encerrar sessão</span>
+                </button>
               </div>
             </div>
           </div>
 
-          <!-- Botão Sair (Mobile e Desktop) -->
-          <div class="pt-2">
-            <button 
-              type="button" 
-              onclick="logoutApp()"
-              class="w-full py-3 px-4 bg-white hover:bg-red-50 text-red-600 border border-red-200 font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
-            >
-              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
-              </svg>
-              <span>Sair da conta</span>
-            </button>
+          <!-- Assinatura Inferior da Tela Minha Conta -->
+          <div class="pt-6 pb-1 text-center select-none">
+            <span class="text-[11px] font-normal text-gray-400 tracking-wide">
+              VáDeBike • Um jeito mais leve de ir.
+            </span>
           </div>
+
         </section>
 
       </div>
 
-      <!-- BARRA DE NAVEGAÇÃO INFERIOR FIXA (MOBILE < 900px, fiel à foto) -->
+      <!-- BARRA DE NAVEGAÇÃO INFERIOR FIXA (MOBILE < 900px) -->
       <nav class="desk:hidden bg-white border-t border-gray-200/90 px-4 py-2.5 flex items-center justify-around shrink-0" aria-label="Navegação inferior">
         <button type="button" data-nav="inicio" class="nav-btn flex flex-col items-center gap-1 px-4 py-1 text-[#0B7A54] font-semibold cursor-pointer">
           <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
@@ -985,7 +1084,6 @@
           </button>
         </div>
 
-        <!-- Seleção de Bicicleta -->
         <div class="space-y-2">
           <p class="text-xs font-bold text-gray-700">Escolha uma bicicleta para destravar:</p>
           <div id="modal-bikes-list" class="grid grid-cols-2 gap-2">
@@ -993,7 +1091,6 @@
           </div>
         </div>
 
-        <!-- Código PIN de Destravamento -->
         <div class="bg-[#F4F5F4] rounded-2xl p-3.5 border border-gray-200/80 flex items-center justify-between">
           <div>
             <span class="text-[11px] text-gray-500 block">Código de liberação na trava</span>
@@ -1017,6 +1114,63 @@
             <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
           </svg>
         </button>
+      </div>
+    </div>
+
+    <!-- ==================== MODAL DE SEGURANÇA E PAGAMENTO (MINHA CONTA) ==================== -->
+    <div id="account-submodal" class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] flex items-end sm:items-center justify-center p-0 sm:p-6 z-50">
+      <div class="bg-white rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[400px] shadow-2xl border border-gray-100 space-y-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <h3 id="submodal-title" class="text-lg font-extrabold text-[#123524]">
+              Alterar senha
+            </h3>
+            <p id="submodal-subtitle" class="text-xs text-gray-500 mt-0.5">
+              Atualize sua senha de acesso com segurança.
+            </p>
+          </div>
+          <button type="button" onclick="closeAccountSubModal()" aria-label="Fechar" class="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-600 cursor-pointer">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Formulário: Alterar Senha -->
+        <form id="submodal-password-form" class="space-y-3">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-gray-500 mb-1">Senha atual</label>
+            <input type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#0B7A54] focus:bg-white"/>
+          </div>
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-gray-500 mb-1">Nova senha</label>
+            <input type="password" required minlength="6" placeholder="Mínimo 6 caracteres" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#0B7A54] focus:bg-white"/>
+          </div>
+          <button type="submit" class="w-full py-3 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer">
+            Salvar nova senha
+          </button>
+        </form>
+
+        <!-- Formulário: Cartão de Crédito -->
+        <form id="submodal-card-form" class="hidden space-y-3">
+          <div>
+            <label class="block text-[11px] font-bold uppercase text-gray-500 mb-1">Número do cartão</label>
+            <input type="text" id="card-number-input" required maxlength="19" placeholder="0000 0000 0000 4289" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#0B7A54] focus:bg-white"/>
+          </div>
+          <div class="grid grid-cols-2 gap-2.5">
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-gray-500 mb-1">Validade</label>
+              <input type="text" required maxlength="5" placeholder="08/29" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#0B7A54] focus:bg-white"/>
+            </div>
+            <div>
+              <label class="block text-[11px] font-bold uppercase text-gray-500 mb-1">CVV</label>
+              <input type="password" required maxlength="4" placeholder="123" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] border border-gray-200 rounded-xl text-sm focus:outline-none focus:border-[#0B7A54] focus:bg-white"/>
+            </div>
+          </div>
+          <button type="submit" class="w-full py-3 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer">
+            Salvar cartão
+          </button>
+        </form>
       </div>
     </div>
 
@@ -1088,10 +1242,8 @@
     let activeRideInterval = null;
     let activeRideSeconds = 0;
     let mapZoomLevel = 1;
+    let isEditingProfile = false;
 
-    /**
-     * Alterna estações no cartão interativo do painel desktop da tela de login
-     */
     const stations = [
       { name: 'Estação Praça Central', status: '12 bikes disponíveis • 4 vagas livres' },
       { name: 'Estação Orla Atlântica', status: '8 bikes disponíveis • 7 vagas livres' },
@@ -1109,9 +1261,6 @@
       });
     }
 
-    /**
-     * Alterna a visibilidade do campo de senha na tela de login
-     */
     const passwordInput = document.getElementById('login-password');
     const togglePasswordBtn = document.getElementById('toggle-login-password');
     const eyeOffIcon = document.getElementById('eye-off-icon');
@@ -1130,9 +1279,6 @@
       }
     });
 
-    /**
-     * Utilitários de erro inline nos campos
-     */
     function setFieldError(inputId, errorId, message) {
       const input = document.getElementById(inputId);
       const errorEl = document.getElementById(errorId);
@@ -1158,9 +1304,6 @@
       setFieldError('forgot-email', 'forgot-email-error', '');
     }
 
-    /**
-     * Alterna entre as visualizações da tela de autenticação: 'login', 'register' e 'forgot'
-     */
     function switchView(viewName) {
       clearAllErrors();
       const views = ['login', 'register', 'forgot'];
@@ -1174,20 +1317,19 @@
       });
     }
 
-    /**
-     * Transição suave da Tela de Login para a Tela Principal do App
-     */
     function enterApp(email, customName = null) {
-      const displayName = customName || (email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
-      const initials = displayName.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase() || 'VB';
+      const defaultName = email.toLowerCase() === 'jorgefs@hotmail.com'
+        ? 'Jorge Silva'
+        : (email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+      const displayName = customName || defaultName;
+      const initials = displayName.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase() || 'JS';
 
       document.getElementById('desktop-user-name').textContent = displayName;
       document.getElementById('desktop-user-email').textContent = email;
       document.getElementById('desktop-user-avatar').textContent = initials;
 
-      document.getElementById('account-name').textContent = displayName;
-      document.getElementById('account-email').textContent = email;
-      document.getElementById('account-avatar').textContent = initials;
+      document.getElementById('profile-name-input').value = displayName;
+      document.getElementById('profile-email-input').value = email;
 
       document.getElementById('auth-screen').classList.add('hidden');
       document.getElementById('app-screen').classList.remove('hidden');
@@ -1196,9 +1338,6 @@
       switchTab('inicio');
     }
 
-    /**
-     * Sair da conta e voltar à tela de login
-     */
     function logoutApp() {
       if (activeRideInterval) {
         clearInterval(activeRideInterval);
@@ -1212,9 +1351,6 @@
       switchView('login');
     }
 
-    /**
-     * Navegação entre abas da Tela Principal ('inicio', 'bicicletarios', 'conta')
-     */
     function switchTab(tabName) {
       const tabs = ['inicio', 'bicicletarios', 'conta'];
       tabs.forEach(t => {
@@ -1226,7 +1362,16 @@
         }
       });
 
-      // Atualiza estado ativo dos botões (tanto na bottom nav mobile quanto na sidebar desktop)
+      // Na aba "Minha conta", o cabeçalho mobile usa o título próprio "< Minha Conta" fiel à referência
+      const mobileBrandHeader = document.getElementById('mobile-brand-header');
+      if (mobileBrandHeader) {
+        if (tabName === 'conta') {
+          mobileBrandHeader.classList.add('hidden');
+        } else {
+          mobileBrandHeader.classList.remove('hidden');
+        }
+      }
+
       document.querySelectorAll('.nav-btn').forEach(btn => {
         const isTarget = btn.getAttribute('data-nav') === tabName;
         const isDesktop = btn.closest('aside') !== null;
@@ -1253,9 +1398,92 @@
       });
     });
 
-    /**
-     * Zoom fictício no mapa da tela principal
-     */
+    // ==================== INTERAÇÕES DA TELA MINHA CONTA ====================
+    function toggleProfileEdit() {
+      const fields = document.querySelectorAll('.profile-field');
+      const btn = document.getElementById('toggle-edit-profile-btn');
+      const badge = document.getElementById('profile-edit-badge');
+      const feedback = document.getElementById('profile-save-feedback');
+
+      isEditingProfile = !isEditingProfile;
+
+      if (isEditingProfile) {
+        fields.forEach(f => {
+          f.removeAttribute('readonly');
+          f.classList.add('border-[#0B7A54]', 'ring-2', 'ring-[#0B7A54]/15');
+        });
+        badge.classList.remove('hidden');
+        feedback.classList.add('hidden');
+        btn.textContent = 'Salvar alterações';
+        document.getElementById('profile-name-input').focus();
+      } else {
+        fields.forEach(f => {
+          f.setAttribute('readonly', true);
+          f.classList.remove('border-[#0B7A54]', 'ring-2', 'ring-[#0B7A54]/15');
+        });
+        badge.classList.add('hidden');
+        btn.textContent = 'Alterar dados cadastrais';
+
+        const updatedName = document.getElementById('profile-name-input').value.trim() || 'Jorge Silva';
+        const updatedEmail = document.getElementById('profile-email-input').value.trim() || 'jorgefs@hotmail.com';
+        const initials = updatedName.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase() || 'JS';
+
+        document.getElementById('desktop-user-name').textContent = updatedName;
+        document.getElementById('desktop-user-email').textContent = updatedEmail;
+        document.getElementById('desktop-user-avatar').textContent = initials;
+
+        feedback.classList.remove('hidden');
+        setTimeout(() => feedback.classList.add('hidden'), 3000);
+      }
+    }
+
+    function openAccountSubModal(type) {
+      const modal = document.getElementById('account-submodal');
+      const title = document.getElementById('submodal-title');
+      const subtitle = document.getElementById('submodal-subtitle');
+      const passForm = document.getElementById('submodal-password-form');
+      const cardForm = document.getElementById('submodal-card-form');
+
+      if (type === 'password') {
+        title.textContent = 'Alterar senha';
+        subtitle.textContent = 'Atualize sua senha de acesso ao VáDeBike.';
+        passForm.classList.remove('hidden');
+        cardForm.classList.add('hidden');
+      } else {
+        title.textContent = 'Cartão de crédito';
+        subtitle.textContent = 'Adicione ou gerencie seu método de pagamento.';
+        passForm.classList.add('hidden');
+        cardForm.classList.remove('hidden');
+      }
+      modal.classList.remove('hidden');
+    }
+
+    function closeAccountSubModal() {
+      document.getElementById('account-submodal').classList.add('hidden');
+    }
+
+    document.getElementById('submodal-password-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      e.target.reset();
+      closeAccountSubModal();
+      const feedback = document.getElementById('profile-save-feedback');
+      feedback.textContent = 'Senha atualizada com sucesso!';
+      feedback.classList.remove('hidden');
+      setTimeout(() => {
+        feedback.classList.add('hidden');
+        feedback.textContent = 'Dados cadastrais atualizados com sucesso!';
+      }, 3000);
+    });
+
+    document.getElementById('submodal-card-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const raw = document.getElementById('card-number-input').value.replace(/\s+/g, '');
+      const last4 = raw.slice(-4) || '4289';
+      document.getElementById('saved-card-subtitle').textContent = `Mastercard •••• ${last4}`;
+      e.target.reset();
+      closeAccountSubModal();
+    });
+
     function zoomMap(delta) {
       mapZoomLevel = Math.min(1.45, Math.max(0.9, mapZoomLevel + delta));
       const svg = document.getElementById('fictional-map-svg');
@@ -1264,9 +1492,6 @@
       }
     }
 
-    /**
-     * Renderiza a lista pesquisável na aba Bicicletários
-     */
     function renderAllStationsGrid(filterText = '') {
       const container = document.getElementById('all-stations-grid');
       if (!container) return;
@@ -1307,9 +1532,6 @@
       });
     }
 
-    /**
-     * Abre o modal/drawer de seleção e destravamento de bicicleta
-     */
     function openStationModal(stationId) {
       const station = bikeStationsData[stationId];
       if (!station) return;
@@ -1352,9 +1574,6 @@
       document.getElementById('station-modal').classList.add('hidden');
     }
 
-    /**
-     * Inicia viagem ativa com cronômetro em tempo real
-     */
     function startBikeRide() {
       const station = bikeStationsData[selectedStationId];
       closeStationModal();
@@ -1392,34 +1611,12 @@
         clearInterval(activeRideInterval);
         activeRideInterval = null;
       }
-      const station = bikeStationsData[selectedStationId];
-      const mins = Math.max(1, Math.ceil(activeRideSeconds / 60));
-
       document.getElementById('active-ride-banner').classList.add('hidden');
       const mobilePill = document.getElementById('mobile-active-ride-pill');
       mobilePill.classList.add('hidden');
       mobilePill.classList.remove('flex');
-
-      // Incrementa viagens e adiciona ao histórico
-      const tripsEl = document.getElementById('stat-trips');
-      tripsEl.textContent = Number(tripsEl.textContent) + 1;
-
-      const historyList = document.getElementById('trip-history-list');
-      const newEntry = document.createElement('div');
-      newEntry.className = 'py-2.5 flex items-center justify-between';
-      newEntry.innerHTML = `
-        <div>
-          <p class="font-semibold text-gray-800">${station.name} → Devolução local</p>
-          <p class="text-gray-400 mt-0.5">Agora • ${mins} min • ${selectedBikeCode}</p>
-        </div>
-        <span class="font-semibold text-[#0B7A54]">Concluída</span>
-      `;
-      historyList.prepend(newEntry);
     }
 
-    /**
-     * Exibe modal personalizado de feedback na tela de autenticação (sem usar alert())
-     */
     const feedbackOverlay = document.getElementById('feedback-overlay');
     const feedbackTitle = document.getElementById('feedback-title');
     const feedbackMessage = document.getElementById('feedback-message');
@@ -1459,16 +1656,10 @@
       }
     });
 
-    /**
-     * Validação simples de e-mail
-     */
     function isValidEmail(email) {
       return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
     }
 
-    /**
-     * Submissão do Formulário de Login -> Transiciona direto para a Tela Principal
-     */
     document.getElementById('login-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('login-email').value.trim();
@@ -1494,9 +1685,6 @@
       enterApp(email);
     });
 
-    /**
-     * Submissão do Formulário de Cadastro -> Entra direto na Tela Principal
-     */
     document.getElementById('register-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const name = document.getElementById('reg-name').value.trim();
@@ -1530,9 +1718,6 @@
       enterApp(email, name);
     });
 
-    /**
-     * Submissão do Formulário de Recuperação de Senha
-     */
     document.getElementById('forgot-form').addEventListener('submit', (e) => {
       e.preventDefault();
       const email = document.getElementById('forgot-email').value.trim();
