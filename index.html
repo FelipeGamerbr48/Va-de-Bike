@@ -1,0 +1,1556 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>VáDeBike - Acesse sua conta</title>
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Google Fonts: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          screens: {
+            'desk': '900px',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              dark: '#123524',     // Verde muito escuro do logo e títulos
+              primary: '#0B7A54',  // Verde esmeralda do botão e barra inferior
+              hover: '#086042',    // Verde mais escuro para hover
+              light: '#E8F3EE',    // Fundo suave de destaque
+              surface: '#F4F5F4',  // Superfície clara fiel à referência
+            }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-[#181A1B] desk:bg-[#E7ECE9] min-h-screen flex items-center justify-center p-0 sm:p-6 desk:p-8 font-sans antialiased text-[#1E2321]">
+
+  <!-- ==================== TELA DE AUTENTICAÇÃO (LOGIN / CADASTRO / RECUPERAR) ==================== -->
+  <main id="auth-screen" class="w-full max-w-[414px] desk:max-w-[1120px] min-h-screen sm:min-h-[780px] desk:min-h-[680px] bg-[#F4F5F4] sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col justify-between relative border border-black/5 transition-all duration-300">
+    
+    <!-- Grade Principal (1 coluna no mobile, 2 colunas balanceadas no computador >= 900px) -->
+    <div class="flex-1 grid grid-cols-1 desk:grid-cols-12">
+
+      <!-- ==================== COLUNA ESQUERDA: PAINEL DE MARCA E EXPERIÊNCIA (APENAS DESKTOP >= 900px) ==================== -->
+      <aside class="hidden desk:flex desk:col-span-6 relative overflow-hidden bg-gradient-to-br from-[#123524] via-[#104630] to-[#0B7A54] text-white p-11 flex-col justify-between">
+        
+        <!-- Decoração SVG de Linhas Geométricas e Rotas Urbanas -->
+        <svg class="absolute inset-0 w-full h-full opacity-[0.12] pointer-events-none" viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+          <circle cx="520" cy="110" r="190" stroke="white" stroke-width="1.5"/>
+          <circle cx="520" cy="110" r="130" stroke="white" stroke-width="1.5" stroke-dasharray="6 6"/>
+          <path d="M-40 520 C 120 480, 180 340, 320 350 C 460 360, 490 220, 640 190" stroke="white" stroke-width="2.5"/>
+          <path d="M-20 610 C 140 560, 240 440, 380 460 C 500 475, 540 370, 650 340" stroke="white" stroke-width="1.5" stroke-dasharray="8 8"/>
+          <circle cx="320" cy="350" r="6" fill="white"/>
+          <circle cx="155" cy="442" r="5" fill="white"/>
+          <circle cx="475" cy="252" r="5" fill="white"/>
+        </svg>
+
+        <!-- Topo: Marca VáDeBike Invertida -->
+        <div class="relative z-10 flex items-center gap-3.5">
+          <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-sm">
+            <svg class="w-7 h-7 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
+              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="text-2xl font-semibold tracking-tight text-white select-none">
+            VáDeBike
+          </span>
+        </div>
+
+        <!-- Centro: Título de Impacto, Subtexto e Destaques -->
+        <div class="relative z-10 my-auto py-8 space-y-6">
+          <div class="space-y-3">
+            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-emerald-100">
+              <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
+              Mobilidade ativa &amp; sustentável
+            </span>
+            <h2 class="text-3xl lg:text-[34px] font-extrabold leading-tight tracking-tight text-white">
+              Mobilidade urbana inteligente, prática e sustentável.
+            </h2>
+            <p class="text-[14.5px] text-emerald-100/85 leading-relaxed max-w-md">
+              Conecte-se às estações espalhadas pelos principais pontos da cidade, evite o trânsito e transforme seus trajetos diários em saúde e liberdade.
+            </p>
+          </div>
+
+          <!-- Lista de 3 Destaques -->
+          <ul class="space-y-3.5 pt-2">
+            <li class="flex items-center gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-emerald-200">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-white">Estações em toda a cidade</p>
+                <p class="text-xs text-emerald-100/75">Retire e devolva em dezenas de pontos integrados</p>
+              </div>
+            </li>
+
+            <li class="flex items-center gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-emerald-200">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-white">Desbloqueio rápido via app</p>
+                <p class="text-xs text-emerald-100/75">Escaneie o QR Code e comece a pedalar em segundos</p>
+              </div>
+            </li>
+
+            <li class="flex items-center gap-3.5">
+              <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-emerald-200">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+                </svg>
+              </div>
+              <div>
+                <p class="text-sm font-semibold text-white">Zero emissão de carbono</p>
+                <p class="text-xs text-emerald-100/75">Contribua para um ar mais limpo a cada quilômetro</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Rodapé Interativo: Prévia de Disponibilidade de Estações -->
+        <div class="relative z-10 bg-white/10 backdrop-blur-md border border-white/15 rounded-2xl p-4 flex items-center justify-between gap-3">
+          <div class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-xl bg-emerald-400/20 border border-emerald-300/30 flex items-center justify-center text-emerald-200 shrink-0">
+              <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/>
+              </svg>
+            </div>
+            <div>
+              <div class="flex items-center gap-2">
+                <span id="station-name" class="text-xs font-bold text-white">Estação Praça Central</span>
+                <span class="px-1.5 py-0.5 text-[10px] font-semibold rounded bg-emerald-400/25 text-emerald-200">Online</span>
+              </div>
+              <p id="station-status" class="text-xs text-emerald-100/80 mt-0.5">
+                12 bikes disponíveis • 4 vagas livres
+              </p>
+            </div>
+          </div>
+          <button 
+            type="button" 
+            id="cycle-station-btn"
+            title="Alternar estação próxima"
+            class="px-3 py-1.5 rounded-lg bg-white/15 hover:bg-white/25 text-xs font-semibold text-white transition-colors shrink-0 cursor-pointer"
+          >
+            Trocar ponto
+          </button>
+        </div>
+      </aside>
+
+      <!-- ==================== COLUNA DIREITA (E TELA ÚNICA NO MOBILE): AUTENTICAÇÃO ==================== -->
+      <div class="desk:col-span-6 flex flex-col justify-between bg-[#F4F5F4]">
+        
+        <!-- Cabeçalho / Logo (Visível no Mobile < 900px para preservar 100% do layout de referência) -->
+        <header class="desk:hidden px-7 pt-9 pb-6 border-b border-gray-200/80 flex items-center gap-4">
+          <!-- Ícone Quadrado Arredondado Verde Escuro com Ciclista -->
+          <div class="w-[62px] h-[62px] rounded-2xl bg-[#123524] flex items-center justify-center shrink-0 shadow-sm">
+            <svg class="w-10 h-10 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.3"/>
+              <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.3"/>
+              <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
+              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="text-[32px] font-medium tracking-tight text-[#123524] select-none">
+            VáDeBike
+          </span>
+        </header>
+
+        <!-- Área Central do Formulário -->
+        <div class="px-7 desk:px-14 pt-7 desk:pt-12 pb-6 flex-1 flex flex-col justify-center max-w-[440px] w-full mx-auto">
+          
+          <!-- ==================== TELA 1: LOGIN ==================== -->
+          <section id="view-login" class="flex-1 desk:flex-initial flex flex-col transition-opacity duration-200">
+            <!-- Saudação Principal -->
+            <div class="mb-7">
+              <h1 class="text-[23px] desk:text-[26px] font-extrabold text-[#141715] tracking-tight leading-snug">
+                Bom ter você aqui.
+              </h1>
+              <p class="text-[13.5px] desk:text-[14px] text-gray-500 mt-1 font-normal">
+                Entre na sua conta e vá de bike.
+              </p>
+            </div>
+
+            <!-- Subtítulo da Seção -->
+            <h2 class="text-[15.5px] font-semibold text-[#1E2321] mb-4">
+              Acesse sua conta
+            </h2>
+
+            <!-- Formulário de Login -->
+            <form id="login-form" novalidate class="space-y-4">
+              <!-- Campo E-mail -->
+              <div>
+                <label for="login-email" class="block text-[12px] font-semibold text-gray-700 mb-1.5">
+                  E-mail
+                </label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-3.5 text-gray-400 pointer-events-none">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2"/>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                  </span>
+                  <input 
+                    type="email" 
+                    id="login-email" 
+                    value="jorgefs@hotmail.com"
+                    placeholder="jorgefs@hotmail.com"
+                    required
+                    class="w-full pl-10 pr-4 py-3 bg-white border border-gray-300 rounded-xl text-[14.5px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15 transition-all"
+                  />
+                </div>
+                <p id="login-email-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+              </div>
+
+              <!-- Campo Senha -->
+              <div>
+                <label for="login-password" class="block text-[12px] font-semibold text-gray-700 mb-1.5">
+                  Senha
+                </label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-3.5 text-gray-400 pointer-events-none">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+                    </svg>
+                  </span>
+                  <input 
+                    type="password" 
+                    id="login-password" 
+                    placeholder="Digite sua senha"
+                    required
+                    class="w-full pl-10 pr-11 py-3 bg-white border border-gray-300 rounded-xl text-[14.5px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15 transition-all"
+                  />
+                  <!-- Botão Olho (Mostrar/Ocultar Senha) -->
+                  <button 
+                    type="button" 
+                    id="toggle-login-password"
+                    aria-label="Mostrar ou ocultar senha"
+                    class="absolute right-3 p-1.5 text-gray-400 hover:text-gray-600 focus:outline-none rounded-lg transition-colors cursor-pointer"
+                  >
+                    <svg id="eye-off-icon" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
+                      <line x1="1" y1="1" x2="23" y2="23"/>
+                    </svg>
+                    <svg id="eye-on-icon" class="w-[18px] h-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
+                      <circle cx="12" cy="12" r="3"/>
+                    </svg>
+                  </button>
+                </div>
+                <p id="login-password-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+              </div>
+
+              <!-- Botão Entrar -->
+              <div class="pt-2">
+                <button 
+                  type="submit" 
+                  class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] active:scale-[0.99] text-white font-semibold text-[15px] rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
+                >
+                  <span>Entrar</span>
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/>
+                    <polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <!-- Links de Rodapé do Formulário -->
+            <div class="mt-6 text-center space-y-3.5">
+              <div>
+                <button 
+                  type="button" 
+                  onclick="switchView('forgot')"
+                  class="text-[12.5px] font-medium text-[#0B7A54] hover:text-[#123524] hover:underline transition-colors cursor-pointer"
+                >
+                  Esqueci minha senha.
+                </button>
+              </div>
+
+              <p class="text-[12.5px] text-gray-500">
+                Ainda não tem conta? 
+                <button 
+                  type="button" 
+                  onclick="switchView('register')"
+                  class="font-semibold text-[#0B7A54] hover:text-[#123524] hover:underline transition-colors cursor-pointer"
+                >
+                  Criar conta
+                </button>
+              </p>
+            </div>
+          </section>
+
+          <!-- ==================== TELA 2: CRIAR CONTA ==================== -->
+          <section id="view-register" class="hidden flex-1 desk:flex-initial flex flex-col transition-opacity duration-200">
+            <div class="mb-5">
+              <button type="button" onclick="switchView('login')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B7A54] hover:text-[#123524] mb-3 cursor-pointer">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Voltar para o login
+              </button>
+              <h1 class="text-[22px] desk:text-[25px] font-extrabold text-[#141715] tracking-tight">
+                Crie sua conta.
+              </h1>
+              <p class="text-[13px] text-gray-500 mt-1">
+                Comece a pedalar pela cidade em poucos minutos.
+              </p>
+            </div>
+
+            <form id="register-form" novalidate class="space-y-3.5">
+              <div>
+                <label for="reg-name" class="block text-[12px] font-semibold text-gray-700 mb-1">Nome completo</label>
+                <input type="text" id="reg-name" placeholder="Ex: Jorge Ferreira" required class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
+                <p id="reg-name-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+              </div>
+
+              <div>
+                <label for="reg-email" class="block text-[12px] font-semibold text-gray-700 mb-1">E-mail</label>
+                <input type="email" id="reg-email" placeholder="seuemail@exemplo.com" required class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
+                <p id="reg-email-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+              </div>
+
+              <div>
+                <label for="reg-password" class="block text-[12px] font-semibold text-gray-700 mb-1">Criar senha</label>
+                <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" required class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
+                <p id="reg-password-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+              </div>
+
+              <div class="pt-2">
+                <button type="submit" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[15px] rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
+                  <span>Cadastrar agora</span>
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+
+            <p class="mt-5 text-center text-[12.5px] text-gray-500">
+              Já possui cadastro? 
+              <button type="button" onclick="switchView('login')" class="font-semibold text-[#0B7A54] hover:underline cursor-pointer">Entrar</button>
+            </p>
+          </section>
+
+          <!-- ==================== TELA 3: RECUPERAR SENHA ==================== -->
+          <section id="view-forgot" class="hidden flex-1 desk:flex-initial flex flex-col transition-opacity duration-200">
+            <div class="mb-6">
+              <button type="button" onclick="switchView('login')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B7A54] hover:text-[#123524] mb-3 cursor-pointer">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
+                </svg>
+                Voltar para o login
+              </button>
+              <h1 class="text-[22px] desk:text-[25px] font-extrabold text-[#141715] tracking-tight">
+                Recuperar senha.
+              </h1>
+              <p class="text-[13px] text-gray-500 mt-1">
+                Informe seu e-mail cadastrado para enviarmos um link de redefinição.
+              </p>
+            </div>
+
+            <form id="forgot-form" novalidate class="space-y-4">
+              <div>
+                <label for="forgot-email" class="block text-[12px] font-semibold text-gray-700 mb-1.5">E-mail cadastrado</label>
+                <div class="relative flex items-center">
+                  <span class="absolute left-3.5 text-gray-400 pointer-events-none">
+                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                      <rect x="2" y="4" width="20" height="16" rx="2"/>
+                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
+                    </svg>
+                  </span>
+                  <input type="email" id="forgot-email" value="jorgefs@hotmail.com" placeholder="seuemail@exemplo.com" required class="w-full pl-10 pr-4 py-3 bg-white border border-gray-300 rounded-xl text-[14.5px] text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
+                </div>
+                <p id="forgot-email-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+              </div>
+
+              <div class="pt-1">
+                <button type="submit" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[15px] rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
+                  <span>Enviar instruções</span>
+                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </button>
+              </div>
+            </form>
+          </section>
+
+          <!-- Assinatura Inferior Discreta -->
+          <footer class="mt-auto desk:mt-10 pt-8 pb-2 flex items-center justify-center gap-1.5 text-gray-400 select-none">
+            <svg class="w-3.5 h-3.5 text-[#0B7A54]/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
+              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
+            </svg>
+            <span class="text-[11.5px] font-normal tracking-wide">
+              Um jeito mais leve de ir.
+            </span>
+          </footer>
+
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Barra Inferior Verde Esmeralda (12px de altura em toda a base do container) -->
+    <div class="h-3 w-full bg-[#0B7A54] shrink-0"></div>
+
+    <!-- ==================== MODAL / TOAST DE FEEDBACK INTERATIVO ==================== -->
+    <div id="feedback-overlay" class="hidden absolute inset-0 bg-black/40 backdrop-blur-[2px] flex items-center justify-center p-6 z-50 transition-opacity">
+      <div class="bg-white rounded-2xl p-6 w-full max-w-[340px] shadow-xl border border-gray-100 text-center transform transition-all">
+        <div id="feedback-icon-box" class="w-12 h-12 rounded-full mx-auto mb-3.5 flex items-center justify-center bg-[#E8F3EE] text-[#0B7A54]">
+          <svg id="feedback-icon-success" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+          <svg id="feedback-icon-error" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </div>
+
+        <h3 id="feedback-title" class="text-lg font-bold text-[#123524] mb-1">
+          Bem-vindo de volta!
+        </h3>
+        <p id="feedback-message" class="text-[13.5px] text-gray-600 leading-relaxed mb-5">
+          Login realizado com sucesso.
+        </p>
+
+        <button 
+          type="button" 
+          id="feedback-close-btn"
+          class="w-full py-2.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer"
+        >
+          Continuar
+        </button>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- ==================== TELA PRINCIPAL DO APLICATIVO (DASHBOARD PÓS-LOGIN) ==================== -->
+  <div id="app-screen" class="hidden w-full max-w-[414px] desk:max-w-[1200px] min-h-screen sm:min-h-[800px] desk:min-h-[740px] bg-[#F4F5F4] sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col desk:flex-row relative border border-black/5">
+
+    <!-- SIDEBAR LATERAL (APENAS DESKTOP >= 900px) -->
+    <aside class="hidden desk:flex desk:w-[260px] shrink-0 bg-white border-r border-gray-200/90 flex-col justify-between p-6">
+      <div>
+        <!-- Marca VáDeBike -->
+        <div class="flex items-center gap-3 pb-6 border-b border-gray-100">
+          <div class="w-11 h-11 rounded-xl bg-[#123524] flex items-center justify-center shrink-0 shadow-sm">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
+              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <div>
+            <span class="text-xl font-bold tracking-tight text-[#123524] block leading-none">VáDeBike</span>
+            <span class="text-[11px] text-gray-400 font-medium mt-1 block">Mobilidade urbana</span>
+          </div>
+        </div>
+
+        <!-- Navegação Principal Desktop -->
+        <nav class="mt-6 space-y-1.5" aria-label="Menu principal">
+          <button type="button" data-nav="inicio" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-[#0B7A54] bg-[#E8F3EE] transition-colors cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+            </svg>
+            <span>Início</span>
+          </button>
+
+          <button type="button" data-nav="bicicletarios" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            <span>Bicicletários</span>
+          </button>
+
+          <button type="button" data-nav="conta" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer">
+            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+            </svg>
+            <span>Minha conta</span>
+          </button>
+        </nav>
+      </div>
+
+      <!-- Rodapé da Sidebar Desktop: Usuário e Sair -->
+      <div class="pt-4 border-t border-gray-100 space-y-3">
+        <div class="flex items-center gap-3 px-2">
+          <div id="desktop-user-avatar" class="w-9 h-9 rounded-full bg-[#123524] text-white font-bold text-xs flex items-center justify-center shrink-0">
+            JF
+          </div>
+          <div class="min-w-0">
+            <p id="desktop-user-name" class="text-xs font-bold text-gray-800 truncate">Jorge Ferreira</p>
+            <p id="desktop-user-email" class="text-[11px] text-gray-500 truncate">jorgefs@hotmail.com</p>
+          </div>
+        </div>
+
+        <button type="button" onclick="logoutApp()" class="w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl border border-gray-200 hover:bg-red-50 hover:text-red-600 hover:border-red-200 text-xs font-semibold text-gray-600 transition-colors cursor-pointer">
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+          </svg>
+          <span>Sair da conta</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- ÁREA DE CONTEÚDO PRINCIPAL DO APP -->
+    <div class="flex-1 flex flex-col justify-between min-h-screen sm:min-h-[800px] desk:min-h-[740px] overflow-y-auto">
+      
+      <!-- Cabeçalho Compacto (Mobile < 900px, fiel à referência) -->
+      <header class="desk:hidden px-6 pt-6 pb-3 flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <div class="w-10 h-10 rounded-xl bg-[#123524] flex items-center justify-center shrink-0 shadow-sm">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
+              <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
+              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </div>
+          <span class="text-[20px] font-bold tracking-tight text-[#123524] select-none">
+            VáDeBike
+          </span>
+        </div>
+
+        <!-- Indicador discreto se houver viagem ativa no mobile -->
+        <button id="mobile-active-ride-pill" type="button" onclick="openActiveRideModal()" class="hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0B7A54] text-white text-[11px] font-semibold shadow-sm cursor-pointer">
+          <span class="w-2 h-2 rounded-full bg-emerald-200 animate-ping"></span>
+          <span id="mobile-ride-timer-mini">00:00</span>
+        </button>
+      </header>
+
+      <!-- CONTEÚDO DAS ABAS -->
+      <div class="flex-1 px-6 desk:px-9 pt-2 desk:pt-8 pb-6">
+
+        <!-- ==================== ABA 1: INÍCIO ==================== -->
+        <section id="tab-inicio" class="space-y-5 desk:space-y-6">
+          
+          <!-- Banner de Viagem Ativa (Aparece quando o usuário destrava uma bike) -->
+          <div id="active-ride-banner" class="hidden bg-[#123524] text-white rounded-2xl p-4 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div class="flex items-center gap-3">
+              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-300 shrink-0">
+                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/>
+                </svg>
+              </div>
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="text-xs font-bold uppercase tracking-wider text-emerald-300">Viagem em andamento</span>
+                  <span id="active-bike-badge" class="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-white/15 text-white">Bike #04</span>
+                </div>
+                <p id="active-ride-station-label" class="text-xs text-emerald-100/85 mt-0.5">Retirada em Praça Central</p>
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 border-white/10">
+              <div class="text-left sm:text-right">
+                <span class="text-[10px] text-emerald-200/80 block">Tempo decorrido</span>
+                <span id="active-ride-timer" class="text-lg font-extrabold font-mono tracking-tight text-white">00:00</span>
+              </div>
+              <button type="button" onclick="endActiveRide()" class="px-3.5 py-2 rounded-xl bg-white text-[#123524] hover:bg-emerald-50 text-xs font-bold transition-colors cursor-pointer">
+                Devolver bike
+              </button>
+            </div>
+          </div>
+
+          <!-- Saudação Principal -->
+          <div class="flex flex-col desk:flex-row desk:items-end justify-between gap-2">
+            <div>
+              <h1 class="text-[24px] desk:text-[28px] font-extrabold text-[#111827] tracking-tight leading-tight">
+                Bom dia!
+              </h1>
+              <p class="text-[13.5px] desk:text-[14.5px] text-[#6B7280] mt-0.5">
+                Encontre uma bicicleta e siga seu caminho.
+              </p>
+            </div>
+            <div class="hidden desk:flex items-center gap-2 text-xs text-gray-500 bg-white px-3.5 py-2 rounded-xl border border-gray-200/80">
+              <span class="w-2 h-2 rounded-full bg-[#0B7A54]"></span>
+              <span>3 estações ativas próximas a você</span>
+            </div>
+          </div>
+
+          <!-- Grid Responsivo: Mapa à esquerda e Disponibilidade à direita no Desktop -->
+          <div class="grid grid-cols-1 desk:grid-cols-12 gap-6 items-start">
+            
+            <!-- COLUNA DO MAPA FICTÍCIO -->
+            <div class="desk:col-span-7 space-y-2.5">
+              <div class="flex items-center justify-between">
+                <h2 class="text-[14.5px] desk:text-[15.5px] font-bold text-[#111827]">
+                  Bicicletários perto de você
+                </h2>
+                <span id="selected-pin-hint" class="text-[11.5px] font-medium text-[#0B7A54]">
+                  Toque em um marcador
+                </span>
+              </div>
+
+              <!-- Cartão do Mapa Vetorial Minimalista (Fiel à imagem) -->
+              <div class="relative w-full h-[215px] desk:h-[360px] rounded-2xl bg-[#E6E8E6] overflow-hidden border border-gray-200/90 shadow-inner select-none">
+                
+                <!-- SVG do Mapa Fictício com Quarteirões Verdes Pastel e Ruas Brancas -->
+                <svg id="fictional-map-svg" class="w-full h-full object-cover transition-transform duration-300 origin-center" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Fundo base cinza-claro urbano -->
+                  <rect width="400" height="240" fill="#E5E7E5"/>
+
+                  <!-- Áreas Verdes / Parques e Quarteirões em Verde Pastel Claro (#C5D9CD / #B9D1C3) -->
+                  <rect x="18" y="135" width="76" height="44" rx="8" fill="#C4D8CC"/>
+                  <rect x="148" y="34" width="66" height="48" rx="8" fill="#BDD3C6"/>
+                  <rect x="285" y="18" width="68" height="58" rx="8" fill="#BDD3C6"/>
+                  <rect x="275" y="145" width="95" height="68" rx="10" fill="#C7DBD0"/>
+                  <rect x="30" y="32" width="78" height="52" rx="8" fill="#DCE0DD"/>
+                  <rect x="145" y="168" width="88" height="52" rx="8" fill="#DCE0DD"/>
+
+                  <!-- Ruas e Avenidas Brancas Cruzando o Mapa -->
+                  <path d="M-20 112 L420 82" stroke="#F8F9F8" stroke-width="11" stroke-linecap="round"/>
+                  <path d="M-20 195 L420 26" stroke="#F8F9F8" stroke-width="12" stroke-linecap="round"/>
+                  <path d="M95 -10 L355 250" stroke="#F8F9F8" stroke-width="10" stroke-linecap="round"/>
+                  <path d="M122 -10 L138 250" stroke="#F8F9F8" stroke-width="7" stroke-linecap="round"/>
+                  <path d="M256 -10 L242 250" stroke="#F8F9F8" stroke-width="8" stroke-linecap="round"/>
+                  <path d="M-10 56 L145 78" stroke="#F8F9F8" stroke-width="6" stroke-linecap="round"/>
+
+                  <!-- Indicador sutil da posição atual do usuário -->
+                  <circle cx="195" cy="122" r="14" fill="#0B7A54" fill-opacity="0.14"/>
+                  <circle cx="195" cy="122" r="5" fill="#2563EB" stroke="#FFFFFF" stroke-width="2"/>
+                </svg>
+
+                <!-- Botão Flutuante "Ver mapa completo" (Canto Superior Esquerdo, idêntico à foto) -->
+                <button 
+                  type="button" 
+                  onclick="switchTab('bicicletarios')"
+                  class="absolute top-3.5 left-3.5 px-3.5 py-1.5 bg-white hover:bg-gray-50 active:scale-95 text-[#1F2937] text-[12px] font-semibold rounded-full shadow-sm border border-gray-200/80 transition-all cursor-pointer z-10"
+                >
+                  Ver mapa completo
+                </button>
+
+                <!-- Controles de Zoom Fictício no Desktop -->
+                <div class="hidden desk:flex flex-col gap-1.5 absolute bottom-3.5 right-3.5 z-10">
+                  <button type="button" onclick="zoomMap(0.15)" aria-label="Aumentar zoom" class="w-8 h-8 rounded-lg bg-white/95 hover:bg-white text-gray-700 font-bold shadow-sm border border-gray-200 flex items-center justify-center cursor-pointer">+</button>
+                  <button type="button" onclick="zoomMap(-0.15)" aria-label="Diminuir zoom" class="w-8 h-8 rounded-lg bg-white/95 hover:bg-white text-gray-700 font-bold shadow-sm border border-gray-200 flex items-center justify-center cursor-pointer">−</button>
+                </div>
+
+                <!-- Marcador 1: "8" (Centro-esquerda — Praça Central) -->
+                <button 
+                  type="button"
+                  onclick="openStationModal('praca-central')"
+                  aria-label="Praça Central: 8 bicicletas disponíveis"
+                  style="top: 48%; left: 26%;"
+                  class="map-pin -translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 desk:w-10 desk:h-10 rounded-full bg-[#145338] hover:bg-[#0B7A54] text-white font-bold text-[13px] border-2 border-white shadow-md flex items-center justify-center transition-transform hover:scale-110 active:scale-95 cursor-pointer z-10"
+                >
+                  8
+                </button>
+
+                <!-- Marcador 2: "12" (Superior-direita — Estação Jardim) -->
+                <button 
+                  type="button"
+                  onclick="openStationModal('estacao-jardim')"
+                  aria-label="Estação Jardim: 12 bicicletas disponíveis"
+                  style="top: 23%; left: 78%;"
+                  class="map-pin -translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 desk:w-10 desk:h-10 rounded-full bg-[#145338] hover:bg-[#0B7A54] text-white font-bold text-[13px] border-2 border-white shadow-md flex items-center justify-center transition-transform hover:scale-110 active:scale-95 cursor-pointer z-10"
+                >
+                  12
+                </button>
+
+                <!-- Marcador 3: "5" (Centro-direita inferior — Parque das Flores) -->
+                <button 
+                  type="button"
+                  onclick="openStationModal('parque-flores')"
+                  aria-label="Parque das Flores: 5 bicicletas disponíveis"
+                  style="top: 66%; left: 71%;"
+                  class="map-pin -translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 desk:w-10 desk:h-10 rounded-full bg-[#145338] hover:bg-[#0B7A54] text-white font-bold text-[13px] border-2 border-white shadow-md flex items-center justify-center transition-transform hover:scale-110 active:scale-95 cursor-pointer z-10"
+                >
+                  5
+                </button>
+
+              </div>
+            </div>
+
+            <!-- COLUNA DE DISPONIBILIDADE -->
+            <div class="desk:col-span-5 space-y-3">
+              <div>
+                <h2 class="text-[15px] desk:text-[16px] font-bold text-[#111827]">
+                  Disponibilidade
+                </h2>
+                <p class="text-[12px] desk:text-[12.5px] text-[#6B7280]">
+                  Bicicletas disponíveis nos locais próximos
+                </p>
+              </div>
+
+              <!-- Lista de Cards de Bicicletários -->
+              <div id="home-stations-list" class="space-y-2.5">
+                
+                <!-- Card 1: Praça Central (8 bicicletas) -->
+                <button 
+                  type="button"
+                  onclick="openStationModal('praca-central')"
+                  class="w-full text-left bg-white hover:bg-[#F9FBFA] border border-gray-200/90 hover:border-[#0B7A54]/40 rounded-xl px-4 py-3.5 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all cursor-pointer group"
+                >
+                  <div class="flex items-center gap-3.5">
+                    <div class="text-[#0B7A54] shrink-0">
+                      <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                        <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                        <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5M13.5 11H17M21.5 11H24.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-[14px] font-bold text-[#1F2937] group-hover:text-[#123524] transition-colors">
+                        Praça Central
+                      </p>
+                      <p class="text-[11.5px] text-gray-500 mt-0.5">
+                        A 250 m de você
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[20px] font-extrabold text-[#0B7A54] leading-none block">8</span>
+                    <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
+                  </div>
+                </button>
+
+                <!-- Card 2: Parque das Flores (5 bicicletas) -->
+                <button 
+                  type="button"
+                  onclick="openStationModal('parque-flores')"
+                  class="w-full text-left bg-white hover:bg-[#F9FBFA] border border-gray-200/90 hover:border-[#0B7A54]/40 rounded-xl px-4 py-3.5 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all cursor-pointer group"
+                >
+                  <div class="flex items-center gap-3.5">
+                    <div class="text-[#0B7A54] shrink-0">
+                      <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                        <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                        <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5M13.5 11H17M21.5 11H24.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-[14px] font-bold text-[#1F2937] group-hover:text-[#123524] transition-colors">
+                        Parque das Flores
+                      </p>
+                      <p class="text-[11.5px] text-gray-500 mt-0.5">
+                        A 600 m de você
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[20px] font-extrabold text-[#0B7A54] leading-none block">5</span>
+                    <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
+                  </div>
+                </button>
+
+                <!-- Card 3: Estação Jardim (12 bicicletas — coerente com o pino 12 do mapa) -->
+                <button 
+                  type="button"
+                  onclick="openStationModal('estacao-jardim')"
+                  class="w-full text-left bg-white hover:bg-[#F9FBFA] border border-gray-200/90 hover:border-[#0B7A54]/40 rounded-xl px-4 py-3.5 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all cursor-pointer group"
+                >
+                  <div class="flex items-center gap-3.5">
+                    <div class="text-[#0B7A54] shrink-0">
+                      <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                        <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                        <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5M13.5 11H17M21.5 11H24.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                      </svg>
+                    </div>
+                    <div>
+                      <p class="text-[14px] font-bold text-[#1F2937] group-hover:text-[#123524] transition-colors">
+                        Estação Jardim
+                      </p>
+                      <p class="text-[11.5px] text-gray-500 mt-0.5">
+                        A 950 m de você
+                      </p>
+                    </div>
+                  </div>
+                  <div class="text-right">
+                    <span class="text-[20px] font-extrabold text-[#0B7A54] leading-none block">12</span>
+                    <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
+                  </div>
+                </button>
+
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- ==================== ABA 2: BICICLETÁRIOS (MAPA COMPLETO & BUSCA) ==================== -->
+        <section id="tab-bicicletarios" class="hidden space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+            <div>
+              <h1 class="text-[22px] desk:text-[26px] font-extrabold text-[#111827] tracking-tight">
+                Bicicletários
+              </h1>
+              <p class="text-[13px] text-gray-500">
+                Consulte vagas livres, modelos elétricos e retire sua bike.
+              </p>
+            </div>
+
+            <!-- Campo de Busca -->
+            <div class="relative w-full sm:w-64">
+              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
+                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+              </span>
+              <input 
+                type="text" 
+                id="station-search-input"
+                placeholder="Buscar estação ou bairro..."
+                class="w-full pl-9 pr-3.5 py-2 bg-white border border-gray-200 rounded-xl text-xs text-gray-800 placeholder-gray-400 focus:outline-none focus:border-[#0B7A54]"
+              />
+            </div>
+          </div>
+
+          <!-- Mapa Expandido Interativo -->
+          <div class="relative w-full h-[220px] desk:h-[260px] rounded-2xl bg-[#E6E8E6] overflow-hidden border border-gray-200 shadow-inner">
+            <svg class="w-full h-full object-cover" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+              <rect width="600" height="260" fill="#E5E7E5"/>
+              <rect x="25" y="140" width="110" height="55" rx="10" fill="#C4D8CC"/>
+              <rect x="220" y="30" width="95" height="60" rx="10" fill="#BDD3C6"/>
+              <rect x="420" y="20" width="115" height="72" rx="10" fill="#BDD3C6"/>
+              <rect x="410" y="155" width="140" height="75" rx="12" fill="#C7DBD0"/>
+              <path d="M-20 120 L620 85" stroke="#F8F9F8" stroke-width="13" stroke-linecap="round"/>
+              <path d="M-20 215 L620 25" stroke="#F8F9F8" stroke-width="14" stroke-linecap="round"/>
+              <path d="M140 -10 L480 270" stroke="#F8F9F8" stroke-width="11" stroke-linecap="round"/>
+              <path d="M340 -10 L320 270" stroke="#F8F9F8" stroke-width="9" stroke-linecap="round"/>
+            </svg>
+
+            <button type="button" onclick="openStationModal('praca-central')" style="top: 48%; left: 24%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#145338] text-white text-xs font-bold border-2 border-white shadow-md hover:scale-105 transition-transform cursor-pointer">
+              Praça Central • 8
+            </button>
+            <button type="button" onclick="openStationModal('estacao-jardim')" style="top: 26%; left: 74%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#145338] text-white text-xs font-bold border-2 border-white shadow-md hover:scale-105 transition-transform cursor-pointer">
+              Estação Jardim • 12
+            </button>
+            <button type="button" onclick="openStationModal('parque-flores')" style="top: 70%; left: 66%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#145338] text-white text-xs font-bold border-2 border-white shadow-md hover:scale-105 transition-transform cursor-pointer">
+              Parque das Flores • 5
+            </button>
+            <button type="button" onclick="openStationModal('orla-sul')" style="top: 32%; left: 45%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#0B7A54] text-white text-xs font-bold border-2 border-white shadow-md hover:scale-105 transition-transform cursor-pointer">
+              Ciclovia Orla Sul • 9
+            </button>
+          </div>
+
+          <!-- Grade Completa de Estações -->
+          <div id="all-stations-grid" class="grid grid-cols-1 desk:grid-cols-2 gap-3">
+            <!-- Preenchido via JS -->
+          </div>
+        </section>
+
+        <!-- ==================== ABA 3: MINHA CONTA ==================== -->
+        <section id="tab-conta" class="hidden space-y-5 max-w-2xl">
+          <div>
+            <h1 class="text-[22px] desk:text-[26px] font-extrabold text-[#111827] tracking-tight">
+              Minha conta
+            </h1>
+            <p class="text-[13px] text-gray-500">
+              Gerencie seu passe, histórico de viagens e impacto ambiental.
+            </p>
+          </div>
+
+          <!-- Cartão de Perfil -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-200/90 shadow-sm flex items-center justify-between gap-4">
+            <div class="flex items-center gap-4">
+              <div id="account-avatar" class="w-14 h-14 rounded-2xl bg-[#123524] text-white font-extrabold text-lg flex items-center justify-center shrink-0">
+                JF
+              </div>
+              <div>
+                <h2 id="account-name" class="text-base font-bold text-[#111827]">Jorge Ferreira</h2>
+                <p id="account-email" class="text-xs text-gray-500 mt-0.5">jorgefs@hotmail.com</p>
+                <span class="inline-flex items-center gap-1.5 mt-2 px-2.5 py-0.5 rounded-full bg-[#E8F3EE] text-[#0B7A54] text-[11px] font-semibold">
+                  Passe Mensal Ativo
+                </span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Métricas de Impacto -->
+          <div class="grid grid-cols-3 gap-3">
+            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 text-center">
+              <span id="stat-trips" class="text-xl font-extrabold text-[#123524] block">14</span>
+              <span class="text-[11px] text-gray-500 font-medium">Viagens</span>
+            </div>
+            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 text-center">
+              <span class="text-xl font-extrabold text-[#0B7A54] block">42,8 km</span>
+              <span class="text-[11px] text-gray-500 font-medium">Pedalados</span>
+            </div>
+            <div class="bg-white rounded-2xl p-4 border border-gray-200/90 text-center">
+              <span class="text-xl font-extrabold text-[#0B7A54] block">6,4 kg</span>
+              <span class="text-[11px] text-gray-500 font-medium">CO₂ evitado</span>
+            </div>
+          </div>
+
+          <!-- Últimas Viagens -->
+          <div class="bg-white rounded-2xl p-5 border border-gray-200/90 space-y-3">
+            <h3 class="text-sm font-bold text-[#111827]">Histórico recente</h3>
+            <div id="trip-history-list" class="divide-y divide-gray-100 text-xs">
+              <div class="py-2.5 flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-gray-800">Praça Central → Parque das Flores</p>
+                  <p class="text-gray-400 mt-0.5">Ontem • 18 min • Bike #04</p>
+                </div>
+                <span class="font-semibold text-[#0B7A54]">Incluído no passe</span>
+              </div>
+              <div class="py-2.5 flex items-center justify-between">
+                <div>
+                  <p class="font-semibold text-gray-800">Estação Jardim → Praça Central</p>
+                  <p class="text-gray-400 mt-0.5">10 Nov • 24 min • Bike #11</p>
+                </div>
+                <span class="font-semibold text-[#0B7A54]">Incluído no passe</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Botão Sair (Mobile e Desktop) -->
+          <div class="pt-2">
+            <button 
+              type="button" 
+              onclick="logoutApp()"
+              class="w-full py-3 px-4 bg-white hover:bg-red-50 text-red-600 border border-red-200 font-semibold text-sm rounded-xl flex items-center justify-center gap-2 transition-colors cursor-pointer"
+            >
+              <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+              </svg>
+              <span>Sair da conta</span>
+            </button>
+          </div>
+        </section>
+
+      </div>
+
+      <!-- BARRA DE NAVEGAÇÃO INFERIOR FIXA (MOBILE < 900px, fiel à foto) -->
+      <nav class="desk:hidden bg-white border-t border-gray-200/90 px-4 py-2.5 flex items-center justify-around shrink-0" aria-label="Navegação inferior">
+        <button type="button" data-nav="inicio" class="nav-btn flex flex-col items-center gap-1 px-4 py-1 text-[#0B7A54] font-semibold cursor-pointer">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
+          </svg>
+          <span class="text-[11px]">Início</span>
+        </button>
+
+        <button type="button" data-nav="bicicletarios" class="nav-btn flex flex-col items-center gap-1 px-4 py-1 text-gray-400 font-medium cursor-pointer">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+          </svg>
+          <span class="text-[11px]">Bicicletários</span>
+        </button>
+
+        <button type="button" data-nav="conta" class="nav-btn flex flex-col items-center gap-1 px-4 py-1 text-gray-400 font-medium cursor-pointer">
+          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+          </svg>
+          <span class="text-[11px]">Minha conta</span>
+        </button>
+      </nav>
+
+    </div>
+
+    <!-- ==================== MODAL / DRAWER DE DESTRAVAR BICICLETA ==================== -->
+    <div id="station-modal" class="hidden absolute inset-0 bg-black/45 backdrop-blur-[2px] flex items-end sm:items-center justify-center p-0 sm:p-6 z-50">
+      <div class="bg-white rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[420px] shadow-2xl border border-gray-100 space-y-4">
+        <div class="flex items-start justify-between gap-3">
+          <div>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E8F3EE] text-[#0B7A54] text-[11px] font-semibold">
+              Estação disponível
+            </span>
+            <h3 id="modal-station-name" class="text-lg font-extrabold text-[#123524] mt-1">
+              Praça Central
+            </h3>
+            <p id="modal-station-meta" class="text-xs text-gray-500">
+              A 250 m de você • 8 bicicletas • 4 vagas livres
+            </p>
+          </div>
+          <button type="button" onclick="closeStationModal()" aria-label="Fechar" class="p-2 rounded-xl bg-gray-100 hover:bg-gray-200 text-gray-600 cursor-pointer">
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+          </button>
+        </div>
+
+        <!-- Seleção de Bicicleta -->
+        <div class="space-y-2">
+          <p class="text-xs font-bold text-gray-700">Escolha uma bicicleta para destravar:</p>
+          <div id="modal-bikes-list" class="grid grid-cols-2 gap-2">
+            <!-- Preenchido via JS -->
+          </div>
+        </div>
+
+        <!-- Código PIN de Destravamento -->
+        <div class="bg-[#F4F5F4] rounded-2xl p-3.5 border border-gray-200/80 flex items-center justify-between">
+          <div>
+            <span class="text-[11px] text-gray-500 block">Código de liberação na trava</span>
+            <span id="modal-unlock-pin" class="text-xl font-extrabold font-mono tracking-widest text-[#123524]">4829</span>
+          </div>
+          <div class="w-10 h-10 rounded-xl bg-white border border-gray-200 flex items-center justify-center text-[#123524]">
+            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 19h2v2h-2zM19 14h2v2h-2z"/>
+            </svg>
+          </div>
+        </div>
+
+        <button 
+          type="button" 
+          id="confirm-unlock-btn"
+          onclick="startBikeRide()"
+          class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl shadow-sm flex items-center justify-center gap-2 transition-colors cursor-pointer"
+        >
+          <span>Destravar bicicleta agora</span>
+          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    // ==================== DADOS DOS BICICLETÁRIOS ====================
+    const bikeStationsData = {
+      'praca-central': {
+        id: 'praca-central',
+        name: 'Praça Central',
+        distance: 'A 250 m de você',
+        bikesCount: 8,
+        docksFree: 4,
+        address: 'Av. Principal, 120 - Centro',
+        bikes: [
+          { code: 'Bike #04', type: 'Urbana', battery: null },
+          { code: 'Bike #07', type: 'Elétrica', battery: '94%' },
+          { code: 'Bike #12', type: 'Urbana', battery: null },
+          { code: 'Bike #19', type: 'Elétrica', battery: '88%' }
+        ]
+      },
+      'parque-flores': {
+        id: 'parque-flores',
+        name: 'Parque das Flores',
+        distance: 'A 600 m de você',
+        bikesCount: 5,
+        docksFree: 7,
+        address: 'Alameda das Acácias, s/n',
+        bikes: [
+          { code: 'Bike #02', type: 'Urbana', battery: null },
+          { code: 'Bike #15', type: 'Elétrica', battery: '91%' },
+          { code: 'Bike #21', type: 'Urbana', battery: null },
+          { code: 'Bike #24', type: 'Urbana', battery: null }
+        ]
+      },
+      'estacao-jardim': {
+        id: 'estacao-jardim',
+        name: 'Estação Jardim',
+        distance: 'A 950 m de você',
+        bikesCount: 12,
+        docksFree: 3,
+        address: 'Praça da Estação, 45',
+        bikes: [
+          { code: 'Bike #08', type: 'Elétrica', battery: '98%' },
+          { code: 'Bike #10', type: 'Urbana', battery: null },
+          { code: 'Bike #14', type: 'Elétrica', battery: '85%' },
+          { code: 'Bike #27', type: 'Urbana', battery: null }
+        ]
+      },
+      'orla-sul': {
+        id: 'orla-sul',
+        name: 'Ciclovia Orla Sul',
+        distance: 'A 1,2 km de você',
+        bikesCount: 9,
+        docksFree: 6,
+        address: 'Av. Beira Mar, Posto 2',
+        bikes: [
+          { code: 'Bike #03', type: 'Elétrica', battery: '96%' },
+          { code: 'Bike #09', type: 'Urbana', battery: null },
+          { code: 'Bike #16', type: 'Urbana', battery: null },
+          { code: 'Bike #22', type: 'Elétrica', battery: '89%' }
+        ]
+      }
+    };
+
+    let selectedStationId = 'praca-central';
+    let selectedBikeCode = 'Bike #04';
+    let activeRideInterval = null;
+    let activeRideSeconds = 0;
+    let mapZoomLevel = 1;
+
+    /**
+     * Alterna estações no cartão interativo do painel desktop da tela de login
+     */
+    const stations = [
+      { name: 'Estação Praça Central', status: '12 bikes disponíveis • 4 vagas livres' },
+      { name: 'Estação Orla Atlântica', status: '8 bikes disponíveis • 7 vagas livres' },
+      { name: 'Estação Parque da Cidade', status: '15 bikes disponíveis • 3 vagas livres' },
+      { name: 'Estação Metrô Sul', status: '6 bikes disponíveis • 9 vagas livres' }
+    ];
+    let currentStationIndex = 0;
+
+    const cycleStationBtn = document.getElementById('cycle-station-btn');
+    if (cycleStationBtn) {
+      cycleStationBtn.addEventListener('click', () => {
+        currentStationIndex = (currentStationIndex + 1) % stations.length;
+        document.getElementById('station-name').textContent = stations[currentStationIndex].name;
+        document.getElementById('station-status').textContent = stations[currentStationIndex].status;
+      });
+    }
+
+    /**
+     * Alterna a visibilidade do campo de senha na tela de login
+     */
+    const passwordInput = document.getElementById('login-password');
+    const togglePasswordBtn = document.getElementById('toggle-login-password');
+    const eyeOffIcon = document.getElementById('eye-off-icon');
+    const eyeOnIcon = document.getElementById('eye-on-icon');
+
+    togglePasswordBtn.addEventListener('click', () => {
+      const isPassword = passwordInput.getAttribute('type') === 'password';
+      passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
+      
+      if (isPassword) {
+        eyeOffIcon.classList.add('hidden');
+        eyeOnIcon.classList.remove('hidden');
+      } else {
+        eyeOffIcon.classList.remove('hidden');
+        eyeOnIcon.classList.add('hidden');
+      }
+    });
+
+    /**
+     * Utilitários de erro inline nos campos
+     */
+    function setFieldError(inputId, errorId, message) {
+      const input = document.getElementById(inputId);
+      const errorEl = document.getElementById(errorId);
+      if (message) {
+        errorEl.textContent = message;
+        errorEl.classList.remove('hidden');
+        input.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500/15');
+        input.classList.remove('border-gray-300', 'focus:border-[#0B7A54]', 'focus:ring-[#0B7A54]/15');
+      } else {
+        errorEl.textContent = '';
+        errorEl.classList.add('hidden');
+        input.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500/15');
+        input.classList.add('border-gray-300', 'focus:border-[#0B7A54]', 'focus:ring-[#0B7A54]/15');
+      }
+    }
+
+    function clearAllErrors() {
+      setFieldError('login-email', 'login-email-error', '');
+      setFieldError('login-password', 'login-password-error', '');
+      setFieldError('reg-name', 'reg-name-error', '');
+      setFieldError('reg-email', 'reg-email-error', '');
+      setFieldError('reg-password', 'reg-password-error', '');
+      setFieldError('forgot-email', 'forgot-email-error', '');
+    }
+
+    /**
+     * Alterna entre as visualizações da tela de autenticação: 'login', 'register' e 'forgot'
+     */
+    function switchView(viewName) {
+      clearAllErrors();
+      const views = ['login', 'register', 'forgot'];
+      views.forEach(v => {
+        const el = document.getElementById(`view-${v}`);
+        if (v === viewName) {
+          el.classList.remove('hidden');
+        } else {
+          el.classList.add('hidden');
+        }
+      });
+    }
+
+    /**
+     * Transição suave da Tela de Login para a Tela Principal do App
+     */
+    function enterApp(email, customName = null) {
+      const displayName = customName || (email.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
+      const initials = displayName.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase() || 'VB';
+
+      document.getElementById('desktop-user-name').textContent = displayName;
+      document.getElementById('desktop-user-email').textContent = email;
+      document.getElementById('desktop-user-avatar').textContent = initials;
+
+      document.getElementById('account-name').textContent = displayName;
+      document.getElementById('account-email').textContent = email;
+      document.getElementById('account-avatar').textContent = initials;
+
+      document.getElementById('auth-screen').classList.add('hidden');
+      document.getElementById('app-screen').classList.remove('hidden');
+
+      renderAllStationsGrid('');
+      switchTab('inicio');
+    }
+
+    /**
+     * Sair da conta e voltar à tela de login
+     */
+    function logoutApp() {
+      if (activeRideInterval) {
+        clearInterval(activeRideInterval);
+        activeRideInterval = null;
+      }
+      document.getElementById('active-ride-banner').classList.add('hidden');
+      document.getElementById('mobile-active-ride-pill').classList.add('hidden');
+
+      document.getElementById('app-screen').classList.add('hidden');
+      document.getElementById('auth-screen').classList.remove('hidden');
+      switchView('login');
+    }
+
+    /**
+     * Navegação entre abas da Tela Principal ('inicio', 'bicicletarios', 'conta')
+     */
+    function switchTab(tabName) {
+      const tabs = ['inicio', 'bicicletarios', 'conta'];
+      tabs.forEach(t => {
+        const section = document.getElementById(`tab-${t}`);
+        if (t === tabName) {
+          section.classList.remove('hidden');
+        } else {
+          section.classList.add('hidden');
+        }
+      });
+
+      // Atualiza estado ativo dos botões (tanto na bottom nav mobile quanto na sidebar desktop)
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        const isTarget = btn.getAttribute('data-nav') === tabName;
+        const isDesktop = btn.closest('aside') !== null;
+
+        if (isDesktop) {
+          if (isTarget) {
+            btn.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-[#0B7A54] bg-[#E8F3EE] transition-colors cursor-pointer';
+          } else {
+            btn.className = 'nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer';
+          }
+        } else {
+          if (isTarget) {
+            btn.className = 'nav-btn flex flex-col items-center gap-1 px-4 py-1 text-[#0B7A54] font-semibold cursor-pointer';
+          } else {
+            btn.className = 'nav-btn flex flex-col items-center gap-1 px-4 py-1 text-gray-400 font-medium cursor-pointer';
+          }
+        }
+      });
+    }
+
+    document.querySelectorAll('.nav-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        switchTab(btn.getAttribute('data-nav'));
+      });
+    });
+
+    /**
+     * Zoom fictício no mapa da tela principal
+     */
+    function zoomMap(delta) {
+      mapZoomLevel = Math.min(1.45, Math.max(0.9, mapZoomLevel + delta));
+      const svg = document.getElementById('fictional-map-svg');
+      if (svg) {
+        svg.style.transform = `scale(${mapZoomLevel})`;
+      }
+    }
+
+    /**
+     * Renderiza a lista pesquisável na aba Bicicletários
+     */
+    function renderAllStationsGrid(filterText = '') {
+      const container = document.getElementById('all-stations-grid');
+      if (!container) return;
+
+      const query = filterText.toLowerCase().trim();
+      const items = Object.values(bikeStationsData).filter(st =>
+        st.name.toLowerCase().includes(query) || st.address.toLowerCase().includes(query)
+      );
+
+      container.innerHTML = items.map(st => `
+        <button type="button" onclick="openStationModal('${st.id}')" class="w-full text-left bg-white hover:bg-[#F9FBFA] border border-gray-200/90 hover:border-[#0B7A54]/40 rounded-xl p-4 flex items-center justify-between shadow-sm transition-all cursor-pointer">
+          <div class="flex items-center gap-3.5">
+            <div class="w-10 h-10 rounded-xl bg-[#E8F3EE] text-[#0B7A54] flex items-center justify-center shrink-0">
+              <svg class="w-6 h-6" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
+                <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <p class="text-sm font-bold text-[#1F2937]">${st.name}</p>
+              <p class="text-xs text-gray-500">${st.address}</p>
+              <p class="text-[11px] text-[#0B7A54] font-medium mt-0.5">${st.distance} • ${st.docksFree} vagas livres</p>
+            </div>
+          </div>
+          <div class="text-right shrink-0 pl-2">
+            <span class="text-xl font-extrabold text-[#0B7A54] leading-none block">${st.bikesCount}</span>
+            <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
+          </div>
+        </button>
+      `).join('');
+    }
+
+    const stationSearchInput = document.getElementById('station-search-input');
+    if (stationSearchInput) {
+      stationSearchInput.addEventListener('input', (e) => {
+        renderAllStationsGrid(e.target.value);
+      });
+    }
+
+    /**
+     * Abre o modal/drawer de seleção e destravamento de bicicleta
+     */
+    function openStationModal(stationId) {
+      const station = bikeStationsData[stationId];
+      if (!station) return;
+
+      selectedStationId = stationId;
+      selectedBikeCode = station.bikes[0].code;
+
+      document.getElementById('modal-station-name').textContent = station.name;
+      document.getElementById('modal-station-meta').textContent = `${station.distance} • ${station.bikesCount} bicicletas • ${station.docksFree} vagas livres`;
+      document.getElementById('modal-unlock-pin').textContent = Math.floor(1000 + Math.random() * 9000);
+
+      renderModalBikes();
+      document.getElementById('station-modal').classList.remove('hidden');
+    }
+
+    function renderModalBikes() {
+      const station = bikeStationsData[selectedStationId];
+      const listEl = document.getElementById('modal-bikes-list');
+
+      listEl.innerHTML = station.bikes.map(b => {
+        const isSelected = b.code === selectedBikeCode;
+        return `
+          <button type="button" onclick="selectBike('${b.code}')" class="p-2.5 rounded-xl border text-left transition-all cursor-pointer ${isSelected ? 'border-[#0B7A54] bg-[#E8F3EE]/70 ring-1 ring-[#0B7A54]' : 'border-gray-200 bg-white hover:bg-gray-50'}">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-[#123524]">${b.code}</span>
+              ${b.battery ? `<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-emerald-100 text-[#0B7A54]">⚡ ${b.battery}</span>` : `<span class="text-[10px] text-gray-400">Urbana</span>`}
+            </div>
+            <p class="text-[11px] text-gray-500 mt-1">${b.type}</p>
+          </button>
+        `;
+      }).join('');
+    }
+
+    function selectBike(code) {
+      selectedBikeCode = code;
+      renderModalBikes();
+    }
+
+    function closeStationModal() {
+      document.getElementById('station-modal').classList.add('hidden');
+    }
+
+    /**
+     * Inicia viagem ativa com cronômetro em tempo real
+     */
+    function startBikeRide() {
+      const station = bikeStationsData[selectedStationId];
+      closeStationModal();
+      switchTab('inicio');
+
+      if (activeRideInterval) clearInterval(activeRideInterval);
+      activeRideSeconds = 0;
+
+      document.getElementById('active-bike-badge').textContent = selectedBikeCode;
+      document.getElementById('active-ride-station-label').textContent = `Retirada em ${station.name}`;
+      document.getElementById('active-ride-timer').textContent = '00:00';
+      document.getElementById('mobile-ride-timer-mini').textContent = '00:00';
+
+      document.getElementById('active-ride-banner').classList.remove('hidden');
+      const mobilePill = document.getElementById('mobile-active-ride-pill');
+      mobilePill.classList.remove('hidden');
+      mobilePill.classList.add('flex');
+
+      activeRideInterval = setInterval(() => {
+        activeRideSeconds++;
+        const mins = String(Math.floor(activeRideSeconds / 60)).padStart(2, '0');
+        const secs = String(activeRideSeconds % 60).padStart(2, '0');
+        const formatted = `${mins}:${secs}`;
+        document.getElementById('active-ride-timer').textContent = formatted;
+        document.getElementById('mobile-ride-timer-mini').textContent = formatted;
+      }, 1000);
+    }
+
+    function openActiveRideModal() {
+      switchTab('inicio');
+    }
+
+    function endActiveRide() {
+      if (activeRideInterval) {
+        clearInterval(activeRideInterval);
+        activeRideInterval = null;
+      }
+      const station = bikeStationsData[selectedStationId];
+      const mins = Math.max(1, Math.ceil(activeRideSeconds / 60));
+
+      document.getElementById('active-ride-banner').classList.add('hidden');
+      const mobilePill = document.getElementById('mobile-active-ride-pill');
+      mobilePill.classList.add('hidden');
+      mobilePill.classList.remove('flex');
+
+      // Incrementa viagens e adiciona ao histórico
+      const tripsEl = document.getElementById('stat-trips');
+      tripsEl.textContent = Number(tripsEl.textContent) + 1;
+
+      const historyList = document.getElementById('trip-history-list');
+      const newEntry = document.createElement('div');
+      newEntry.className = 'py-2.5 flex items-center justify-between';
+      newEntry.innerHTML = `
+        <div>
+          <p class="font-semibold text-gray-800">${station.name} → Devolução local</p>
+          <p class="text-gray-400 mt-0.5">Agora • ${mins} min • ${selectedBikeCode}</p>
+        </div>
+        <span class="font-semibold text-[#0B7A54]">Concluída</span>
+      `;
+      historyList.prepend(newEntry);
+    }
+
+    /**
+     * Exibe modal personalizado de feedback na tela de autenticação (sem usar alert())
+     */
+    const feedbackOverlay = document.getElementById('feedback-overlay');
+    const feedbackTitle = document.getElementById('feedback-title');
+    const feedbackMessage = document.getElementById('feedback-message');
+    const feedbackIconBox = document.getElementById('feedback-icon-box');
+    const feedbackIconSuccess = document.getElementById('feedback-icon-success');
+    const feedbackIconError = document.getElementById('feedback-icon-error');
+    const feedbackCloseBtn = document.getElementById('feedback-close-btn');
+
+    let onModalCloseCallback = null;
+
+    function showFeedback({ title, message, type = 'success', buttonText = 'Continuar', onClose = null }) {
+      feedbackTitle.textContent = title;
+      feedbackMessage.textContent = message;
+      feedbackCloseBtn.textContent = buttonText;
+      onModalCloseCallback = onClose;
+
+      if (type === 'error') {
+        feedbackIconBox.className = 'w-12 h-12 rounded-full mx-auto mb-3.5 flex items-center justify-center bg-red-50 text-red-600';
+        feedbackIconSuccess.classList.add('hidden');
+        feedbackIconError.classList.remove('hidden');
+        feedbackCloseBtn.className = 'w-full py-2.5 px-4 bg-gray-800 hover:bg-gray-900 text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer';
+      } else {
+        feedbackIconBox.className = 'w-12 h-12 rounded-full mx-auto mb-3.5 flex items-center justify-center bg-[#E8F3EE] text-[#0B7A54]';
+        feedbackIconSuccess.classList.remove('hidden');
+        feedbackIconError.classList.add('hidden');
+        feedbackCloseBtn.className = 'w-full py-2.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer';
+      }
+
+      feedbackOverlay.classList.remove('hidden');
+    }
+
+    feedbackCloseBtn.addEventListener('click', () => {
+      feedbackOverlay.classList.add('hidden');
+      if (typeof onModalCloseCallback === 'function') {
+        onModalCloseCallback();
+        onModalCloseCallback = null;
+      }
+    });
+
+    /**
+     * Validação simples de e-mail
+     */
+    function isValidEmail(email) {
+      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    }
+
+    /**
+     * Submissão do Formulário de Login -> Transiciona direto para a Tela Principal
+     */
+    document.getElementById('login-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('login-email').value.trim();
+      const password = passwordInput.value.trim();
+      let hasError = false;
+
+      if (!email || !isValidEmail(email)) {
+        setFieldError('login-email', 'login-email-error', 'Informe um endereço de e-mail válido.');
+        hasError = true;
+      } else {
+        setFieldError('login-email', 'login-email-error', '');
+      }
+
+      if (!password) {
+        setFieldError('login-password', 'login-password-error', 'Digite sua senha para continuar.');
+        hasError = true;
+      } else {
+        setFieldError('login-password', 'login-password-error', '');
+      }
+
+      if (hasError) return;
+
+      enterApp(email);
+    });
+
+    /**
+     * Submissão do Formulário de Cadastro -> Entra direto na Tela Principal
+     */
+    document.getElementById('register-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const name = document.getElementById('reg-name').value.trim();
+      const email = document.getElementById('reg-email').value.trim();
+      const pass = document.getElementById('reg-password').value.trim();
+      let hasError = false;
+
+      if (!name) {
+        setFieldError('reg-name', 'reg-name-error', 'Informe seu nome completo.');
+        hasError = true;
+      } else {
+        setFieldError('reg-name', 'reg-name-error', '');
+      }
+
+      if (!isValidEmail(email)) {
+        setFieldError('reg-email', 'reg-email-error', 'Informe um e-mail válido.');
+        hasError = true;
+      } else {
+        setFieldError('reg-email', 'reg-email-error', '');
+      }
+
+      if (pass.length < 6) {
+        setFieldError('reg-password', 'reg-password-error', 'A senha deve ter pelo menos 6 caracteres.');
+        hasError = true;
+      } else {
+        setFieldError('reg-password', 'reg-password-error', '');
+      }
+
+      if (hasError) return;
+
+      enterApp(email, name);
+    });
+
+    /**
+     * Submissão do Formulário de Recuperação de Senha
+     */
+    document.getElementById('forgot-form').addEventListener('submit', (e) => {
+      e.preventDefault();
+      const email = document.getElementById('forgot-email').value.trim();
+
+      if (!isValidEmail(email)) {
+        setFieldError('forgot-email', 'forgot-email-error', 'Digite um e-mail válido para recuperação.');
+        return;
+      }
+      setFieldError('forgot-email', 'forgot-email-error', '');
+
+      showFeedback({
+        type: 'success',
+        title: 'E-mail enviado!',
+        message: `Enviamos um link de redefinição de senha para ${email}. Verifique sua caixa de entrada.`,
+        buttonText: 'Voltar ao login',
+        onClose: () => switchView('login')
+      });
+    });
+  </script>
+</body>
+</html>
