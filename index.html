@@ -5,2395 +5,753 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>VáDeBike - Acesse sua conta</title>
   <script src="https://cdn.tailwindcss.com"></script>
-
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <script>
     tailwind.config = {
-      // Ativa o modo escuro
-      darkMode: 'class',
       theme: {
         extend: {
-          screens: {
-            'desk': '900px',
-          },
-          fontFamily: {
-            sans: ['Inter', 'sans-serif'],
-            serif: ['Playfair Display', 'serif'],
-          },
-          // Paleta de cores
-          colors: {
-            brand: {
-              dark: '#123524',
-              primary: '#0B7A54',
-              hover: '#086042',
-              light: '#E8F3EE',
-              surface: '#F4F5F4',
-            }
-          }
+          fontFamily: { sans: ['Inter', 'sans-serif'] },
+          colors: { brand: { dark: '#123524', primary: '#0B7A54', hover: '#086042', light: '#E8F3EE', surface: '#F4F5F4' } }
         }
       }
     }
   </script>
 </head>
 
-<body class="bg-[#181A1B] desk:bg-[#E7ECE9] dark:bg-[#0B0E0D] dark:desk:bg-[#0D110F] min-h-screen flex items-center justify-center p-0 sm:p-6 desk:p-8 font-sans antialiased text-[#1E2321] dark:text-gray-100 transition-colors duration-300">
+<body class="bg-[#181A1B] min-h-screen flex items-center justify-center p-0 sm:p-6 font-sans antialiased text-[#1E2321]">
 
-  <!--Tela de Login-->
-  <main id="auth-screen" class="w-full max-w-[414px] desk:max-w-[1120px] min-h-screen sm:min-h-[780px] desk:min-h-[680px] bg-[#F4F5F4] dark:bg-[#131816] sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col justify-between relative border border-black/5 dark:border-white/10 transition-colors duration-300">
-    
-    <div class="desk:hidden h-3 w-full bg-[#123524] shrink-0"></div>
+  <!-- ==================== TELA DE AUTENTICAÇÃO ==================== -->
+  <main id="auth-screen" class="w-full max-w-[414px] min-h-screen sm:min-h-[760px] bg-[#F4F5F4] sm:rounded-3xl shadow-2xl overflow-hidden flex flex-col justify-between relative border border-black/5">
+    <div class="h-3 w-full bg-[#123524] shrink-0"></div>
 
-    <button 
-      type="button" 
-      onclick="toggleDarkMode()"
-      aria-label="Alternar tema claro ou escuro"
-      title="Alternar tema claro/escuro"
-      class="absolute top-5 right-4 z-30 w-10 h-10 rounded-xl bg-white/90 dark:bg-[#1E2622] border border-gray-200 dark:border-white/10 text-gray-700 dark:text-emerald-300 hover:bg-white dark:hover:bg-[#25302B] shadow-sm flex items-center justify-center transition-all cursor-pointer"
-    >
-        <!--Icones para o Dark mode e Light mode-->
-      <svg class="theme-icon-moon w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-      </svg>
-
-      <svg class="theme-icon-sun hidden w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-        <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-      </svg>
-    </button>
-
-    <div class="flex-1 grid grid-cols-1 desk:grid-cols-12">
-
-      <aside class="hidden desk:flex desk:col-span-6 relative overflow-hidden bg-gradient-to-br from-[#123524] via-[#104630] to-[#0B7A54] dark:from-[#0C2418] dark:via-[#0D3222] dark:to-[#085238] text-white p-11 flex-col justify-between">
-        
-        <!-- Mantem a imagem do logotipo estavel em caso de zoom(SVG) -->
-        <svg class="absolute inset-0 w-full h-full opacity-[0.12] pointer-events-none" viewBox="0 0 600 700" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-          <circle cx="520" cy="110" r="190" stroke="white" stroke-width="1.5"/>
-          <circle cx="520" cy="110" r="130" stroke="white" stroke-width="1.5" stroke-dasharray="6 6"/>
-          <path d="M-40 520 C 120 480, 180 340, 320 350 C 460 360, 490 220, 640 190" stroke="white" stroke-width="2.5"/>
-          <path d="M-20 610 C 140 560, 240 440, 380 460 C 500 475, 540 370, 650 340" stroke="white" stroke-width="1.5" stroke-dasharray="8 8"/>
-          <circle cx="320" cy="350" r="6" fill="white"/>
-          <circle cx="155" cy="442" r="5" fill="white"/>
-          <circle cx="475" cy="252" r="5" fill="white"/>
+    <!-- Cabeçalho da marca -->
+    <header class="px-7 pt-7 pb-5 border-b border-gray-200/80 flex items-center gap-4">
+      <div class="w-14 h-14 rounded-2xl bg-[#123524] flex items-center justify-center shrink-0 shadow-sm">
+        <svg class="w-9 h-9 text-white" viewBox="0 0 36 36" fill="none">
+          <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.3"/>
+          <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.3"/>
+          <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
+          <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
-
-        <!-- Logotipo VáDeBike-->
-        <div class="relative z-10 flex items-center gap-3.5">
-          <div class="w-12 h-12 rounded-2xl bg-white/15 backdrop-blur-sm border border-white/20 flex items-center justify-center shadow-sm">
-            <svg class="w-7 h-7 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
-              <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
-              <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
-              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-2xl font-semibold tracking-tight text-white select-none">VáDeBike</span>
-        </div>
-
-        <!-- Parte da tela de Login no modo de computador -->
-        <div class="relative z-10 my-auto py-8 space-y-6">
-          <div class="space-y-3">
-            <span class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 border border-white/15 text-xs font-medium text-emerald-100">
-              <span class="w-2 h-2 rounded-full bg-emerald-300 animate-pulse"></span>
-              Mobilidade ativa &amp; sustentável
-            </span>
-            <h2 class="text-3xl lg:text-[34px] font-extrabold leading-tight tracking-tight text-white">
-              Mobilidade urbana inteligente, prática e sustentável.
-            </h2>
-            <p class="text-[14.5px] text-emerald-100/85 leading-relaxed max-w-md">
-              Conecte-se às estações espalhadas pelos principais pontos da cidade, evite o trânsito e transforme seus trajetos diários em saúde e liberdade.
-            </p>
-          </div>
-
-          <ul class="space-y-3.5 pt-2">
-            <li class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-emerald-200">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-sm font-semibold text-white">Estações em toda a cidade</p>
-                <p class="text-xs text-emerald-100/75">Retire e devolva em dezenas de pontos integrados</p>
-              </div>
-            </li>
-            <li class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-emerald-200">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-sm font-semibold text-white">Desbloqueio rápido via app</p>
-                <p class="text-xs text-emerald-100/75">Escaneie o QR Code e comece a pedalar em segundos</p>
-              </div>
-            </li>
-            <li class="flex items-center gap-3.5">
-              <div class="w-9 h-9 rounded-xl bg-white/10 border border-white/15 flex items-center justify-center shrink-0 text-emerald-200">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-                </svg>
-              </div>
-              <div>
-                <p class="text-sm font-semibold text-white">Zero emissão de carbono</p>
-                <p class="text-xs text-emerald-100/75">Contribua para um ar mais limpo a cada quilômetro</p>
-              </div>
-            </li>
-          </ul>
-        </div>
-      </aside>
-
-      <!--Area de Login -->
-      <div class="desk:col-span-6 flex flex-col justify-between bg-[#F4F5F4] dark:bg-[#131816] transition-colors duration-300">
-        
-        <!-- Logo no modo Mobile -->
-        <header class="desk:hidden px-7 pt-7 pb-5 border-b border-gray-200/80 dark:border-white/10 flex items-center gap-4">
-          <div class="w-[62px] h-[62px] rounded-2xl bg-[#123524] dark:bg-[#0B7A54] flex items-center justify-center shrink-0 shadow-sm">
-            <svg class="w-10 h-10 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.3"/>
-              <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.3"/>
-              <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
-              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-          </div>
-          <span class="text-[32px] font-medium tracking-tight text-[#123524] dark:text-emerald-400 select-none">
-            VáDeBike
-          </span>
-        </header>
-
-        <!-- As telas para logar no serviço -->
-        <div class="px-7 desk:px-14 pt-6 desk:pt-10 pb-6 flex-1 flex flex-col justify-center max-w-[440px] w-full mx-auto">
-          
-          <!-- Tela 1: Acesse sua conta -->
-          <section id="view-login" class="flex-1 desk:flex-initial flex flex-col transition-opacity duration-200">
-            <div class="mb-7">
-              <h1 class="text-[23px] desk:text-[26px] font-extrabold text-[#141715] dark:text-white tracking-tight leading-snug">
-                Bom ter você aqui.
-              </h1>
-              <p class="text-[13.5px] desk:text-[14px] text-gray-500 dark:text-gray-400 mt-1 font-normal">
-                Entre na sua conta e vá de bike.
-              </p>
-            </div>
-
-            <h2 class="text-[15.5px] font-semibold text-[#1E2321] dark:text-gray-200 mb-4">
-              Acesse sua conta
-            </h2>
-
-            <!-- E-mail já inseridos autumatomaticamente, para facilitar o acesso e a apresentação do site -->
-            <form id="login-form" novalidate class="space-y-4">
-              <div>
-                <label for="login-email" class="block text-[12px] font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  E-mail
-                </label>
-                <div class="relative flex items-center">
-                  <span class="absolute left-3.5 text-gray-400 dark:text-gray-500 pointer-events-none">
-                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="4" width="20" height="16" rx="2"/>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                    </svg>
-                  </span>
-                  <input 
-                    type="email" 
-                    id="login-email" 
-                    value="jorgefs@hotmail.com"
-                    placeholder="jorgefs@hotmail.com"
-                    class="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1B221F] border border-gray-300 dark:border-white/10 rounded-xl text-[14.5px] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15 transition-all"
-                  />
-                </div>
-                <p id="login-email-error" class="hidden text-[11.5px] text-red-600 dark:text-red-400 mt-1 font-medium"></p>
-              </div>
-                <!-- Senha já inserido autumatomaticamente, para facilitar o acesso e a apresentação do site -->
-              <div>
-                <label for="login-password" class="block text-[12px] font-semibold text-gray-700 dark:text-gray-300 mb-1.5">
-                  Senha
-                </label>
-                <div class="relative flex items-center">
-                  <span class="absolute left-3.5 text-gray-400 dark:text-gray-500 pointer-events-none">
-                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                      <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                    </svg>
-                  </span>
-                  <input 
-                    type="password" 
-                    id="login-password" 
-                    value="AcroBike@Hoenn"
-                    placeholder="Digite sua senha"
-                    class="w-full pl-10 pr-11 py-3 bg-white dark:bg-[#1B221F] border border-gray-300 dark:border-white/10 rounded-xl text-[14.5px] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15 transition-all"
-                  />
-                  <!-- Botão de alternar visibilidade da senha -->
-                  <button 
-                    type="button" 
-                    id="toggle-login-password"
-                    aria-label="Mostrar ou ocultar senha"
-                    class="absolute right-3 p-1.5 text-gray-400 hover:text-gray-600 dark:hover:text-gray-200 focus:outline-none rounded-lg transition-colors cursor-pointer"
-                  >
-                    <svg id="eye-off-icon" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/>
-                      <line x1="1" y1="1" x2="23" y2="23"/>
-                    </svg>
-                    <svg id="eye-on-icon" class="w-[18px] h-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/>
-                      <circle cx="12" cy="12" r="3"/>
-                    </svg>
-                  </button>
-                </div>
-                <p id="login-password-error" class="hidden text-[11.5px] text-red-600 dark:text-red-400 mt-1 font-medium"></p>
-              </div>
-
-              <div class="pt-2">
-                <button 
-                  type="submit" 
-                  id="btn-submit-login"
-                  class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] active:scale-[0.99] text-white font-semibold text-[15px] rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer"
-                >
-                  <span>Entrar</span>
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"/>
-                    <polyline points="12 5 19 12 12 19"/>
-                  </svg>
-                </button>
-              </div>
-            </form>
-
-            <!-- Links de navegação para Recuperar Senha e Criar Conta -->
-            <div class="mt-6 text-center space-y-3.5">
-              <div>
-                <button 
-                  type="button" 
-                  onclick="switchView('forgot')"
-                  class="text-[12.5px] font-medium text-[#0B7A54] dark:text-emerald-400 hover:text-[#123524] dark:hover:text-emerald-300 hover:underline transition-colors cursor-pointer"
-                >
-                  Esqueci minha senha.
-                </button>
-              </div>
-
-              <p class="text-[12.5px] text-gray-500 dark:text-gray-400">
-                Ainda não tem conta? 
-                <button 
-                  type="button" 
-                  onclick="switchView('register')"
-                  class="font-semibold text-[#0B7A54] dark:text-emerald-400 hover:text-[#123524] dark:hover:text-emerald-300 hover:underline transition-colors cursor-pointer"
-                >
-                  Criar conta
-                </button>
-              </p>
-            </div>
-          </section>
-
-          <!-- Tels 2: Criar conta-->
-          <section id="view-register" class="hidden flex-1 desk:flex-initial flex flex-col transition-opacity duration-200">
-            <div class="mb-4">
-              <button type="button" onclick="switchView('login')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B7A54] dark:text-emerald-400 hover:text-[#123524] mb-2.5 cursor-pointer">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-                </svg>
-                Voltar para o login
-              </button>
-              <h1 class="text-[22px] desk:text-[25px] font-extrabold text-[#141715] dark:text-white tracking-tight">
-                Crie sua conta.
-              </h1>
-              <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-0.5">
-                Comece a pedalar pela cidade em poucos minutos.
-              </p>
-            </div>
-
-            <form id="register-form" novalidate class="space-y-3">
-              <div>
-                <label for="reg-name" class="block text-[12px] font-semibold text-gray-700 dark:text-gray-300 mb-1">Nome completo</label>
-                <input type="text" id="reg-name" placeholder="Ex: Jorge Silva" required class="w-full px-3.5 py-2.5 bg-white dark:bg-[#1B221F] border border-gray-300 dark:border-white/10 rounded-xl text-[14px] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
-                <p id="reg-name-error" class="hidden text-[11.5px] text-red-600 dark:text-red-400 mt-1 font-medium"></p>
-              </div>
-
-              <div>
-                <label for="reg-email" class="block text-[12px] font-semibold text-gray-700 dark:text-gray-300 mb-1">E-mail</label>
-                <input type="email" id="reg-email" placeholder="seuemail@exemplo.com" required class="w-full px-3.5 py-2.5 bg-white dark:bg-[#1B221F] border border-gray-300 dark:border-white/10 rounded-xl text-[14px] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
-                <p id="reg-email-error" class="hidden text-[11.5px] text-red-600 dark:text-red-400 mt-1 font-medium"></p>
-              </div>
-
-              <!--Escolha de aplicar o CPF ou Passaporte -->
-              <div>
-                <div class="flex items-center justify-between mb-1">
-                  <label for="reg-doc" id="reg-doc-label" class="block text-[12px] font-semibold text-gray-700 dark:text-gray-300">
-                    Documento (CPF)
-                  </label>
-                  <div class="inline-flex rounded-lg bg-gray-200/80 dark:bg-[#1B221F] p-0.5 border border-gray-300/60 dark:border-white/10">
-                    <button 
-                      type="button" 
-                      id="doc-type-cpf-btn"
-                      onclick="setRegisterDocType('cpf')"
-                      class="px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white dark:bg-[#0B7A54] text-[#123524] dark:text-white shadow-xs transition-all cursor-pointer"
-                    >
-                      CPF
-                    </button>
-                    <button 
-                      type="button" 
-                      id="doc-type-passport-btn"
-                      onclick="setRegisterDocType('passport')"
-                      class="px-2.5 py-0.5 text-[11px] font-semibold rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all cursor-pointer"
-                    >
-                      Passaporte
-                    </button>
-                  </div>
-                </div>
-
-                <input 
-                  type="text" 
-                  id="reg-doc" 
-                  placeholder="000.000.000-00" 
-                  class="w-full px-3.5 py-2.5 bg-white dark:bg-[#1B221F] border border-gray-300 dark:border-white/10 rounded-xl text-[14px] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" 
-                />
-                <!-- Quando 'Passaporte' está selecionado, ira aparecer este aviso -->
-                <p id="reg-passport-hint" class="hidden text-[11px] text-[#0B7A54] dark:text-emerald-400 mt-1 font-medium">
-                  Na próxima etapa será solicitada a foto do seu passaporte.
-                </p>
-                <p id="reg-doc-error" class="hidden text-[11.5px] text-red-600 dark:text-red-400 mt-1 font-medium"></p>
-              </div>
-
-              <div>
-                <label for="reg-password" class="block text-[12px] font-semibold text-gray-700 dark:text-gray-300 mb-1">Criar senha</label>
-                <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" required class="w-full px-3.5 py-2.5 bg-white dark:bg-[#1B221F] border border-gray-300 dark:border-white/10 rounded-xl text-[14px] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
-                <p id="reg-password-error" class="hidden text-[11.5px] text-red-600 dark:text-red-400 mt-1 font-medium"></p>
-              </div>
-
-              <div class="pt-1.5">
-                <button type="submit" id="reg-submit-btn" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[15px] rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
-                  <span id="reg-submit-text">Cadastrar agora</span>
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                  </svg>
-                </button>
-              </div>
-            </form>
-
-            <p class="mt-4 text-center text-[12.5px] text-gray-500 dark:text-gray-400">
-              Já possui cadastro? 
-              <button type="button" onclick="switchView('login')" class="font-semibold text-[#0B7A54] dark:text-emerald-400 hover:underline cursor-pointer">Entrar</button>
-            </p>
-          </section>
-
-          <!-- Sub-Tela 2B: SIMULAÇÃO DE CAPTURA DO PASSAPORTE -->
-          <section id="view-passport-verify" class="hidden flex-1 desk:flex-initial flex flex-col items-center text-center transition-opacity duration-200">
-            
-            <div class="w-full flex justify-start mb-2">
-              <button type="button" onclick="switchView('register')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B7A54] dark:text-emerald-400 hover:text-[#123524] cursor-pointer">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-                </svg>
-                Voltar
-              </button>
-            </div>
-
-            <h1 class="text-[20px] desk:text-[22px] font-extrabold text-[#141715] dark:text-white leading-snug tracking-tight">
-              Por favor tire uma foto<br>do seu documento
-            </h1>
-
-            <!-- Upload da foto (opcional) -->
-            <div id="passport-upload-trigger" class="mt-1.5 mb-5">
-              <input type="file" id="passport-file-input" accept="image/*" class="hidden" />
-              <button 
-                type="button" 
-                onclick="document.getElementById('passport-file-input').click()"
-                class="text-[12px] text-gray-500 dark:text-gray-400 hover:text-[#0B7A54] dark:hover:text-emerald-400 underline transition-colors cursor-pointer"
-              >
-                Ou clique aqui para fazer upload
-              </button>
-            </div>
-
-            <!-- ESTÁGIO 1:Simulação da câmera para tirar foto do documento  -->
-            <div id="passport-camera-stage" class="w-full max-w-[300px] h-[205px] bg-[#2B2B2B] rounded-md relative flex items-center justify-center shadow-inner overflow-hidden my-1">
-
-              <span class="absolute top-3 left-3 w-8 h-8 border-t-[3px] border-l-[3px] border-white/90 pointer-events-none"></span>
-              <span class="absolute top-3 right-3 w-8 h-8 border-t-[3px] border-r-[3px] border-white/90 pointer-events-none"></span>
-              <span class="absolute bottom-3 left-3 w-8 h-8 border-b-[3px] border-l-[3px] border-white/90 pointer-events-none"></span>
-              <span class="absolute bottom-3 right-3 w-8 h-8 border-b-[3px] border-r-[3px] border-white/90 pointer-events-none"></span>
-
-              <button 
-                type="button" 
-                onclick="simulatePassportCapture()"
-                class="px-10 py-2.5 rounded-full bg-[#36D67B] hover:bg-[#2BC46D] active:scale-95 text-[#0D2818] font-bold text-[14px] shadow-lg transition-all cursor-pointer z-10"
-              >
-                Iniciar
-              </button>
-            </div>
-
-            <!-- ESTÁGIO 2: Prévia do passaporte capturado e botão de confirmação -->
-            <div id="passport-result-stage" class="hidden w-full max-w-[275px] flex flex-col items-center mt-2 space-y-5">
-              
-              <div id="passport-card-visual" class="w-full rounded-sm overflow-hidden shadow-md border border-gray-300 dark:border-white/20 bg-[#DCE5F2] text-[#1C2A44] select-none relative">
-                
-                <img id="passport-uploaded-photo" src="" alt="Passaporte enviado" class="hidden w-full h-[270px] object-cover" />
-
-                <!-- Versão simulada do passaporte do Figma -->
-                <div id="passport-simulated-svg" class="w-full">
-                  <svg viewBox="0 0 300 330" class="w-full h-auto block" xmlns="http://www.w3.org/2000/svg">
-                    <defs>
-
-                      <linearGradient id="bgSky" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#D4DFEE"/>
-                        <stop offset="50%" stop-color="#E8EEF6"/>
-                        <stop offset="100%" stop-color="#C9D7EA"/>
-                      </linearGradient>
-                      <linearGradient id="eagleShade" x1="0" y1="0" x2="1" y2="1">
-                        <stop offset="0%" stop-color="#FFFFFF"/>
-                        <stop offset="65%" stop-color="#E2D9CE"/>
-                        <stop offset="100%" stop-color="#B9A694"/>
-                      </linearGradient>
-                    </defs>
-                    <!--Detalhes do passaporte simulado-->
-                    <rect width="300" height="330" fill="url(#bgSky)"/>
-
-                    <path d="M0 155 Q 75 140, 150 155 T 300 155" fill="none" stroke="#8FA8C8" stroke-width="0.7" opacity="0.55"/>
-                    <path d="M0 162 Q 75 147, 150 162 T 300 162" fill="none" stroke="#8FA8C8" stroke-width="0.7" opacity="0.55"/>
-                    <path d="M0 295 Q 75 288, 150 295 T 300 295" fill="none" stroke="#7E97B8" stroke-width="0.8" opacity="0.6"/>
-
-                    <text x="14" y="34" font-family="Playfair Display, Georgia, serif" font-style="italic" font-weight="700" font-size="25" fill="#465975" opacity="0.88">We the People</text>
-
-                    <g transform="translate(8, 66)">
-                      <path d="M0 12 Q 45 -5, 95 16 L 95 72 Q 45 52, 0 68 Z" fill="#B63A3A" opacity="0.85"/>
-                      <path d="M0 22 Q 45 5, 95 26" stroke="#F8FAFC" stroke-width="4.5" fill="none"/>
-                      <path d="M0 34 Q 45 17, 95 38" stroke="#F8FAFC" stroke-width="4.5" fill="none"/>
-                      <path d="M0 46 Q 45 29, 95 50" stroke="#F8FAFC" stroke-width="4.5" fill="none"/>
-                      <path d="M0 58 Q 45 41, 95 62" stroke="#F8FAFC" stroke-width="4.5" fill="none"/>
-                      <path d="M0 12 Q 26 2, 52 8 L 52 40 Q 26 34, 0 44 Z" fill="#233B6E"/>
-                      <g fill="#FFFFFF" opacity="0.9">
-                        <circle cx="10" cy="18" r="1.3"/><circle cx="22" cy="15" r="1.3"/><circle cx="34" cy="14" r="1.3"/><circle cx="44" cy="15" r="1.3"/>
-                        <circle cx="15" cy="25" r="1.3"/><circle cx="27" cy="22" r="1.3"/><circle cx="39" cy="22" r="1.3"/>
-                        <circle cx="10" cy="33" r="1.3"/><circle cx="22" cy="30" r="1.3"/><circle cx="34" cy="29" r="1.3"/><circle cx="44" cy="30" r="1.3"/>
-                      </g>
-                    </g>
-
-                    <g stroke="#B89768" stroke-width="1.5" fill="#D5B98E" opacity="0.8">
-                      <path d="M98 118 Q 112 88, 126 68" fill="none"/>
-                      <ellipse cx="106" cy="98" rx="3" ry="7" transform="rotate(-25 106 98)"/>
-                      <ellipse cx="114" cy="86" rx="3" ry="7" transform="rotate(-25 114 86)"/>
-                      <ellipse cx="122" cy="75" rx="3" ry="7" transform="rotate(-25 122 75)"/>
-                      <ellipse cx="115" cy="103" rx="3" ry="7" transform="rotate(20 115 103)"/>
-                      <ellipse cx="123" cy="91" rx="3" ry="7" transform="rotate(20 123 91)"/>
-                    </g>
-
-                    <g transform="translate(128, 36)">
-                      <path d="M18 98 C 16 62, 32 22, 74 14 C 108 8, 134 22, 146 38 C 132 34, 118 36, 108 44 C 118 58, 122 80, 116 98 Z" fill="url(#eagleShade)" stroke="#9A8A7A" stroke-width="0.8"/>
-                      <path d="M26 42 C 8 44, 0 56, 4 68 C 10 60, 18 58, 30 58 Z" fill="#E3A938" stroke="#9E6E16" stroke-width="0.9"/>
-                      <circle cx="52" cy="40" r="4" fill="#F4C44E" stroke="#3E2D1C" stroke-width="1"/>
-                      <circle cx="51" cy="40" r="1.8" fill="#1A1410"/>
-                      <path d="M44 35 L 62 38" stroke="#5D4B3A" stroke-width="2" stroke-linecap="round"/>
-                    </g>
-
-                    <rect x="0" y="132" width="300" height="22" fill="#FFFFFF" opacity="0.92"/>
-                    <text id="passport-holder-name" x="128" y="147" text-anchor="middle" font-family="Inter, sans-serif" font-style="italic" font-weight="800" font-size="13.5" fill="#1E293B">Jorge Silva</text>
-
-                    <text x="195" y="168" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="9" letter-spacing="0.4" fill="#1E3A5F">UNITED STATES OF AMERICA</text>
-
-                    <g transform="translate(18, 174)">
-                      <rect x="0" y="0" width="82" height="98" rx="2" fill="#F1F5F9" stroke="#64748B" stroke-width="1"/>
-                      <rect x="3" y="3" width="76" height="92" fill="#E2E8F0"/>
-                      <path d="M12 95 C 14 78, 68 78, 70 95 Z" fill="#FFFFFF" stroke="#94A3B8" stroke-width="1"/>
-                      <ellipse cx="41" cy="56" rx="21" ry="24" fill="#FAD7C3" stroke="#8C624C" stroke-width="1"/>
-                      <path d="M31 72 Q 41 78, 51 72" fill="none" stroke="#8C624C" stroke-width="1"/>
-                      <circle cx="34" cy="50" r="6" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-                      <circle cx="48" cy="50" r="6" fill="#FFFFFF" stroke="#334155" stroke-width="1.2"/>
-                      <line x1="40" y1="50" x2="42" y2="50" stroke="#334155" stroke-width="1.2"/>
-                      <circle cx="34" cy="50" r="1.5" fill="#0F172A"/>
-                      <circle cx="48" cy="50" r="1.5" fill="#0F172A"/>
-                      <path d="M41 53 Q 45 58, 40 60" fill="none" stroke="#8C624C" stroke-width="1.1"/>
-                      <path d="M33 65 Q 41 70, 49 65" fill="none" stroke="#7F1D1D" stroke-width="1.2"/>
-                      <ellipse cx="41" cy="34" rx="27" ry="5" fill="#1E3A8A"/>
-                      <rect x="23" y="12" width="36" height="22" rx="3" fill="#B91C1C"/>
-                      <rect x="29" y="12" width="6" height="22" fill="#FFFFFF"/>
-                      <rect x="41" y="12" width="6" height="22" fill="#FFFFFF"/>
-                      <rect x="53" y="12" width="6" height="22" fill="#FFFFFF"/>
-                      <rect x="23" y="25" width="36" height="9" fill="#1E3A8A"/>
-                      <text x="41" y="32" text-anchor="middle" font-family="Inter, sans-serif" font-weight="800" font-size="6.5" fill="#FFFFFF">USA</text>
-                    </g>
-
-                    <g transform="translate(110, 178)" font-family="Inter, sans-serif" fill="#334155">
-                      <text x="0" y="6" font-size="5.5" font-weight="700" fill="#64748B">PASSPORT NO. / NÚMERO</text>
-                      <text id="passport-top-number" x="0" y="15" font-size="8.5" font-weight="800" fill="#0F172A">6767676767</text>
-
-                      <text x="0" y="27" font-size="5.5" font-weight="700" fill="#64748B">NATIONALITY / NACIONALIDADE</text>
-                      <text x="0" y="36" font-size="8" font-weight="700" fill="#0F172A">UNITED STATES OF AMERICA</text>
-
-                      <text x="0" y="48" font-size="5.5" font-weight="700" fill="#64748B">DATE OF BIRTH / NASCIMENTO</text>
-                      <text x="0" y="57" font-size="8" font-weight="700" fill="#0F172A">28 APR 1995</text>
-
-                      <text x="95" y="48" font-size="5.5" font-weight="700" fill="#64748B">SEX</text>
-                      <text x="95" y="57" font-size="8" font-weight="700" fill="#0F172A">M</text>
-
-                      <text x="0" y="69" font-size="5.5" font-weight="700" fill="#64748B">ISSUING AUTHORITY</text>
-                      <text x="0" y="78" font-size="7.5" font-weight="700" fill="#0F172A">United States Department of State</text>
-
-                      <circle cx="152" cy="68" r="16" fill="none" stroke="#475569" stroke-width="0.9" stroke-dasharray="2 1.5"/>
-                      <circle cx="152" cy="68" r="11" fill="none" stroke="#475569" stroke-width="0.7"/>
-                    </g>
-
-                    <text x="272" y="288" text-anchor="end" font-family="Playfair Display, Georgia, serif" font-weight="700" font-size="14" fill="#1E3A5F">USA</text>
-
-                    <rect x="0" y="297" width="300" height="33" fill="#CBD7E8"/>
-                    <text x="12" y="311" font-family="monospace" font-size="8.5" font-weight="700" fill="#475569" letter-spacing="0.5">P&lt;USASILVA&lt;&lt;JORGE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</text>
-                    <text x="12" y="323" font-family="monospace" font-size="9.5" font-weight="800" fill="#1D4ED8" letter-spacing="0.6">
-                      <tspan id="passport-mrz-number">6767676767</tspan><tspan fill="#475569">USA9504285M3204281&lt;&lt;&lt;&lt;&lt;&lt;04</tspan>
-                    </text>
-                  </svg>
-                </div>
-              </div>
-
-              <!-- Conclui o cadastro e entra no aplicativo -->
-              <button 
-                type="button" 
-                onclick="confirmPassportAndEnter()"
-                class="w-full max-w-[230px] py-3 px-6 rounded-full bg-[#36D67B] hover:bg-[#2BC46D] active:scale-[0.98] text-[#0D2818] font-extrabold text-[15px] shadow-md transition-all cursor-pointer"
-              >
-                Confirmar
-              </button>
-
-              <!-- Retorna ao Estágio 1 caso queira refazer a captura -->
-              <button 
-                type="button" 
-                onclick="resetPassportCapture()"
-                class="text-[11.5px] font-medium text-gray-500 dark:text-gray-400 hover:text-[#0B7A54] dark:hover:text-emerald-400 underline cursor-pointer"
-              >
-                Tirar foto novamente
-              </button>
-            </div>
-
-          </section>
-
-          <!--Tela 3: Recupera Senha -->
-          <section id="view-forgot" class="hidden flex-1 desk:flex-initial flex flex-col transition-opacity duration-200">
-            <div class="mb-6">
-              <button type="button" onclick="switchView('login')" class="inline-flex items-center gap-1.5 text-xs font-semibold text-[#0B7A54] dark:text-emerald-400 hover:text-[#123524] mb-3 cursor-pointer">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/>
-                </svg>
-                Voltar para o login
-              </button>
-              <h1 class="text-[22px] desk:text-[25px] font-extrabold text-[#141715] dark:text-white tracking-tight">
-                Recuperar senha.
-              </h1>
-              <p class="text-[13px] text-gray-500 dark:text-gray-400 mt-1">
-                Informe seu e-mail cadastrado para enviarmos um link de redefinição.
-              </p>
-            </div>
-
-            <form id="forgot-form" novalidate class="space-y-4">
-              <div>
-                <label for="forgot-email" class="block text-[12px] font-semibold text-gray-700 dark:text-gray-300 mb-1.5">E-mail cadastrado</label>
-                <div class="relative flex items-center">
-                  <span class="absolute left-3.5 text-gray-400 dark:text-gray-500 pointer-events-none">
-                    <svg class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                      <rect x="2" y="4" width="20" height="16" rx="2"/>
-                      <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/>
-                    </svg>
-                  </span>
-                  <input type="email" id="forgot-email" value="jorgefs@hotmail.com" placeholder="seuemail@exemplo.com" required class="w-full pl-10 pr-4 py-3 bg-white dark:bg-[#1B221F] border border-gray-300 dark:border-white/10 rounded-xl text-[14.5px] text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15" />
-                </div>
-                <p id="forgot-email-error" class="hidden text-[11.5px] text-red-600 dark:text-red-400 mt-1 font-medium"></p>
-              </div>
-
-              <div class="pt-1">
-                <button type="submit" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[15px] rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
-                  <span>Enviar instruções</span>
-                  <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                  </svg>
-                </button>
-              </div>
-            </form>
-          </section>
-
-          <!-- Frase motivacional -->
-          <footer class="mt-auto desk:mt-8 pt-6 pb-2 flex items-center justify-center gap-1.5 text-gray-400 dark:text-gray-500 select-none">
-            <svg class="w-3.5 h-3.5 text-[#0B7A54]/70 dark:text-emerald-400/70" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/>
-              <path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-            </svg>
-            <span class="text-[11.5px] font-normal tracking-wide">
-              Um jeito mais leve de ir.
-            </span>
-          </footer>
-
-        </div>
       </div>
+      <span class="text-[30px] font-medium tracking-tight text-[#123524] select-none">VáDeBike</span>
+    </header>
 
+    <div class="px-7 pt-6 pb-6 flex-1 flex flex-col justify-center w-full">
+      
+      <!-- 1. LOGIN -->
+      <section id="view-login" class="flex-1 flex flex-col">
+        <div class="mb-6">
+          <h1 class="text-[23px] font-extrabold text-[#141715] tracking-tight">Bom ter você aqui.</h1>
+          <p class="text-[13.5px] text-gray-500 mt-1">Entre na sua conta e vá de bike.</p>
+        </div>
+
+        <h2 class="text-[15.5px] font-semibold text-[#1E2321] mb-4">Acesse sua conta</h2>
+
+        <form id="login-form" novalidate class="space-y-4">
+          <div>
+            <label for="login-email" class="block text-[12px] font-semibold text-gray-700 mb-1.5">E-mail</label>
+            <input type="email" id="login-email" value="jorgefs@hotmail.com" placeholder="jorgefs@hotmail.com" class="w-full px-3.5 py-3 bg-white border border-gray-300 rounded-xl text-[14.5px] focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15"/>
+            <p id="login-email-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+          </div>
+
+          <div>
+            <label for="login-password" class="block text-[12px] font-semibold text-gray-700 mb-1.5">Senha</label>
+            <div class="relative flex items-center">
+              <input type="password" id="login-password" value="AcroBike@Hoenn" placeholder="Digite sua senha" class="w-full pl-3.5 pr-11 py-3 bg-white border border-gray-300 rounded-xl text-[14.5px] focus:outline-none focus:border-[#0B7A54] focus:ring-2 focus:ring-[#0B7A54]/15"/>
+              <button type="button" id="toggle-login-password" aria-label="Mostrar senha" class="absolute right-3 p-1.5 text-gray-400 hover:text-gray-600 cursor-pointer">
+                <svg id="eye-off-icon" class="w-[18px] h-[18px]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                <svg id="eye-on-icon" class="w-[18px] h-[18px] hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+              </button>
+            </div>
+            <p id="login-password-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[15px] rounded-xl shadow-sm flex items-center justify-center gap-2 transition-all cursor-pointer">
+            <span>Entrar</span>
+            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+        </form>
+
+        <div class="mt-6 text-center space-y-3">
+          <button type="button" onclick="switchView('forgot')" class="text-[12.5px] font-medium text-[#0B7A54] hover:underline cursor-pointer">Esqueci minha senha.</button>
+          <p class="text-[12.5px] text-gray-500">Ainda não tem conta? <button type="button" onclick="switchView('register')" class="font-semibold text-[#0B7A54] hover:underline cursor-pointer">Criar conta</button></p>
+        </div>
+      </section>
+
+      <!-- 2. CRIAR CONTA -->
+      <section id="view-register" class="hidden flex-1 flex flex-col">
+        <button type="button" onclick="switchView('login')" class="self-start text-xs font-semibold text-[#0B7A54] mb-2.5 cursor-pointer">← Voltar para o login</button>
+        <h1 class="text-[22px] font-extrabold text-[#141715]">Crie sua conta.</h1>
+        <p class="text-[13px] text-gray-500 mb-4">Comece a pedalar pela cidade em poucos minutos.</p>
+
+        <form id="register-form" novalidate class="space-y-3">
+          <div>
+            <label for="reg-name" class="block text-[12px] font-semibold text-gray-700 mb-1">Nome completo</label>
+            <input type="text" id="reg-name" placeholder="Ex: Jorge Silva" class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] focus:outline-none focus:border-[#0B7A54]"/>
+            <p id="reg-name-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+          </div>
+
+          <div>
+            <label for="reg-email" class="block text-[12px] font-semibold text-gray-700 mb-1">E-mail</label>
+            <input type="email" id="reg-email" placeholder="seuemail@exemplo.com" class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] focus:outline-none focus:border-[#0B7A54]"/>
+            <p id="reg-email-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+          </div>
+
+          <div>
+            <div class="flex items-center justify-between mb-1">
+              <label for="reg-doc" id="reg-doc-label" class="text-[12px] font-semibold text-gray-700">Documento (CPF)</label>
+              <div class="inline-flex rounded-lg bg-gray-200/80 p-0.5">
+                <button type="button" id="doc-type-cpf-btn" onclick="setRegisterDocType('cpf')" class="px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white text-[#123524] shadow-xs cursor-pointer">CPF</button>
+                <button type="button" id="doc-type-passport-btn" onclick="setRegisterDocType('passport')" class="px-2.5 py-0.5 text-[11px] font-semibold rounded-md text-gray-600 cursor-pointer">Passaporte</button>
+              </div>
+            </div>
+            <input type="text" id="reg-doc" placeholder="000.000.000-00" class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] focus:outline-none focus:border-[#0B7A54]"/>
+            <p id="reg-passport-hint" class="hidden text-[11px] text-[#0B7A54] mt-1 font-medium">Na próxima etapa será solicitada a foto do seu passaporte.</p>
+            <p id="reg-doc-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+          </div>
+
+          <div>
+            <label for="reg-password" class="block text-[12px] font-semibold text-gray-700 mb-1">Criar senha</label>
+            <input type="password" id="reg-password" placeholder="Mínimo 6 caracteres" class="w-full px-3.5 py-2.5 bg-white border border-gray-300 rounded-xl text-[14px] focus:outline-none focus:border-[#0B7A54]"/>
+            <p id="reg-password-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+          </div>
+
+          <button type="submit" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[15px] rounded-xl shadow-sm transition-all cursor-pointer">
+            <span id="reg-submit-text">Cadastrar agora →</span>
+          </button>
+        </form>
+      </section>
+
+      <!-- 3. FOTO DO PASSAPORTE -->
+      <section id="view-passport-verify" class="hidden flex-1 flex flex-col items-center text-center">
+        <button type="button" onclick="switchView('register')" class="self-start text-xs font-semibold text-[#0B7A54] mb-3 cursor-pointer">← Voltar</button>
+        <h1 class="text-[20px] font-extrabold text-[#141715] leading-snug mb-5">Por favor tire uma foto<br>do seu documento</h1>
+
+        <!-- Estágio 1: Câmera -->
+        <div id="passport-camera-stage" class="w-full max-w-[300px] h-[205px] bg-[#2B2B2B] rounded-md relative flex items-center justify-center shadow-inner">
+          <span class="absolute top-3 left-3 w-7 h-7 border-t-[3px] border-l-[3px] border-white/90"></span>
+          <span class="absolute top-3 right-3 w-7 h-7 border-t-[3px] border-r-[3px] border-white/90"></span>
+          <span class="absolute bottom-3 left-3 w-7 h-7 border-b-[3px] border-l-[3px] border-white/90"></span>
+          <span class="absolute bottom-3 right-3 w-7 h-7 border-b-[3px] border-r-[3px] border-white/90"></span>
+          <button type="button" onclick="togglePassportStage(true)" class="px-10 py-2.5 rounded-full bg-[#36D67B] hover:bg-[#2BC46D] text-[#0D2818] font-bold text-[14px] shadow-lg cursor-pointer">Iniciar</button>
+        </div>
+
+        <!-- Estágio 2: Prévia gerada -->
+        <div id="passport-result-stage" class="hidden w-full max-w-[280px] flex flex-col items-center space-y-4">
+          <div class="w-full rounded-lg overflow-hidden shadow-md border border-gray-300 bg-gradient-to-br from-[#D4DFEE] via-[#E8EEF6] to-[#C9D7EA] text-left text-[#1C2A44] select-none">
+            <div class="px-3.5 py-2 bg-[#1E3A5F] text-white flex justify-between items-center text-[10px] font-bold tracking-wider">
+              <span>PASSPORT • PASSEPORT</span>
+              <span>USA</span>
+            </div>
+            <div class="p-3.5 flex gap-3 items-center">
+              <div class="w-16 h-20 rounded bg-slate-200 border border-slate-400 flex items-center justify-center shrink-0 text-slate-500">
+                <svg class="w-9 h-9" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="8" r="4"/><path d="M4 20c1.5-4 4.5-6 8-6s6.5 2 8 6"/></svg>
+              </div>
+              <div class="space-y-1.5 text-[10px] overflow-hidden">
+                <div><span class="block text-[8px] text-slate-500 font-bold">NAME / NOME</span><strong id="passport-holder-name" class="text-xs text-slate-900 truncate block">Jorge Silva</strong></div>
+                <div><span class="block text-[8px] text-slate-500 font-bold">PASSPORT NO.</span><strong id="passport-top-number" class="text-slate-900 font-mono">6767676767</strong></div>
+                <div><span class="block text-[8px] text-slate-500 font-bold">NATIONALITY</span><strong class="text-slate-900">UNITED STATES</strong></div>
+              </div>
+            </div>
+            <div class="px-3 py-2 bg-[#CBD7E8] font-mono text-[9px] font-bold text-slate-600 leading-tight">
+              <div id="passport-mrz-line1">P&lt;USASILVA&lt;&lt;JORGE&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;&lt;</div>
+              <div><span id="passport-mrz-number" class="text-blue-700">6767676767</span>USA9504285M3204281&lt;&lt;04</div>
+            </div>
+          </div>
+
+          <button type="button" onclick="confirmPassportAndEnter()" class="w-full max-w-[230px] py-3 rounded-full bg-[#36D67B] hover:bg-[#2BC46D] text-[#0D2818] font-extrabold text-[15px] shadow-md cursor-pointer">Confirmar</button>
+          <button type="button" onclick="togglePassportStage(false)" class="text-[11.5px] text-gray-500 hover:text-[#0B7A54] underline cursor-pointer">Tirar foto novamente</button>
+        </div>
+      </section>
+
+      <!-- 4. RECUPERAR SENHA -->
+      <section id="view-forgot" class="hidden flex-1 flex flex-col">
+        <button type="button" onclick="switchView('login')" class="self-start text-xs font-semibold text-[#0B7A54] mb-3 cursor-pointer">← Voltar para o login</button>
+        <h1 class="text-[22px] font-extrabold text-[#141715]">Recuperar senha.</h1>
+        <p class="text-[13px] text-gray-500 mt-1 mb-5">Informe seu e-mail cadastrado para enviarmos um link de redefinição.</p>
+
+        <form id="forgot-form" novalidate class="space-y-4">
+          <div>
+            <label for="forgot-email" class="block text-[12px] font-semibold text-gray-700 mb-1.5">E-mail cadastrado</label>
+            <input type="email" id="forgot-email" value="jorgefs@hotmail.com" class="w-full px-3.5 py-3 bg-white border border-gray-300 rounded-xl text-[14.5px] focus:outline-none focus:border-[#0B7A54]"/>
+            <p id="forgot-email-error" class="hidden text-[11.5px] text-red-600 mt-1 font-medium"></p>
+          </div>
+          <button type="submit" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[15px] rounded-xl shadow-sm cursor-pointer">Enviar instruções →</button>
+        </form>
+      </section>
+
+      <footer class="mt-auto pt-6 text-center text-[11.5px] text-gray-400 select-none">🌿 Um jeito mais leve de ir.</footer>
     </div>
 
-    <!-- Barra verde inferior -->
-    <div class="h-3 w-full bg-[#36D67B] dark:bg-[#0B7A54] shrink-0"></div>
+    <div class="h-3 w-full bg-[#36D67B] shrink-0"></div>
 
-    <!-- Aviso de resnha recuperada -->
-    <div id="feedback-overlay" class="hidden absolute inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-6 z-50 transition-opacity">
-      <div class="bg-white dark:bg-[#19201D] rounded-2xl p-6 w-full max-w-[340px] shadow-xl border border-gray-100 dark:border-white/10 text-center transform transition-all">
-        <div id="feedback-icon-box" class="w-12 h-12 rounded-full mx-auto mb-3.5 flex items-center justify-center bg-[#E8F3EE] dark:bg-emerald-950/70 text-[#0B7A54] dark:text-emerald-400">
-          <svg id="feedback-icon-success" class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <polyline points="20 6 9 17 4 12"/>
-          </svg>
-          <svg id="feedback-icon-error" class="w-6 h-6 hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
-          </svg>
-        </div>
-
-        <h3 id="feedback-title" class="text-lg font-bold text-[#123524] dark:text-white mb-1">
-          Bem-vindo de volta!
-        </h3>
-        <p id="feedback-message" class="text-[13.5px] text-gray-600 dark:text-gray-300 leading-relaxed mb-5">
-          Login realizado com sucesso.
-        </p>
-
-        <button 
-          type="button" 
-          id="feedback-close-btn"
-          class="w-full py-2.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer"
-        >
-          Continuar
-        </button>
+    <!-- Modal de feedback (recuperação de senha) -->
+    <div id="feedback-overlay" class="hidden absolute inset-0 bg-black/50 backdrop-blur-[2px] flex items-center justify-center p-6 z-50">
+      <div class="bg-white rounded-2xl p-6 w-full max-w-[340px] shadow-xl text-center">
+        <div class="w-12 h-12 rounded-full mx-auto mb-3.5 flex items-center justify-center bg-[#E8F3EE] text-[#0B7A54] font-bold text-xl">✓</div>
+        <h3 id="feedback-title" class="text-lg font-bold text-[#123524] mb-1">E-mail enviado!</h3>
+        <p id="feedback-message" class="text-[13.5px] text-gray-600 mb-5"></p>
+        <button type="button" id="feedback-close-btn" class="w-full py-2.5 bg-[#0B7A54] text-white font-semibold text-sm rounded-xl cursor-pointer">Voltar ao login</button>
       </div>
     </div>
-
   </main>
 
-  <!-- BLOCO 2: TELA PRINCIPAL DO APLICATIVO -->
-  <div id="app-screen" style="display: none;" class="w-full max-w-[414px] desk:max-w-[1200px] min-h-screen sm:min-h-[800px] desk:min-h-[740px] bg-[#F4F5F4] dark:bg-[#111513] sm:rounded-3xl shadow-2xl overflow-hidden flex-col desk:flex-row relative border border-black/5 dark:border-white/10 transition-colors duration-300">
-
-    <!-- Barra lateral (Apenas pro Computador) -->
-    <aside class="hidden desk:flex desk:w-[260px] shrink-0 bg-white dark:bg-[#171D1A] border-r border-gray-200/90 dark:border-white/10 flex-col justify-between p-6 transition-colors duration-300">
-      <div>
-        <div class="flex items-center justify-between pb-6 border-b border-gray-100 dark:border-white/10">
-          <div class="flex items-center gap-3">
-            <div class="w-11 h-11 rounded-xl bg-[#123524] dark:bg-[#0B7A54] flex items-center justify-center shrink-0 shadow-sm">
-              <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-                <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
-                <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
-                <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
-                <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-                <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
-            <div>
-              <span class="text-xl font-bold tracking-tight text-[#123524] dark:text-white block leading-none">VáDeBike</span>
-              <span class="text-[11px] text-gray-400 font-medium mt-1 block">Mobilidade urbana</span>
-            </div>
-          </div>
-
-          <button 
-            type="button" 
-            onclick="toggleDarkMode()"
-            aria-label="Alternar tema"
-            title="Alternar tema claro/escuro"
-            class="w-9 h-9 rounded-xl bg-[#F4F5F4] dark:bg-[#222B27] hover:bg-gray-200/70 dark:hover:bg-[#2B3631] text-gray-600 dark:text-emerald-300 flex items-center justify-center transition-colors cursor-pointer"
-          >
-            <svg class="theme-icon-moon w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-            </svg>
-            <svg class="theme-icon-sun hidden w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-            </svg>
-          </button>
-        </div>
-
-        <!-- Links de navegação do menu lateral -->
-        <nav class="mt-6 space-y-1.5" aria-label="Menu principal">
-          <button type="button" data-nav="inicio" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-[#0B7A54] bg-[#E8F3EE] transition-colors cursor-pointer">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-              <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-            </svg>
-            <span>Início</span>
-          </button>
-
-          <button type="button" data-nav="bicicletarios" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-            </svg>
-            <span>Bicicletários</span>
-          </button>
-
-          <button type="button" data-nav="conta" class="nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-gray-600 hover:bg-gray-100 transition-colors cursor-pointer">
-            <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-            </svg>
-            <span>Minha conta</span>
-          </button>
-        </nav>
-      </div>
-
-      <!-- Perfil resumido e botão de logout no rodapé da sidebar -->
-      <div class="pt-4 border-t border-gray-100 dark:border-white/10 space-y-3">
-        <button type="button" onclick="openAvatarModal()" title="Alterar foto de perfil" class="w-full flex items-center gap-3 px-2 py-1.5 rounded-xl hover:bg-gray-50 dark:hover:bg-white/5 transition-colors text-left cursor-pointer group">
-          <div id="desktop-user-avatar" class="w-9 h-9 rounded-full bg-[#123524] dark:bg-[#0B7A54] text-white font-bold text-xs flex items-center justify-center shrink-0 overflow-hidden border border-gray-200 dark:border-white/10 group-hover:ring-2 group-hover:ring-[#0B7A54]/30 transition-all">
-            JS
-          </div>
-          <div class="min-w-0 flex-1">
-            <p id="desktop-user-name" class="text-xs font-bold text-gray-800 dark:text-gray-100 truncate">Jorge Silva</p>
-            <p id="desktop-user-email" class="text-[11px] text-gray-500 dark:text-gray-400 truncate">jorgefs@hotmail.com</p>
-          </div>
-        </button>
-
-        <button type="button" onclick="logoutApp()" class="w-full flex items-center justify-center gap-2 px-3.5 py-2.5 rounded-xl border border-gray-200 dark:border-white/10 hover:bg-red-50 dark:hover:bg-red-950/40 hover:text-red-600 dark:hover:text-red-400 hover:border-red-200 dark:hover:border-red-500/30 text-xs font-semibold text-gray-600 dark:text-gray-300 transition-colors cursor-pointer">
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
-          </svg>
-          <span>Sair da conta</span>
-        </button>
-      </div>
-    </aside>
-
-    <!--Área central -->
-    <div class="flex-1 flex flex-col justify-between min-h-screen sm:min-h-[800px] desk:min-h-[740px] overflow-y-auto">
+  <!-- ==================== PAINEL PRINCIPAL DO APP ==================== -->
+  <div id="app-screen" style="display: none;" class="w-full max-w-[414px] min-h-screen sm:min-h-[800px] bg-[#F4F5F4] sm:rounded-3xl shadow-2xl overflow-hidden flex-col justify-between relative border border-black/5">
+    <div class="flex-1 flex flex-col justify-between overflow-y-auto">
       
-      <!-- Cabeçalho Mobile -->
-      <header id="mobile-brand-header" class="desk:hidden px-6 pt-6 pb-3 flex items-center justify-between">
+      <header id="mobile-brand-header" class="px-6 pt-6 pb-3 flex items-center justify-between">
         <div class="flex items-center gap-3">
-          <div class="w-10 h-10 rounded-xl bg-[#123524] dark:bg-[#0B7A54] flex items-center justify-center shrink-0 shadow-sm">
-            <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
-              <circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/>
-              <circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
-              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
-              <path d="M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          <div class="w-10 h-10 rounded-xl bg-[#123524] flex items-center justify-center shrink-0">
+            <svg class="w-6 h-6 text-white" viewBox="0 0 36 36" fill="none">
+              <circle cx="8.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/><circle cx="27.5" cy="25.5" r="4.8" stroke="currentColor" stroke-width="2.4"/><circle cx="22.5" cy="9.5" r="2.3" fill="currentColor"/>
+              <path d="M13.5 19.5L18.5 14.2L22.8 17.8L26.2 17.8M13.5 19.5L17.8 21.5L16.5 26" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
             </svg>
           </div>
-          <span class="text-[20px] font-bold tracking-tight text-[#123524] dark:text-white select-none">
-            VáDeBike
-          </span>
+          <span class="text-[20px] font-bold tracking-tight text-[#123524] select-none">VáDeBike</span>
         </div>
 
-        <div class="flex items-center gap-2">
-          <!-- Pílula com cronômetro quando há uma viagem em andamento -->
-          <button id="mobile-active-ride-pill" type="button" onclick="openActiveRideModal()" class="hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0B7A54] text-white text-[11px] font-semibold shadow-sm cursor-pointer">
-            <span class="w-2 h-2 rounded-full bg-emerald-200 animate-ping"></span>
-            <span id="mobile-ride-timer-mini">00:00</span>
-          </button>
-
-          <button 
-            type="button" 
-            onclick="toggleDarkMode()"
-            aria-label="Alternar tema"
-            class="w-9 h-9 rounded-xl bg-white dark:bg-[#1A211E] border border-gray-200/80 dark:border-white/10 text-gray-700 dark:text-emerald-300 flex items-center justify-center shadow-sm cursor-pointer"
-          >
-            <svg class="theme-icon-moon w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-            </svg>
-            <svg class="theme-icon-sun hidden w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-            </svg>
-          </button>
-        </div>
+        <button id="mobile-active-ride-pill" type="button" onclick="switchTab('inicio')" class="hidden items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#0B7A54] text-white text-[11px] font-semibold cursor-pointer">
+          <span class="w-2 h-2 rounded-full bg-emerald-200 animate-ping"></span>
+          <span id="mobile-ride-timer-mini">00:00</span>
+        </button>
       </header>
 
-      <div class="flex-1 px-6 desk:px-9 pt-2 desk:pt-8 pb-6 flex flex-col">
+      <div class="flex-1 px-6 pt-2 pb-6 flex flex-col">
 
-        <!-- Aba 1: Mapa e Disponibilidade -->
-        <section id="tab-inicio" class="space-y-5 desk:space-y-6">
-          
-          <!-- Banner de viagem ativa (exibido após destravar uma bicicleta) -->
-          <div id="active-ride-banner" class="hidden bg-[#123524] dark:bg-[#0D2B1D] border border-emerald-500/20 text-white rounded-2xl p-4 shadow-md flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div class="flex items-center gap-3">
-              <div class="w-10 h-10 rounded-xl bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center text-emerald-300 shrink-0">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/>
-                </svg>
+        <!-- ABA 1: INÍCIO -->
+        <section id="tab-inicio" class="space-y-5">
+          <!-- Banner de corrida ativa -->
+          <div id="active-ride-banner" class="hidden bg-[#123524] text-white rounded-2xl p-4 shadow-md space-y-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-bold uppercase tracking-wider text-emerald-300">Viagem em andamento</span>
+                <span id="active-bike-badge" class="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-white/15">Bike #04</span>
               </div>
-              <div>
-                <div class="flex items-center gap-2">
-                  <span class="text-xs font-bold uppercase tracking-wider text-emerald-300">Viagem em andamento</span>
-                  <span id="active-bike-badge" class="px-2 py-0.5 text-[10px] font-semibold rounded-full bg-white/15 text-white">Bike #04</span>
-                </div>
-                <p id="active-ride-station-label" class="text-xs text-emerald-100/85 mt-0.5">Retirada em Praça Central</p>
-              </div>
+              <p id="active-ride-station-label" class="text-xs text-emerald-100/85 mt-0.5">Retirada em Praça Central</p>
             </div>
-
-            <div class="flex items-center justify-between sm:justify-end gap-3 pt-2 sm:pt-0 border-t sm:border-t-0 border-white/10">
-              <div class="text-left sm:text-right">
+            <div class="flex items-center justify-between pt-2 border-t border-white/10">
+              <div>
                 <span class="text-[10px] text-emerald-200/80 block">Tempo decorrido</span>
-                <span id="active-ride-timer" class="text-lg font-extrabold font-mono tracking-tight text-white">00:00</span>
+                <span id="active-ride-timer" class="text-lg font-extrabold font-mono">00:00</span>
               </div>
-              <button type="button" onclick="endActiveRide()" class="px-3.5 py-2 rounded-xl bg-white text-[#123524] hover:bg-emerald-50 text-xs font-bold transition-colors cursor-pointer">
-                Devolver bike
-              </button>
+              <button type="button" onclick="endActiveRide()" class="px-3.5 py-2 rounded-xl bg-white text-[#123524] text-xs font-bold cursor-pointer">Devolver bike</button>
             </div>
           </div>
 
-          <!-- Mensagem inicial -->
-          <div class="flex flex-col desk:flex-row desk:items-end justify-between gap-2">
+          <div>
+            <h1 class="text-[24px] font-extrabold text-[#111827] tracking-tight">Bom dia!</h1>
+            <p class="text-[13.5px] text-[#6B7280] mt-0.5">Encontre uma bicicleta e siga seu caminho.</p>
+          </div>
+
+          <!-- Mapa -->
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <h2 class="text-[14.5px] font-bold text-[#111827]">Bicicletários perto de você</h2>
+              <span class="text-[11.5px] font-medium text-[#0B7A54]">Toque em um marcador</span>
+            </div>
+
+            <div class="relative w-full h-[210px] rounded-2xl bg-[#E6E8E6] overflow-hidden border border-gray-200 shadow-inner select-none">
+              <svg class="w-full h-full object-cover" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice">
+                <rect width="400" height="240" fill="#E5E7E5"/>
+                <rect x="18" y="135" width="76" height="44" rx="8" fill="#C4D8CC"/><rect x="148" y="34" width="66" height="48" rx="8" fill="#BDD3C6"/><rect x="285" y="18" width="68" height="58" rx="8" fill="#BDD3C6"/><rect x="275" y="145" width="95" height="68" rx="10" fill="#C7DBD0"/>
+                <path d="M-20 112 L420 82M-20 195 L420 26M95 -10 L355 250M122 -10 L138 250M256 -10 L242 250" stroke="#F8F9F8" stroke-width="10" stroke-linecap="round"/>
+                <circle cx="195" cy="122" r="14" fill="#0B7A54" fill-opacity="0.15"/><circle cx="195" cy="122" r="5" fill="#2563EB" stroke="#FFF" stroke-width="2"/>
+              </svg>
+
+              <button type="button" onclick="switchTab('bicicletarios')" class="absolute top-3.5 left-3.5 px-3.5 py-1.5 bg-white text-[#1F2937] text-[12px] font-semibold rounded-full shadow-sm border border-gray-200 cursor-pointer">Ver mapa completo</button>
+              <button type="button" onclick="openStationModal('praca-central')" style="top:48%;left:26%" class="-translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 rounded-full bg-[#145338] text-white font-bold text-[13px] border-2 border-white shadow-md cursor-pointer">8</button>
+              <button type="button" onclick="openStationModal('estacao-jardim')" style="top:23%;left:78%" class="-translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 rounded-full bg-[#145338] text-white font-bold text-[13px] border-2 border-white shadow-md cursor-pointer">12</button>
+              <button type="button" onclick="openStationModal('parque-flores')" style="top:66%;left:71%" class="-translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 rounded-full bg-[#145338] text-white font-bold text-[13px] border-2 border-white shadow-md cursor-pointer">5</button>
+            </div>
+          </div>
+
+          <!-- Lista gerada automaticamente -->
+          <div class="space-y-2.5">
             <div>
-              <h1 class="text-[24px] desk:text-[28px] font-extrabold text-[#111827] dark:text-white tracking-tight leading-tight">
-                Bom dia!
-              </h1>
-              <p class="text-[13.5px] desk:text-[14.5px] text-[#6B7280] dark:text-gray-400 mt-0.5">
-                Encontre uma bicicleta e siga seu caminho.
-              </p>
+              <h2 class="text-[15px] font-bold text-[#111827]">Disponibilidade</h2>
+              <p class="text-[12px] text-[#6B7280]">Bicicletas disponíveis nos locais próximos</p>
             </div>
-            <div class="hidden desk:flex items-center gap-2 text-xs text-gray-500 dark:text-gray-300 bg-white dark:bg-[#19201D] px-3.5 py-2 rounded-xl border border-gray-200/80 dark:border-white/10">
-              <span class="w-2 h-2 rounded-full bg-[#0B7A54] dark:bg-emerald-400"></span>
-              <span>3 estações ativas próximas a você</span>
-            </div>
-          </div>
-
-          <div class="grid grid-cols-1 desk:grid-cols-12 gap-6 items-start">
-            
-            <!-- Mapa Interativo -->
-            <div class="desk:col-span-7 space-y-2.5">
-              <div class="flex items-center justify-between">
-                <h2 class="text-[14.5px] desk:text-[15.5px] font-bold text-[#111827] dark:text-gray-100">
-                  Bicicletários perto de você
-                </h2>
-                <span id="selected-pin-hint" class="text-[11.5px] font-medium text-[#0B7A54] dark:text-emerald-400">
-                  Toque em um marcador
-                </span>
-              </div>
-
-              <div class="relative w-full h-[215px] desk:h-[360px] rounded-2xl bg-[#E6E8E6] dark:bg-[#19201D] overflow-hidden border border-gray-200/90 dark:border-white/10 shadow-inner select-none">
-                <!-- Mapa apenas demonstrativo -->
-                <svg id="fictional-map-svg" class="w-full h-full object-cover transition-transform duration-300 origin-center dark:brightness-[0.45] dark:contrast-[1.15] dark:hue-rotate-[15deg]" viewBox="0 0 400 240" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                  <rect width="400" height="240" fill="#E5E7E5"/>
-                  <rect x="18" y="135" width="76" height="44" rx="8" fill="#C4D8CC"/>
-                  <rect x="148" y="34" width="66" height="48" rx="8" fill="#BDD3C6"/>
-                  <rect x="285" y="18" width="68" height="58" rx="8" fill="#BDD3C6"/>
-                  <rect x="275" y="145" width="95" height="68" rx="10" fill="#C7DBD0"/>
-                  <rect x="30" y="32" width="78" height="52" rx="8" fill="#DCE0DD"/>
-                  <rect x="145" y="168" width="88" height="52" rx="8" fill="#DCE0DD"/>
-                  <path d="M-20 112 L420 82" stroke="#F8F9F8" stroke-width="11" stroke-linecap="round"/>
-                  <path d="M-20 195 L420 26" stroke="#F8F9F8" stroke-width="12" stroke-linecap="round"/>
-                  <path d="M95 -10 L355 250" stroke="#F8F9F8" stroke-width="10" stroke-linecap="round"/>
-                  <path d="M122 -10 L138 250" stroke="#F8F9F8" stroke-width="7" stroke-linecap="round"/>
-                  <path d="M256 -10 L242 250" stroke="#F8F9F8" stroke-width="8" stroke-linecap="round"/>
-                  <path d="M-10 56 L145 78" stroke="#F8F9F8" stroke-width="6" stroke-linecap="round"/>
-                  <circle cx="195" cy="122" r="14" fill="#0B7A54" fill-opacity="0.14"/>
-                  <circle cx="195" cy="122" r="5" fill="#2563EB" stroke="#FFFFFF" stroke-width="2"/>
-                </svg>
-
-                <button 
-                  type="button" 
-                  onclick="switchTab('bicicletarios')"
-                  class="absolute top-3.5 left-3.5 px-3.5 py-1.5 bg-white dark:bg-[#1E2622] hover:bg-gray-50 dark:hover:bg-[#26312C] active:scale-95 text-[#1F2937] dark:text-gray-100 text-[12px] font-semibold rounded-full shadow-sm border border-gray-200/80 dark:border-white/15 transition-all cursor-pointer z-10"
-                >
-                  Ver mapa completo
-                </button>
-
-                <!-- Marcadores de bicicletarios e Numero e bicicletas disponiveis -->
-                <button 
-                  type="button" 
-                  onclick="openStationModal('praca-central')"
-                  aria-label="Praça Central: 8 bicicletas disponíveis"
-                  style="top: 48%; left: 26%;"
-                  class="map-pin -translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 desk:w-10 desk:h-10 rounded-full bg-[#145338] dark:bg-[#0B7A54] hover:bg-[#0B7A54] dark:hover:bg-emerald-500 text-white font-bold text-[13px] border-2 border-white dark:border-emerald-200 shadow-md flex items-center justify-center transition-transform hover:scale-110 active:scale-95 cursor-pointer z-10"
-                >
-                  8
-                </button>
-
-                <button 
-                  type="button" 
-                  onclick="openStationModal('estacao-jardim')"
-                  aria-label="Estação Jardim: 12 bicicletas disponíveis"
-                  style="top: 23%; left: 78%;"
-                  class="map-pin -translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 desk:w-10 desk:h-10 rounded-full bg-[#145338] dark:bg-[#0B7A54] hover:bg-[#0B7A54] dark:hover:bg-emerald-500 text-white font-bold text-[13px] border-2 border-white dark:border-emerald-200 shadow-md flex items-center justify-center transition-transform hover:scale-110 active:scale-95 cursor-pointer z-10"
-                >
-                  12
-                </button>
-
-                <button 
-                  type="button" 
-                  onclick="openStationModal('parque-flores')"
-                  aria-label="Parque das Flores: 5 bicicletas disponíveis"
-                  style="top: 66%; left: 71%;"
-                  class="map-pin -translate-x-1/2 -translate-y-1/2 absolute w-9 h-9 desk:w-10 desk:h-10 rounded-full bg-[#145338] dark:bg-[#0B7A54] hover:bg-[#0B7A54] dark:hover:bg-emerald-500 text-white font-bold text-[13px] border-2 border-white dark:border-emerald-200 shadow-md flex items-center justify-center transition-transform hover:scale-110 active:scale-95 cursor-pointer z-10"
-                >
-                  5
-                </button>
-              </div>
-            </div>
-
-            <!-- Lista de bicicletarios e disponibilidade de bicvicletas -->
-            <div class="desk:col-span-5 space-y-3">
-              <div>
-                <h2 class="text-[15px] desk:text-[16px] font-bold text-[#111827] dark:text-gray-100">
-                  Disponibilidade
-                </h2>
-                <p class="text-[12px] desk:text-[12.5px] text-[#6B7280] dark:text-gray-400">
-                  Bicicletas disponíveis nos locais próximos
-                </p>
-              </div>
-
-              <div id="home-stations-list" class="space-y-2.5">
-                <button 
-                  type="button"
-                  onclick="openStationModal('praca-central')"
-                  class="w-full text-left bg-white dark:bg-[#19201D] hover:bg-[#F9FBFA] dark:hover:bg-[#1F2824] border border-gray-200/90 dark:border-white/10 hover:border-[#0B7A54]/40 dark:hover:border-emerald-400/40 rounded-xl px-4 py-3.5 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all cursor-pointer group"
-                >
-                  <div class="flex items-center gap-3.5">
-                    <div class="text-[#0B7A54] dark:text-emerald-400 shrink-0">
-                      <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                        <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                        <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5M13.5 11H17M21.5 11H24.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p class="text-[14px] font-bold text-[#1F2937] dark:text-gray-100 group-hover:text-[#123524] dark:group-hover:text-emerald-300 transition-colors">
-                        Praça Central
-                      </p>
-                      <p class="text-[11.5px] text-gray-500 dark:text-gray-400 mt-0.5">
-                        A 250 m de você
-                      </p>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-[20px] font-extrabold text-[#0B7A54] dark:text-emerald-400 leading-none block">8</span>
-                    <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
-                  </div>
-                </button>
-
-                <button 
-                  type="button"
-                  onclick="openStationModal('parque-flores')"
-                  class="w-full text-left bg-white dark:bg-[#19201D] hover:bg-[#F9FBFA] dark:hover:bg-[#1F2824] border border-gray-200/90 dark:border-white/10 hover:border-[#0B7A54]/40 dark:hover:border-emerald-400/40 rounded-xl px-4 py-3.5 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all cursor-pointer group"
-                >
-                  <div class="flex items-center gap-3.5">
-                    <div class="text-[#0B7A54] dark:text-emerald-400 shrink-0">
-                      <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                        <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                        <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5M13.5 11H17M21.5 11H24.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p class="text-[14px] font-bold text-[#1F2937] dark:text-gray-100 group-hover:text-[#123524] dark:group-hover:text-emerald-300 transition-colors">
-                        Parque das Flores
-                      </p>
-                      <p class="text-[11.5px] text-gray-500 dark:text-gray-400 mt-0.5">
-                        A 600 m de você
-                      </p>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-[20px] font-extrabold text-[#0B7A54] dark:text-emerald-400 leading-none block">5</span>
-                    <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
-                  </div>
-                </button>
-
-                <button 
-                  type="button"
-                  onclick="openStationModal('estacao-jardim')"
-                  class="w-full text-left bg-white dark:bg-[#19201D] hover:bg-[#F9FBFA] dark:hover:bg-[#1F2824] border border-gray-200/90 dark:border-white/10 hover:border-[#0B7A54]/40 dark:hover:border-emerald-400/40 rounded-xl px-4 py-3.5 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.03)] transition-all cursor-pointer group"
-                >
-                  <div class="flex items-center gap-3.5">
-                    <div class="text-[#0B7A54] dark:text-emerald-400 shrink-0">
-                      <svg class="w-7 h-7" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                        <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                        <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5M13.5 11H17M21.5 11H24.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-                      </svg>
-                    </div>
-                    <div>
-                      <p class="text-[14px] font-bold text-[#1F2937] dark:text-gray-100 group-hover:text-[#123524] dark:group-hover:text-emerald-300 transition-colors">
-                        Estação Jardim
-                      </p>
-                      <p class="text-[11.5px] text-gray-500 dark:text-gray-400 mt-0.5">
-                        A 950 m de você
-                      </p>
-                    </div>
-                  </div>
-                  <div class="text-right">
-                    <span class="text-[20px] font-extrabold text-[#0B7A54] dark:text-emerald-400 leading-none block">12</span>
-                    <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
-                  </div>
-                </button>
-              </div>
-            </div>
-
+            <div id="home-stations-list" class="space-y-2.5"></div>
           </div>
         </section>
 
-        <!-- Aba 2: Bicicletario -->
-        <section id="tab-bicicletarios" class="hidden space-y-5">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
-            <div>
-              <h1 class="text-[22px] desk:text-[26px] font-extrabold text-[#111827] dark:text-white tracking-tight">
-                Bicicletários
-              </h1>
-              <p class="text-[13px] text-gray-500 dark:text-gray-400">
-                Consulte vagas livres, modelos elétricos e retire sua bike.
-              </p>
-            </div>
-
-            <!-- Campo de busca que filtra a lista -->
-            <div class="relative w-full sm:w-64">
-              <span class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400">
-                <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-                </svg>
-              </span>
-              <input 
-                type="text" 
-                id="station-search-input"
-                placeholder="Buscar estação ou bairro..."
-                class="w-full pl-9 pr-3.5 py-2 bg-white dark:bg-[#19201D] border border-gray-200 dark:border-white/10 rounded-xl text-xs text-gray-800 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-500 focus:outline-none focus:border-[#0B7A54]"
-              />
-            </div>
+        <!-- ABA 2: BICICLETÁRIOS -->
+        <section id="tab-bicicletarios" class="hidden space-y-4">
+          <div>
+            <h1 class="text-[22px] font-extrabold text-[#111827]">Bicicletários</h1>
+            <p class="text-[13px] text-gray-500">Consulte vagas livres e retire sua bike.</p>
           </div>
 
-          <div class="relative w-full h-[220px] desk:h-[260px] rounded-2xl bg-[#E6E8E6] dark:bg-[#19201D] overflow-hidden border border-gray-200 dark:border-white/10 shadow-inner">
-            <svg class="w-full h-full object-cover dark:brightness-[0.45] dark:contrast-[1.15] dark:hue-rotate-[15deg]" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
+          <input type="text" id="station-search-input" placeholder="🔍 Buscar estação ou bairro..." class="w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-xs focus:outline-none focus:border-[#0B7A54]"/>
+
+          <div class="relative w-full h-[190px] rounded-2xl bg-[#E6E8E6] overflow-hidden border border-gray-200 shadow-inner">
+            <svg class="w-full h-full object-cover" viewBox="0 0 600 260" preserveAspectRatio="xMidYMid slice">
               <rect width="600" height="260" fill="#E5E7E5"/>
-              <rect x="25" y="140" width="110" height="55" rx="10" fill="#C4D8CC"/>
-              <rect x="220" y="30" width="95" height="60" rx="10" fill="#BDD3C6"/>
-              <rect x="420" y="20" width="115" height="72" rx="10" fill="#BDD3C6"/>
-              <rect x="410" y="155" width="140" height="75" rx="12" fill="#C7DBD0"/>
-              <path d="M-20 120 L620 85" stroke="#F8F9F8" stroke-width="13" stroke-linecap="round"/>
-              <path d="M-20 215 L620 25" stroke="#F8F9F8" stroke-width="14" stroke-linecap="round"/>
-              <path d="M140 -10 L480 270" stroke="#F8F9F8" stroke-width="11" stroke-linecap="round"/>
-              <path d="M340 -10 L320 270" stroke="#F8F9F8" stroke-width="9" stroke-linecap="round"/>
+              <rect x="25" y="140" width="110" height="55" rx="10" fill="#C4D8CC"/><rect x="420" y="20" width="115" height="72" rx="10" fill="#BDD3C6"/><rect x="410" y="155" width="140" height="75" rx="12" fill="#C7DBD0"/>
+              <path d="M-20 120 L620 85M-20 215 L620 25M140 -10 L480 270M340 -10 L320 270" stroke="#F8F9F8" stroke-width="12" stroke-linecap="round"/>
             </svg>
-
-            <button type="button" onclick="openStationModal('praca-central')" style="top: 48%; left: 24%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#145338] dark:bg-[#0B7A54] text-white text-xs font-bold border-2 border-white dark:border-emerald-200 shadow-md hover:scale-105 transition-transform cursor-pointer">
-              Praça Central • 8
-            </button>
-            <button type="button" onclick="openStationModal('estacao-jardim')" style="top: 26%; left: 74%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#145338] dark:bg-[#0B7A54] text-white text-xs font-bold border-2 border-white dark:border-emerald-200 shadow-md hover:scale-105 transition-transform cursor-pointer">
-              Estação Jardim • 12
-            </button>
-            <button type="button" onclick="openStationModal('parque-flores')" style="top: 70%; left: 66%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#145338] dark:bg-[#0B7A54] text-white text-xs font-bold border-2 border-white dark:border-emerald-200 shadow-md hover:scale-105 transition-transform cursor-pointer">
-              Parque das Flores • 5
-            </button>
-            <button type="button" onclick="openStationModal('orla-sul')" style="top: 32%; left: 45%;" class="-translate-x-1/2 -translate-y-1/2 absolute px-3 py-1.5 rounded-full bg-[#0B7A54] dark:bg-emerald-600 text-white text-xs font-bold border-2 border-white dark:border-emerald-200 shadow-md hover:scale-105 transition-transform cursor-pointer">
-              Ciclovia Orla Sul • 9
-            </button>
+            <button type="button" onclick="openStationModal('praca-central')" style="top:48%;left:24%" class="-translate-x-1/2 -translate-y-1/2 absolute px-2.5 py-1 rounded-full bg-[#145338] text-white text-[11px] font-bold border-2 border-white shadow cursor-pointer">Praça Central • 8</button>
+            <button type="button" onclick="openStationModal('estacao-jardim')" style="top:26%;left:74%" class="-translate-x-1/2 -translate-y-1/2 absolute px-2.5 py-1 rounded-full bg-[#145338] text-white text-[11px] font-bold border-2 border-white shadow cursor-pointer">Estação Jardim • 12</button>
+            <button type="button" onclick="openStationModal('parque-flores')" style="top:70%;left:66%" class="-translate-x-1/2 -translate-y-1/2 absolute px-2.5 py-1 rounded-full bg-[#145338] text-white text-[11px] font-bold border-2 border-white shadow cursor-pointer">Parque Flores • 5</button>
+            <button type="button" onclick="openStationModal('orla-sul')" style="top:32%;left:45%" class="-translate-x-1/2 -translate-y-1/2 absolute px-2.5 py-1 rounded-full bg-[#0B7A54] text-white text-[11px] font-bold border-2 border-white shadow cursor-pointer">Orla Sul • 9</button>
           </div>
 
-          <!-- Lista de estações preenchida automaticamente pelo JavaScript -->
-          <div id="all-stations-grid" class="grid grid-cols-1 desk:grid-cols-2 gap-3"></div>
+          <div id="all-stations-grid" class="space-y-2.5"></div>
         </section>
 
-        <!-- Aba 3: Minha conta -->
-        <section id="tab-conta" class="hidden flex-1 flex flex-col justify-between max-w-2xl w-full desk:mx-auto pt-3 desk:pt-0">
-          
-          <div class="space-y-6">
-            <div class="flex items-center justify-between gap-2.5">
-              <div class="flex items-start gap-2.5">
-                <button 
-                  type="button" 
-                  onclick="switchTab('inicio')" 
-                  aria-label="Voltar para o início"
-                  class="mt-0.5 p-1 -ml-1 text-[#111827] dark:text-gray-200 hover:text-[#0B7A54] rounded-lg transition-colors cursor-pointer"
-                >
-                  <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-                    <polyline points="15 18 9 12 15 6"/>
-                  </svg>
-                </button>
-                <div>
-                  <h1 class="text-[20px] desk:text-[24px] font-extrabold text-[#111827] dark:text-white tracking-tight leading-tight">
-                    Minha Conta
-                  </h1>
-                  <p class="text-[12.5px] desk:text-[13.5px] text-gray-500 dark:text-gray-400 mt-0.5">
-                    Consulte e gerencie suas informações.
-                  </p>
+        <!-- ABA 3: MINHA CONTA -->
+        <section id="tab-conta" class="hidden flex-1 flex flex-col justify-between pt-2">
+          <div class="space-y-5">
+            <div class="flex items-center gap-2">
+              <button type="button" onclick="switchTab('inicio')" class="p-1 text-[#111827] hover:text-[#0B7A54] font-bold cursor-pointer">←</button>
+              <div>
+                <h1 class="text-[20px] font-extrabold text-[#111827]">Minha Conta</h1>
+                <p class="text-[12.5px] text-gray-500">Consulte e gerencie suas informações.</p>
+              </div>
+            </div>
+
+            <!-- Avatar -->
+            <div class="flex flex-col items-center">
+              <button type="button" onclick="openAvatarModal()" class="relative group cursor-pointer">
+                <div class="w-20 h-20 rounded-full bg-[#DCE9E2] border-2 border-[#C6DDD1] flex items-center justify-center text-[#123524] overflow-hidden">
+                  <svg id="profile-default-svg" class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20c1.6-3.8 4.4-5.5 7-5.5s5.4 1.7 7 5.5"/></svg>
+                  <img id="profile-avatar-img" src="" alt="Avatar" class="hidden w-full h-full object-cover"/>
                 </div>
+                <span class="absolute -bottom-0.5 -right-0.5 w-7 h-7 rounded-full bg-[#0B7A54] text-white border-2 border-[#F4F5F4] flex items-center justify-center text-xs shadow">📷</span>
+              </button>
+              <button type="button" onclick="openAvatarModal()" class="mt-1.5 text-[11px] font-semibold text-[#0B7A54] hover:underline cursor-pointer">Alterar foto de perfil</button>
+            </div>
+
+            <!-- Dados Pessoais -->
+            <div class="space-y-3">
+              <div class="flex items-center justify-between">
+                <h2 class="text-[14.5px] font-bold text-[#111827]">Dados pessoais</h2>
+                <span id="profile-edit-badge" class="hidden text-[11px] font-semibold text-[#0B7A54] bg-[#E8F3EE] px-2.5 py-0.5 rounded-full">Editando</span>
               </div>
 
-              <button 
-                type="button" 
-                onclick="toggleDarkMode()"
-                class="inline-flex items-center gap-2 px-3 py-1.5 rounded-xl bg-white dark:bg-[#19201D] border border-gray-200 dark:border-white/10 text-xs font-semibold text-gray-700 dark:text-emerald-300 shadow-sm cursor-pointer"
-              >
-                <svg class="theme-icon-moon w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/>
-                </svg>
-                <svg class="theme-icon-sun hidden w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/>
-                </svg>
-                <span class="theme-label-text">Tema escuro</span>
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-gray-500 mb-1">Nome completo</label>
+                <input type="text" id="profile-name-input" value="Jorge Silva" readonly class="profile-field w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-[13.5px] font-medium focus:outline-none"/>
+              </div>
+
+              <div>
+                <label class="block text-[10px] font-bold uppercase text-gray-500 mb-1">E-mail</label>
+                <input type="email" id="profile-email-input" value="jorgefs@hotmail.com" readonly class="profile-field w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-[13.5px] font-medium focus:outline-none"/>
+              </div>
+
+              <div>
+                <div class="flex items-center justify-between mb-1">
+                  <label id="profile-doc-label" class="text-[10px] font-bold uppercase text-gray-500">CPF / Passaporte</label>
+                  <span id="profile-passport-verified-badge" class="hidden text-[10px] font-bold text-[#0B7A54]">✓ Passaporte verificado</span>
+                </div>
+                <input type="text" id="profile-doc-input" value="678.690.048-69" readonly class="profile-field w-full px-3.5 py-2.5 bg-white border border-gray-200 rounded-xl text-[13.5px] font-medium focus:outline-none"/>
+              </div>
+            </div>
+
+            <!-- Segurança e Pagamento -->
+            <div class="space-y-2.5">
+              <h2 class="text-[14.5px] font-bold text-[#111827]">Segurança e pagamento</h2>
+              <button type="button" onclick="openAccountSubModal('password')" class="w-full text-left bg-white border border-gray-200 rounded-xl px-3.5 py-3 flex items-center justify-between cursor-pointer">
+                <div><p class="text-[13px] font-bold text-[#1F2937]">Alterar senha</p><p class="text-[11px] text-gray-400">Atualize sua senha de acesso</p></div>
+                <span class="text-gray-400">›</span>
+              </button>
+              <button type="button" onclick="openAccountSubModal('card')" class="w-full text-left bg-white border border-gray-200 rounded-xl px-3.5 py-3 flex items-center justify-between cursor-pointer">
+                <div><p class="text-[13px] font-bold text-[#1F2937]">Cartão de crédito</p><p id="saved-card-subtitle" class="text-[11px] text-gray-400">Adicionar ou gerenciar cartão</p></div>
+                <span class="text-gray-400">›</span>
               </button>
             </div>
 
-            <!-- Avatar circular clicável para fazer upload de foto ou usar as genericas -->
-            <div class="flex flex-col items-center pt-1 pb-1">
-              <button 
-                type="button" 
-                onclick="openAvatarModal()"
-                aria-label="Alterar foto de perfil"
-                class="relative group cursor-pointer focus:outline-none"
-              >
-                <div id="profile-avatar-circle" class="w-[82px] h-[82px] rounded-full bg-[#DCE9E2] dark:bg-[#1C2A24] border-2 border-[#C6DDD1] dark:border-emerald-500/30 group-hover:border-[#0B7A54] flex items-center justify-center text-[#123524] dark:text-emerald-300 shadow-sm overflow-hidden transition-all">
-                  <svg id="profile-default-svg" class="w-9 h-9" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="8" r="4"/>
-                    <path d="M5 20c1.6-3.8 4.4-5.5 7-5.5s5.4 1.7 7 5.5"/>
-                  </svg>
-                  <img id="profile-avatar-img" src="" alt="Foto de perfil" class="hidden w-full h-full object-cover" />
-                </div>
-
-                <span class="absolute -bottom-0.5 -right-0.5 w-7 h-7 rounded-full bg-[#0B7A54] group-hover:bg-[#086042] text-white border-2 border-[#F4F5F4] dark:border-[#111513] flex items-center justify-center shadow-md transition-transform group-hover:scale-105">
-                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/>
-                    <circle cx="12" cy="13" r="4"/>
-                  </svg>
-                </span>
-              </button>
-              <button type="button" onclick="openAvatarModal()" class="mt-2 text-[11px] font-semibold text-[#0B7A54] dark:text-emerald-400 hover:underline cursor-pointer">
-                Alterar foto de perfil
-              </button>
-            </div>
-
-            <div class="grid grid-cols-1 desk:grid-cols-12 gap-6 items-start">
-              
-              <!-- Campos de dados pessoais (bloqueados por padrão com 'readonly' (linha 1157) até clicar em Alterar) -->
-              <div class="desk:col-span-7 space-y-3.5">
-                <div class="flex items-center justify-between">
-                  <h2 class="text-[14.5px] font-bold text-[#111827] dark:text-gray-100">
-                    Dados pessoais
-                  </h2>
-                  <span id="profile-edit-badge" class="hidden text-[11px] font-semibold text-[#0B7A54] dark:text-emerald-300 bg-[#E8F3EE] dark:bg-emerald-950 px-2.5 py-0.5 rounded-full">
-                    Modo de edição ativo
-                  </span>
-                </div>
-
-                <div>
-                  <label for="profile-name-input" class="block text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-                    NOME COMPLETO
-                  </label>
-                  <input 
-                    type="text" 
-                    id="profile-name-input" 
-                    value="Jorge Silva"
-                    readonly
-                    class="profile-field w-full px-3.5 py-2.5 bg-white dark:bg-[#19201D] border border-gray-200/90 dark:border-white/10 rounded-xl text-[13.5px] font-medium text-[#1F2937] dark:text-gray-100 focus:outline-none transition-all"
-                  />
-                </div>
-
-                <div>
-                  <label for="profile-email-input" class="block text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400 mb-1">
-                    E-MAIL
-                  </label>
-                  <input 
-                    type="email" 
-                    id="profile-email-input" 
-                    value="jorgefs@hotmail.com"
-                    readonly
-                    class="profile-field w-full px-3.5 py-2.5 bg-white dark:bg-[#19201D] border border-gray-200/90 dark:border-white/10 rounded-xl text-[13.5px] font-medium text-[#1F2937] dark:text-gray-100 focus:outline-none transition-all"
-                  />
-                </div>
-
-                <div>
-                  <div class="flex items-center justify-between mb-1">
-                    <label for="profile-doc-input" id="profile-doc-label" class="block text-[10px] font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">
-                      CPF / PASSAPORTE
-                    </label>
-                    <!-- Selo exibido caso o cadastro tenha sido feito via verificação de Passaporte -->
-                    <span id="profile-passport-verified-badge" class="hidden inline-flex items-center gap-1 text-[10px] font-bold text-[#0B7A54] dark:text-emerald-400">
-                      <svg class="w-3 h-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-                      Passaporte verificado
-                    </span>
-                  </div>
-                  <input 
-                    type="text" 
-                    id="profile-doc-input" 
-                    value="678.690.048-69"
-                    readonly
-                    class="profile-field w-full px-3.5 py-2.5 bg-white dark:bg-[#19201D] border border-gray-200/90 dark:border-white/10 rounded-xl text-[13.5px] font-medium text-[#1F2937] dark:text-gray-100 focus:outline-none transition-all"
-                  />
-                </div>
-              </div>
-
-              <!-- Opções de Segurança e Cartão -->
-              <div class="desk:col-span-5 space-y-3">
-                <h2 class="text-[14.5px] font-bold text-[#111827] dark:text-gray-100">
-                  Segurança e pagamento
-                </h2>
-
-                <div class="space-y-2.5">
-                  <button 
-                    type="button"
-                    onclick="openAccountSubModal('password')"
-                    class="w-full text-left bg-white dark:bg-[#19201D] hover:bg-[#F9FBFA] dark:hover:bg-[#1F2824] border border-gray-200/90 dark:border-white/10 hover:border-[#0B7A54]/40 dark:hover:border-emerald-400/40 rounded-xl px-3.5 py-3 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 rounded-lg bg-[#E8F3EE] dark:bg-emerald-950/80 text-[#0B7A54] dark:text-emerald-400 flex items-center justify-center shrink-0">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
-                          <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <p class="text-[13px] font-bold text-[#1F2937] dark:text-gray-100 group-hover:text-[#123524] dark:group-hover:text-emerald-300">
-                          Alterar senha
-                        </p>
-                        <p class="text-[11px] text-gray-400 mt-0.5">
-                          Atualize sua senha de acesso
-                        </p>
-                      </div>
-                    </div>
-                    <svg class="w-4 h-4 text-gray-400 group-hover:text-[#0B7A54] dark:group-hover:text-emerald-400 transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="9 18 15 12 9 6"/>
-                    </svg>
-                  </button>
-
-                  <button 
-                    type="button"
-                    onclick="openAccountSubModal('card')"
-                    class="w-full text-left bg-white dark:bg-[#19201D] hover:bg-[#F9FBFA] dark:hover:bg-[#1F2824] border border-gray-200/90 dark:border-white/10 hover:border-[#0B7A54]/40 dark:hover:border-emerald-400/40 rounded-xl px-3.5 py-3 flex items-center justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)] transition-all cursor-pointer group"
-                  >
-                    <div class="flex items-center gap-3">
-                      <div class="w-8 h-8 rounded-lg bg-[#E8F3EE] dark:bg-emerald-950/80 text-[#0B7A54] dark:text-emerald-400 flex items-center justify-center shrink-0">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                          <rect x="2" y="5" width="20" height="14" rx="2"/>
-                          <line x1="2" y1="10" x2="22" y2="10"/>
-                        </svg>
-                      </div>
-                      <div>
-                        <p class="text-[13px] font-bold text-[#1F2937] dark:text-gray-100 group-hover:text-[#123524] dark:group-hover:text-emerald-300">
-                          Cartão de crédito
-                        </p>
-                        <p id="saved-card-subtitle" class="text-[11px] text-gray-400 mt-0.5">
-                          Adicionar ou gerenciar cartão
-                        </p>
-                      </div>
-                    </div>
-                    <svg class="w-4 h-4 text-gray-400 group-hover:text-[#0B7A54] dark:group-hover:text-emerald-400 transition-colors shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                      <polyline points="9 18 15 12 9 6"/>
-                    </svg>
-                  </button>
-                </div>
-              </div>
-
-            </div>
-
-            <!-- Botão para alternar entre editar e salvar os dados -->
-            <div class="pt-1 space-y-2.5">
-              <button 
-                type="button" 
-                id="toggle-edit-profile-btn"
-                onclick="toggleProfileEdit()"
-                class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] active:scale-[0.99] text-white font-semibold text-[14px] rounded-xl shadow-sm transition-all cursor-pointer"
-              >
-                Alterar dados cadastrais
-              </button>
-
-              <p id="profile-save-feedback" class="hidden text-center text-xs font-semibold text-[#0B7A54] dark:text-emerald-400">
-                Dados cadastrais atualizados com sucesso!
-              </p>
-
-              <div class="text-center pt-1">
-                <button 
-                  type="button" 
-                  onclick="logoutApp()" 
-                  class="inline-flex items-center gap-1.5 text-[11.5px] font-medium text-gray-400 hover:text-red-600 dark:hover:text-red-400 transition-colors cursor-pointer"
-                >
-                  <svg class="w-3.5 h-3.5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                    <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
-                  </svg>
-                  <span>Encerrar sessão</span>
-                </button>
+            <div class="space-y-2.5 pt-1">
+              <button type="button" id="toggle-edit-profile-btn" onclick="toggleProfileEdit()" class="w-full py-3.5 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-[14px] rounded-xl shadow-sm cursor-pointer">Alterar dados cadastrais</button>
+              <p id="profile-save-feedback" class="hidden text-center text-xs font-semibold text-[#0B7A54]">Dados cadastrais atualizados!</p>
+              <div class="text-center">
+                <button type="button" onclick="logoutApp()" class="text-[11.5px] font-medium text-gray-400 hover:text-red-600 cursor-pointer">Encerrar sessão</button>
               </div>
             </div>
           </div>
-
-          <div class="pt-6 pb-1 text-center select-none">
-            <span class="text-[11px] font-normal text-gray-400 dark:text-gray-500 tracking-wide">
-              VáDeBike • Um jeito mais leve de ir.
-            </span>
-          </div>
-
+          <span class="pt-4 text-center text-[11px] text-gray-400 select-none">VáDeBike • Um jeito mais leve de ir.</span>
         </section>
 
       </div>
 
-      <!-- Barra de navegação inferior no Mobile -->
-      <nav class="desk:hidden bg-white dark:bg-[#171D1A] border-t border-gray-200/90 dark:border-white/10 px-4 py-2.5 flex items-center justify-around shrink-0 transition-colors duration-300" aria-label="Navegação inferior">
-        <button type="button" data-nav="inicio" class="nav-btn flex flex-col items-center gap-1 px-4 py-1 text-[#0B7A54] font-semibold cursor-pointer">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
-            <path d="m3 9 9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/>
-          </svg>
-          <span class="text-[11px]">Início</span>
+      <!-- Menu Inferior -->
+      <nav class="bg-white border-t border-gray-200 px-4 py-2.5 flex items-center justify-around shrink-0">
+        <button type="button" data-nav="inicio" class="nav-btn flex flex-col items-center gap-0.5 px-4 py-1 text-[#0B7A54] font-semibold cursor-pointer">
+          <span class="text-base">🏠</span><span class="text-[11px]">Início</span>
         </button>
-
-        <button type="button" data-nav="bicicletarios" class="nav-btn flex flex-col items-center gap-1 px-4 py-1 text-gray-400 font-medium cursor-pointer">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-          </svg>
-          <span class="text-[11px]">Bicicletários</span>
+        <button type="button" data-nav="bicicletarios" class="nav-btn flex flex-col items-center gap-0.5 px-4 py-1 text-gray-400 font-medium cursor-pointer">
+          <span class="text-base">📍</span><span class="text-[11px]">Bicicletários</span>
         </button>
-
-        <button type="button" data-nav="conta" class="nav-btn flex flex-col items-center gap-1 px-4 py-1 text-gray-400 font-medium cursor-pointer">
-          <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
-          </svg>
-          <span class="text-[11px]">Minha conta</span>
+        <button type="button" data-nav="conta" class="nav-btn flex flex-col items-center gap-0.5 px-4 py-1 text-gray-400 font-medium cursor-pointer">
+          <span class="text-base">👤</span><span class="text-[11px]">Minha conta</span>
         </button>
       </nav>
-
     </div>
 
-    <!-- Modais do Site -->
-
-    <!-- Modal 1: Alterar Foto de Perfil -->
-    <div id="avatar-modal" class="hidden absolute inset-0 bg-black/50 backdrop-blur-[2px] flex items-end sm:items-center justify-center p-0 sm:p-6 z-50">
-      <div class="bg-white dark:bg-[#19201D] rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[400px] shadow-2xl border border-gray-100 dark:border-white/10 space-y-5">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <h3 class="text-lg font-extrabold text-[#123524] dark:text-white">Foto de perfil</h3>
-            <p class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Envie uma imagem do seu dispositivo ou escolha um avatar.</p>
-          </div>
-          <button type="button" onclick="closeAvatarModal()" aria-label="Fechar" class="p-2 rounded-xl bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-600 dark:text-gray-200 cursor-pointer">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          </button>
+    <!-- MODAL 1: AVATAR -->
+    <div id="avatar-modal" class="hidden absolute inset-0 bg-black/50 flex items-end sm:items-center justify-center z-50">
+      <div class="bg-white rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[400px] shadow-2xl space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 class="text-lg font-extrabold text-[#123524]">Foto de perfil</h3>
+          <button type="button" onclick="closeAvatarModal()" class="p-1.5 rounded-lg bg-gray-100 text-gray-600 cursor-pointer">✕</button>
         </div>
 
         <div class="flex flex-col items-center">
-          <div id="avatar-preview-box" class="w-24 h-24 rounded-full bg-[#DCE9E2] dark:bg-[#1C2A24] border-2 border-[#0B7A54]/40 flex items-center justify-center text-[#123524] dark:text-emerald-300 overflow-hidden shadow-inner">
-            <svg id="avatar-preview-default" class="w-11 h-11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="8" r="4"/>
-              <path d="M5 20c1.6-3.8 4.4-5.5 7-5.5s5.4 1.7 7 5.5"/>
-            </svg>
-            <img id="avatar-preview-img" src="" alt="Prévia do avatar" class="hidden w-full h-full object-cover" />
+          <div class="w-24 h-24 rounded-full bg-[#DCE9E2] border-2 border-[#0B7A54]/40 flex items-center justify-center overflow-hidden">
+            <svg id="avatar-preview-default" class="w-11 h-11 text-[#123524]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="4"/><path d="M5 20c1.6-3.8 4.4-5.5 7-5.5s5.4 1.7 7 5.5"/></svg>
+            <img id="avatar-preview-img" src="" alt="Prévia" class="hidden w-full h-full object-cover"/>
           </div>
-          <p id="avatar-error-msg" class="hidden text-[11.5px] text-red-600 dark:text-red-400 font-medium mt-2"></p>
+          <p id="avatar-error-msg" class="hidden text-xs text-red-600 mt-1"></p>
         </div>
 
-        <div>
-          <input type="file" id="avatar-file-input" accept="image/png, image/jpeg, image/webp" class="hidden" />
-          <button 
-            type="button" 
-            onclick="document.getElementById('avatar-file-input').click()"
-            class="w-full py-2.5 px-4 bg-[#E8F3EE] dark:bg-emerald-950/80 hover:bg-[#DCE9E2] dark:hover:bg-emerald-900/60 text-[#123524] dark:text-emerald-300 font-semibold text-xs rounded-xl border border-[#0B7A54]/20 flex items-center justify-center gap-2 transition-colors cursor-pointer"
-          >
-            <svg class="w-4 h-4 text-[#0B7A54] dark:text-emerald-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/>
-            </svg>
-            <span>Escolher foto do dispositivo</span>
-          </button>
+        <input type="file" id="avatar-file-input" accept="image/*" class="hidden"/>
+        <button type="button" onclick="$('avatar-file-input').click()" class="w-full py-2.5 bg-[#E8F3EE] text-[#123524] font-semibold text-xs rounded-xl cursor-pointer">Escolher foto do dispositivo</button>
+
+        <div class="grid grid-cols-3 gap-2">
+          <button type="button" onclick="selectPresetAvatar('ciclista')" class="p-2 rounded-xl border text-xs font-semibold hover:border-[#0B7A54] cursor-pointer">🚴 Ciclista</button>
+          <button type="button" onclick="selectPresetAvatar('eco')" class="p-2 rounded-xl border text-xs font-semibold hover:border-[#0B7A54] cursor-pointer">🌿 Eco</button>
+          <button type="button" onclick="selectPresetAvatar('urbano')" class="p-2 rounded-xl border text-xs font-semibold hover:border-[#0B7A54] cursor-pointer">📍 Urbano</button>
         </div>
 
-        <div class="space-y-2">
-          <p class="text-[11px] font-bold uppercase tracking-wider text-gray-400">Ou escolha um avatar rápido</p>
-          <div class="grid grid-cols-3 gap-2.5">
-            <button type="button" onclick="selectPresetAvatar('ciclista')" class="p-2.5 rounded-xl border border-gray-200 dark:border-white/10 hover:border-[#0B7A54] bg-[#F4F5F4] dark:bg-[#131816] hover:bg-[#E8F3EE]/50 flex flex-col items-center gap-1 transition-all cursor-pointer">
-              <span class="w-9 h-9 rounded-full bg-[#123524] text-white flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <circle cx="5.5" cy="17.5" r="3.5"/><circle cx="18.5" cy="17.5" r="3.5"/><path d="M15 6a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-3 11.5V14l-3-3 4-3 2 3h2"/>
-                </svg>
-              </span>
-              <span class="text-[11px] font-semibold text-gray-700 dark:text-gray-300">Ciclista</span>
-            </button>
-
-            <button type="button" onclick="selectPresetAvatar('eco')" class="p-2.5 rounded-xl border border-gray-200 dark:border-white/10 hover:border-[#0B7A54] bg-[#F4F5F4] dark:bg-[#131816] hover:bg-[#E8F3EE]/50 flex flex-col items-center gap-1 transition-all cursor-pointer">
-              <span class="w-9 h-9 rounded-full bg-[#0B7A54] text-white flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M11 20A7 7 0 0 1 9.8 6.1C15.5 5 17 4.48 19 2c1 2 2 4.18 2 8 0 5.5-4.78 10-10 10Z"/><path d="M2 21c0-3 1.85-5.36 5.08-6C9.5 14.52 12 13 13 12"/>
-                </svg>
-              </span>
-              <span class="text-[11px] font-semibold text-gray-700 dark:text-gray-300">Eco</span>
-            </button>
-
-            <button type="button" onclick="selectPresetAvatar('urbano')" class="p-2.5 rounded-xl border border-gray-200 dark:border-white/10 hover:border-[#0B7A54] bg-[#F4F5F4] dark:bg-[#131816] hover:bg-[#E8F3EE]/50 flex flex-col items-center gap-1 transition-all cursor-pointer">
-              <span class="w-9 h-9 rounded-full bg-[#1E3A2F] text-emerald-200 flex items-center justify-center">
-                <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
-                </svg>
-              </span>
-              <span class="text-[11px] font-semibold text-gray-700 dark:text-gray-300">Urbano</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="flex items-center gap-2.5 pt-1">
-          <button type="button" id="remove-avatar-btn" onclick="removeProfileAvatar()" class="hidden px-3.5 py-3 rounded-xl border border-red-200 dark:border-red-500/30 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-950/40 text-xs font-semibold transition-colors cursor-pointer">
-            Remover
-          </button>
-          <button type="button" onclick="saveProfileAvatar()" class="flex-1 py-3 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl shadow-sm transition-colors cursor-pointer">
-            Salvar foto
-          </button>
+        <div class="flex gap-2">
+          <button type="button" id="remove-avatar-btn" onclick="pendingAvatarDataUrl=null;updateModalPreview(null)" class="hidden px-3.5 py-3 rounded-xl border border-red-200 text-red-600 text-xs font-semibold cursor-pointer">Remover</button>
+          <button type="button" onclick="saveProfileAvatar()" class="flex-1 py-3 bg-[#0B7A54] text-white font-semibold text-sm rounded-xl cursor-pointer">Salvar foto</button>
         </div>
       </div>
     </div>
 
-    <!-- Modal 2: Seleção e Destravamento de Bicicleta -->
-    <div id="station-modal" class="hidden absolute inset-0 bg-black/50 backdrop-blur-[2px] flex items-end sm:items-center justify-center p-0 sm:p-6 z-50">
-      <div class="bg-white dark:bg-[#19201D] rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[420px] shadow-2xl border border-gray-100 dark:border-white/10 space-y-4">
-        <div class="flex items-start justify-between gap-3">
+    <!-- MODAL 2: ESTAÇÃO E DESTRAVAMENTO -->
+    <div id="station-modal" class="hidden absolute inset-0 bg-black/50 flex items-end sm:items-center justify-center z-50">
+      <div class="bg-white rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[400px] shadow-2xl space-y-4">
+        <div class="flex justify-between items-start">
           <div>
-            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-[#E8F3EE] dark:bg-emerald-950 text-[#0B7A54] dark:text-emerald-300 text-[11px] font-semibold">
-              Estação disponível
-            </span>
-            <h3 id="modal-station-name" class="text-lg font-extrabold text-[#123524] dark:text-white mt-1">Praça Central</h3>
-            <p id="modal-station-meta" class="text-xs text-gray-500 dark:text-gray-400">A 250 m de você • 8 bicicletas • 4 vagas livres</p>
+            <h3 id="modal-station-name" class="text-lg font-extrabold text-[#123524]">Praça Central</h3>
+            <p id="modal-station-meta" class="text-xs text-gray-500"></p>
           </div>
-          <button type="button" onclick="closeStationModal()" aria-label="Fechar" class="p-2 rounded-xl bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-600 dark:text-gray-200 cursor-pointer">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          </button>
+          <button type="button" onclick="$('station-modal').classList.add('hidden')" class="p-1.5 rounded-lg bg-gray-100 text-gray-600 cursor-pointer">✕</button>
         </div>
 
-        <div class="space-y-2">
-          <p class="text-xs font-bold text-gray-700 dark:text-gray-300">Escolha uma bicicleta para destravar:</p>
-          <div id="modal-bikes-list" class="grid grid-cols-2 gap-2"></div>
+        <div id="modal-bikes-list" class="grid grid-cols-2 gap-2"></div>
+
+        <div class="bg-[#F4F5F4] rounded-xl p-3 flex items-center justify-between">
+          <span class="text-xs text-gray-500">Código da trava:</span>
+          <span id="modal-unlock-pin" class="text-xl font-extrabold font-mono text-[#123524]">4829</span>
         </div>
 
-        <div class="bg-[#F4F5F4] dark:bg-[#131816] rounded-2xl p-3.5 border border-gray-200/80 dark:border-white/10 flex items-center justify-between">
-          <div>
-            <span class="text-[11px] text-gray-500 dark:text-gray-400 block">Código de liberação na trava</span>
-            <span id="modal-unlock-pin" class="text-xl font-extrabold font-mono tracking-widest text-[#123524] dark:text-emerald-300">4829</span>
-          </div>
-          <div class="w-10 h-10 rounded-xl bg-white dark:bg-[#1E2622] border border-gray-200 dark:border-white/10 flex items-center justify-center text-[#123524] dark:text-emerald-300">
-            <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-              <rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><path d="M14 14h3v3h-3zM18 18h3v3h-3zM14 19h2v2h-2zM19 14h2v2h-2z"/>
-            </svg>
-          </div>
-        </div>
-
-        <button type="button" id="confirm-unlock-btn" onclick="startBikeRide()" class="w-full py-3.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl shadow-sm flex items-center justify-center gap-2 transition-colors cursor-pointer">
-          <span>Destravar bicicleta agora</span>
-          <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-          </svg>
-        </button>
+        <button type="button" onclick="startBikeRide()" class="w-full py-3.5 bg-[#0B7A54] text-white font-semibold text-sm rounded-xl cursor-pointer">Destravar bicicleta agora →</button>
       </div>
     </div>
 
-    <!-- Modal 3: Alteração de Senha ou Cartão de Crédito -->
-    <div id="account-submodal" class="hidden absolute inset-0 bg-black/50 backdrop-blur-[2px] flex items-end sm:items-center justify-center p-0 sm:p-6 z-50">
-      <div class="bg-white dark:bg-[#19201D] rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[400px] shadow-2xl border border-gray-100 dark:border-white/10 space-y-4">
-        <div class="flex items-start justify-between gap-3">
-          <div>
-            <h3 id="submodal-title" class="text-lg font-extrabold text-[#123524] dark:text-white">Alterar senha</h3>
-            <p id="submodal-subtitle" class="text-xs text-gray-500 dark:text-gray-400 mt-0.5">Atualize sua senha de acesso com segurança.</p>
-          </div>
-          <button type="button" onclick="closeAccountSubModal()" aria-label="Fechar" class="p-2 rounded-xl bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 text-gray-600 dark:text-gray-200 cursor-pointer">
-            <svg class="w-4 h-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
-              <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
-            </svg>
-          </button>
+    <!-- MODAL 3: SENHA / CARTÃO -->
+    <div id="account-submodal" class="hidden absolute inset-0 bg-black/50 flex items-end sm:items-center justify-center z-50">
+      <div class="bg-white rounded-t-3xl sm:rounded-3xl p-6 w-full max-w-[400px] shadow-2xl space-y-4">
+        <div class="flex justify-between items-center">
+          <h3 id="submodal-title" class="text-lg font-extrabold text-[#123524]">Alterar senha</h3>
+          <button type="button" onclick="$('account-submodal').classList.add('hidden')" class="p-1.5 rounded-lg bg-gray-100 text-gray-600 cursor-pointer">✕</button>
         </div>
 
         <form id="submodal-password-form" class="space-y-3">
-          <div>
-            <label class="block text-[11px] font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Senha atual</label>
-            <input type="password" required placeholder="••••••••" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] dark:bg-[#131816] border border-gray-200 dark:border-white/10 rounded-xl text-sm text-gray-800 dark:text-gray-100 focus:outline-none focus:border-[#0B7A54]"/>
-          </div>
-          <div>
-            <label class="block text-[11px] font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Nova senha</label>
-            <input type="password" required minlength="6" placeholder="Mínimo 6 caracteres" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] dark:bg-[#131816] border border-gray-200 dark:border-white/10 rounded-xl text-sm text-gray-800 dark:text-gray-100 focus:outline-none focus:border-[#0B7A54]"/>
-          </div>
-          <button type="submit" class="w-full py-3 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer">
-            Salvar nova senha
-          </button>
+          <input type="password" required placeholder="Senha atual" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] rounded-xl text-sm"/>
+          <input type="password" required minlength="6" placeholder="Nova senha (mín. 6 caracteres)" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] rounded-xl text-sm"/>
+          <button type="submit" class="w-full py-3 bg-[#0B7A54] text-white font-semibold text-sm rounded-xl cursor-pointer">Salvar nova senha</button>
         </form>
 
         <form id="submodal-card-form" class="hidden space-y-3">
-          <div>
-            <label class="block text-[11px] font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Número do cartão</label>
-            <input type="text" id="card-number-input" required maxlength="19" placeholder="0000 0000 0000 4289" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] dark:bg-[#131816] border border-gray-200 dark:border-white/10 rounded-xl text-sm text-gray-800 dark:text-gray-100 focus:outline-none focus:border-[#0B7A54]"/>
+          <input type="text" id="card-number-input" required maxlength="19" placeholder="Número do cartão" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] rounded-xl text-sm"/>
+          <div class="grid grid-cols-2 gap-2">
+            <input type="text" required maxlength="5" placeholder="Validade (08/29)" class="px-3.5 py-2.5 bg-[#F4F5F4] rounded-xl text-sm"/>
+            <input type="password" required maxlength="4" placeholder="CVV" class="px-3.5 py-2.5 bg-[#F4F5F4] rounded-xl text-sm"/>
           </div>
-          <div class="grid grid-cols-2 gap-2.5">
-            <div>
-              <label class="block text-[11px] font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">Validade</label>
-              <input type="text" required maxlength="5" placeholder="08/29" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] dark:bg-[#131816] border border-gray-200 dark:border-white/10 rounded-xl text-sm text-gray-800 dark:text-gray-100 focus:outline-none focus:border-[#0B7A54]"/>
-            </div>
-            <div>
-              <label class="block text-[11px] font-bold uppercase text-gray-500 dark:text-gray-400 mb-1">CVV</label>
-              <input type="password" required maxlength="4" placeholder="123" class="w-full px-3.5 py-2.5 bg-[#F4F5F4] dark:bg-[#131816] border border-gray-200 dark:border-white/10 rounded-xl text-sm text-gray-800 dark:text-gray-100 focus:outline-none focus:border-[#0B7A54]"/>
-            </div>
-          </div>
-          <button type="submit" class="w-full py-3 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer">
-            Salvar cartão
-          </button>
+          <button type="submit" class="w-full py-3 bg-[#0B7A54] text-white font-semibold text-sm rounded-xl cursor-pointer">Salvar cartão</button>
         </form>
       </div>
     </div>
-
   </div>
 
-  <!-- Bloco 3: Javascript -->
+  <!-- ==================== JAVASCRIPT ==================== -->
   <script>
-      
-    // 1. GERENCIAMENTO DE TEMA (LIGHT / DARK MODE)
-    
-    let isDarkMode = false;
-    try {
-      // Recupera a preferência salva no navegador, se existir
-      isDarkMode = localStorage.getItem('vadebike_dark_mode') === 'true';
-    } catch (e) {}
+    const $ = id => document.getElementById(id);
 
-    function applyTheme(dark) {
-      isDarkMode = dark;
-      
-      document.documentElement.classList.toggle('dark', dark);
-
-      // Alterna os ícones de lua/sol e os rótulos textuais em toda a página
-      document.querySelectorAll('.theme-icon-moon').forEach(el => el.classList.toggle('hidden', dark));
-      document.querySelectorAll('.theme-icon-sun').forEach(el => el.classList.toggle('hidden', !dark));
-      document.querySelectorAll('.theme-label-text').forEach(el => {
-        el.textContent = dark ? 'Tema claro' : 'Tema escuro';
-      });
-
-      try {
-        localStorage.setItem('vadebike_dark_mode', dark ? 'true' : 'false');
-      } catch (e) {}
-    }
-
-    function toggleDarkMode() {
-      applyTheme(!isDarkMode);
-    }
-
-    // Aplica o tema inicial ao carregar a página
-    applyTheme(isDarkMode);
-
-
-
-    // 2. FLUXO DE CADASTRO POR CPF OU PASSAPORTE
-
-    let registerDocType = 'cpf'; // Armazena o tipo de documento ativo ('cpf' ou 'passport')
-    let pendingRegistrationData = {
-      name: 'Jorge Silva',
-      email: 'jorgefs@hotmail.com',
-      doc: '6767676767',
-      docType: 'cpf'
+    // 1. DADOS SIMULADOS
+    const bikeStationsData = {
+      'praca-central': { id: 'praca-central', name: 'Praça Central', distance: 'A 250 m de você', bikesCount: 8, docksFree: 4, address: 'Av. Principal, 120 - Centro', bikes: [{ code: 'Bike #04', type: 'Urbana' }, { code: 'Bike #07', type: 'Elétrica', battery: '94%' }, { code: 'Bike #12', type: 'Urbana' }, { code: 'Bike #19', type: 'Elétrica', battery: '88%' }] },
+      'parque-flores': { id: 'parque-flores', name: 'Parque das Flores', distance: 'A 600 m de você', bikesCount: 5, docksFree: 7, address: 'Alameda das Acácias, s/n', bikes: [{ code: 'Bike #02', type: 'Urbana' }, { code: 'Bike #15', type: 'Elétrica', battery: '91%' }, { code: 'Bike #21', type: 'Urbana' }, { code: 'Bike #24', type: 'Urbana' }] },
+      'estacao-jardim': { id: 'estacao-jardim', name: 'Estação Jardim', distance: 'A 950 m de você', bikesCount: 12, docksFree: 3, address: 'Praça da Estação, 45', bikes: [{ code: 'Bike #08', type: 'Elétrica', battery: '98%' }, { code: 'Bike #10', type: 'Urbana' }, { code: 'Bike #14', type: 'Elétrica', battery: '85%' }, { code: 'Bike #27', type: 'Urbana' }] },
+      'orla-sul': { id: 'orla-sul', name: 'Ciclovia Orla Sul', distance: 'A 1,2 km de você', bikesCount: 9, docksFree: 6, address: 'Av. Beira Mar, Posto 2', bikes: [{ code: 'Bike #03', type: 'Elétrica', battery: '96%' }, { code: 'Bike #09', type: 'Urbana' }, { code: 'Bike #16', type: 'Urbana' }, { code: 'Bike #22', type: 'Elétrica', battery: '89%' }] }
     };
 
-    // Alterna visualmente e funcionalmente o formulário de cadastro entre CPF e Passaporte
+    const presetAvatars = {
+      ciclista: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#123524"/><text x="50" y="64" font-size="48" text-anchor="middle">🚴</text></svg>`),
+      eco: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0B7A54"/><text x="50" y="64" font-size="48" text-anchor="middle">🌿</text></svg>`),
+      urbano: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1E3A2F"/><text x="50" y="64" font-size="48" text-anchor="middle">📍</text></svg>`)
+    };
+
+    let registerDocType = 'cpf', pendingReg = {}, selectedStationId = 'praca-central', selectedBikeCode = 'Bike #04';
+    let activeRideInterval = null, activeRideSeconds = 0, isEditingProfile = false;
+    let currentAvatarDataUrl = localStorage.getItem('vadebike_avatar') || null, pendingAvatarDataUrl = null;
+
+    // 2. CADASTRO E PASSAPORTE
     function setRegisterDocType(type) {
       registerDocType = type;
-      const cpfBtn = document.getElementById('doc-type-cpf-btn');
-      const passBtn = document.getElementById('doc-type-passport-btn');
-      const docLabel = document.getElementById('reg-doc-label');
-      const docInput = document.getElementById('reg-doc');
-      const passHint = document.getElementById('reg-passport-hint');
-      const submitText = document.getElementById('reg-submit-text');
-
-      setFieldError('reg-doc', 'reg-doc-error', '');
-
-      if (type === 'passport') {
-        passBtn.className = 'px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white dark:bg-[#0B7A54] text-[#123524] dark:text-white shadow-xs transition-all cursor-pointer';
-        cpfBtn.className = 'px-2.5 py-0.5 text-[11px] font-semibold rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all cursor-pointer';
-        docLabel.textContent = 'Número do Passaporte';
-        docInput.placeholder = 'Ex: 6767676767';
-        passHint.classList.remove('hidden');
-        submitText.textContent = 'Continuar para foto do passaporte';
-      } else {
-        cpfBtn.className = 'px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white dark:bg-[#0B7A54] text-[#123524] dark:text-white shadow-xs transition-all cursor-pointer';
-        passBtn.className = 'px-2.5 py-0.5 text-[11px] font-semibold rounded-md text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white transition-all cursor-pointer';
-        docLabel.textContent = 'Documento (CPF)';
-        docInput.placeholder = '000.000.000-00';
-        passHint.classList.add('hidden');
-        submitText.textContent = 'Cadastrar agora';
-      }
+      const isPass = type === 'passport';
+      $('doc-type-passport-btn').className = isPass ? 'px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white text-[#123524] shadow-xs cursor-pointer' : 'px-2.5 py-0.5 text-[11px] font-semibold rounded-md text-gray-600 cursor-pointer';
+      $('doc-type-cpf-btn').className = !isPass ? 'px-2.5 py-0.5 text-[11px] font-bold rounded-md bg-white text-[#123524] shadow-xs cursor-pointer' : 'px-2.5 py-0.5 text-[11px] font-semibold rounded-md text-gray-600 cursor-pointer';
+      $('reg-doc-label').textContent = isPass ? 'Número do Passaporte' : 'Documento (CPF)';
+      $('reg-doc').placeholder = isPass ? 'Ex: 6767676767' : '000.000.000-00';
+      $('reg-passport-hint').classList.toggle('hidden', !isPass);
+      $('reg-submit-text').textContent = isPass ? 'Continuar para foto →' : 'Cadastrar agora →';
     }
 
-    // Prepara os dados do usuário e abre a tela de captura do passaporte
-    function openPassportVerificationStep(name, email, passportNumber) {
-      const cleanNumber = (passportNumber || '6767676767').toUpperCase();
-      const displayHolder = name || 'Jorge Silva';
-
-      pendingRegistrationData = {
-        name: displayHolder,
-        email: email,
-        doc: cleanNumber,
-        docType: 'passport'
-      };
-
-      // Injeta o nome e o número do passaporte diretamente nos elementos <text> do SVG
-      document.getElementById('passport-holder-name').textContent = displayHolder;
-      document.getElementById('passport-top-number').textContent = cleanNumber;
-      document.getElementById('passport-mrz-number').textContent = cleanNumber.padEnd(10, '<').slice(0, 10);
-
-      resetPassportCapture();
-      switchView('passport-verify');
+    function togglePassportStage(captured) {
+      $('passport-camera-stage').classList.toggle('hidden', captured);
+      $('passport-result-stage').classList.toggle('hidden', !captured);
     }
 
-    // Executado ao clicar no botão verde "Iniciar": oculta a câmera e mostra o passaporte simulado
-    function simulatePassportCapture() {
-      document.getElementById('passport-camera-stage').classList.add('hidden');
-      document.getElementById('passport-upload-trigger').classList.add('hidden');
-      document.getElementById('passport-uploaded-photo').classList.add('hidden');
-      document.getElementById('passport-simulated-svg').classList.remove('hidden');
-      document.getElementById('passport-result-stage').classList.remove('hidden');
-    }
-
-    // Volta para o visor da câmera ("Tirar foto novamente")
-    function resetPassportCapture() {
-      document.getElementById('passport-camera-stage').classList.remove('hidden');
-      document.getElementById('passport-upload-trigger').classList.remove('hidden');
-      document.getElementById('passport-result-stage').classList.add('hidden');
-    }
-
-    // Listener para quando o usuário seleciona uma imagem real via upload no passaporte
-    document.getElementById('passport-file-input').addEventListener('change', (e) => {
-      const file = e.target.files[0];
-      if (!file || !file.type.startsWith('image/')) return;
-
-      // FileReader lê o arquivo local do usuário como uma URL Base64 para exibição imediata
-      const reader = new FileReader();
-      reader.onload = (ev) => {
-        const uploadedImg = document.getElementById('passport-uploaded-photo');
-        uploadedImg.src = ev.target.result;
-        uploadedImg.classList.remove('hidden');
-        document.getElementById('passport-simulated-svg').classList.add('hidden');
-
-        document.getElementById('passport-camera-stage').classList.add('hidden');
-        document.getElementById('passport-upload-trigger').classList.add('hidden');
-        document.getElementById('passport-result-stage').classList.remove('hidden');
-      };
-      reader.readAsDataURL(file);
-      e.target.value = '';
-    });
-
-    // Executado ao clicar em "Confirmar": finaliza o cadastro e abre o dashboard
     function confirmPassportAndEnter() {
-      enterApp(
-        pendingRegistrationData.email,
-        pendingRegistrationData.name,
-        pendingRegistrationData.doc,
-        'passport'
-      );
+      enterApp(pendingReg.email, pendingReg.name, pendingReg.doc, 'passport');
     }
 
-
-    // 3. Dados fictícios das estações de bicicleta e dos avatares prontos
-    
-    const bikeStationsData = {
-      'praca-central': {
-        id: 'praca-central',
-        name: 'Praça Central',
-        distance: 'A 250 m de você',
-        bikesCount: 8,
-        docksFree: 4,
-        address: 'Av. Principal, 120 - Centro',
-        bikes: [
-          { code: 'Bike #04', type: 'Urbana', battery: null },
-          { code: 'Bike #07', type: 'Elétrica', battery: '94%' },
-          { code: 'Bike #12', type: 'Urbana', battery: null },
-          { code: 'Bike #19', type: 'Elétrica', battery: '88%' }
-        ]
-      },
-      'parque-flores': {
-        id: 'parque-flores',
-        name: 'Parque das Flores',
-        distance: 'A 600 m de você',
-        bikesCount: 5,
-        docksFree: 7,
-        address: 'Alameda das Acácias, s/n',
-        bikes: [
-          { code: 'Bike #02', type: 'Urbana', battery: null },
-          { code: 'Bike #15', type: 'Elétrica', battery: '91%' },
-          { code: 'Bike #21', type: 'Urbana', battery: null },
-          { code: 'Bike #24', type: 'Urbana', battery: null }
-        ]
-      },
-      'estacao-jardim': {
-        id: 'estacao-jardim',
-        name: 'Estação Jardim',
-        distance: 'A 950 m de você',
-        bikesCount: 12,
-        docksFree: 3,
-        address: 'Praça da Estação, 45',
-        bikes: [
-          { code: 'Bike #08', type: 'Elétrica', battery: '98%' },
-          { code: 'Bike #10', type: 'Urbana', battery: null },
-          { code: 'Bike #14', type: 'Elétrica', battery: '85%' },
-          { code: 'Bike #27', type: 'Urbana', battery: null }
-        ]
-      },
-      'orla-sul': {
-        id: 'orla-sul',
-        name: 'Ciclovia Orla Sul',
-        distance: 'A 1,2 km de você',
-        bikesCount: 9,
-        docksFree: 6,
-        address: 'Av. Beira Mar, Posto 2',
-        bikes: [
-          { code: 'Bike #03', type: 'Elétrica', battery: '96%' },
-          { code: 'Bike #09', type: 'Urbana', battery: null },
-          { code: 'Bike #16', type: 'Urbana', battery: null },
-          { code: 'Bike #22', type: 'Elétrica', battery: '89%' }
-        ]
-      }
-    };
-
-    // Ícones de avatar prontos para escolha rápida no perfil
-    const presetAvatars = {
-      ciclista: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#123524"/><g fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><circle cx="28" cy="68" r="11"/><circle cx="72" cy="68" r="11"/><circle cx="60" cy="30" r="5" fill="#FFFFFF" stroke="none"/><path d="M39 54L50 42L60 50L69 50"/><path d="M39 54L49 59L46 69"/></g></svg>`),
-      eco: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#0B7A54"/><g fill="none" stroke="#FFFFFF" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M48 74A22 22 0 0 1 44 30C62 26 67 24 74 16c3 6 6 13 6 25 0 17-15 33-32 33Z"/><path d="M22 77c0-9 6-17 16-19 8-2 16-7 19-10"/></g></svg>`),
-      urbano: "data:image/svg+xml;utf8," + encodeURIComponent(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect width="100" height="100" fill="#1E3A2F"/><g fill="none" stroke="#A7F3D0" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"><path d="M72 44c0 17-22 34-22 34S28 61 28 44a22 22 0 0 1 44 0Z"/><circle cx="50" cy="44" r="8"/></g></svg>`)
-    };
-
-    // Variáveis de estado global da sessão
-    let selectedStationId = 'praca-central';
-    let selectedBikeCode = 'Bike #04';
-    let activeRideInterval = null;
-    let activeRideSeconds = 0;
-    let mapZoomLevel = 1;
-    let isEditingProfile = false;
-
-    let currentAvatarDataUrl = null;
-    try {
-      currentAvatarDataUrl = localStorage.getItem('vadebike_avatar') || null;
-    } catch (e) {}
-    let pendingAvatarDataUrl = null;
-
-
-
-    // 4. Gerenciamento da Foto de Perfil e Avatares
-
-    function applyAvatarToUI(dataUrl) {
-      const profileImg = document.getElementById('profile-avatar-img');
-      const profileDefaultSvg = document.getElementById('profile-default-svg');
-      const desktopAvatar = document.getElementById('desktop-user-avatar');
-
-      const nameVal = (document.getElementById('profile-name-input')?.value || 'Jorge Silva').trim();
-      const initials = nameVal.split(' ').slice(0, 2).map(n => n[0]).join('').toUpperCase() || 'JS';
-
-      if (dataUrl) {
-        profileImg.src = dataUrl;
-        profileImg.classList.remove('hidden');
-        profileDefaultSvg.classList.add('hidden');
-        desktopAvatar.innerHTML = `<img src="${dataUrl}" alt="Avatar" class="w-full h-full object-cover" />`;
-      } else {
-        profileImg.src = '';
-        profileImg.classList.add('hidden');
-        profileDefaultSvg.classList.remove('hidden');
-        desktopAvatar.textContent = initials;
-      }
+    // 3. AVATAR E RECORTE
+    function applyAvatarToUI(url) {
+      $('profile-avatar-img').src = url || '';
+      $('profile-avatar-img').classList.toggle('hidden', !url);
+      $('profile-default-svg').classList.toggle('hidden', !!url);
     }
 
-    function updateModalPreview(dataUrl) {
-      const previewImg = document.getElementById('avatar-preview-img');
-      const previewDefault = document.getElementById('avatar-preview-default');
-      const removeBtn = document.getElementById('remove-avatar-btn');
-
-      if (dataUrl) {
-        previewImg.src = dataUrl;
-        previewImg.classList.remove('hidden');
-        previewDefault.classList.add('hidden');
-        removeBtn.classList.remove('hidden');
-      } else {
-        previewImg.src = '';
-        previewImg.classList.add('hidden');
-        previewDefault.classList.remove('hidden');
-        removeBtn.classList.add('hidden');
-      }
+    function updateModalPreview(url) {
+      $('avatar-preview-img').src = url || '';
+      $('avatar-preview-img').classList.toggle('hidden', !url);
+      $('avatar-preview-default').classList.toggle('hidden', !!url);
+      $('remove-avatar-btn').classList.toggle('hidden', !url);
     }
 
     function openAvatarModal() {
       pendingAvatarDataUrl = currentAvatarDataUrl;
-      document.getElementById('avatar-error-msg').classList.add('hidden');
       updateModalPreview(pendingAvatarDataUrl);
-      document.getElementById('avatar-modal').classList.remove('hidden');
+      $('avatar-modal').classList.remove('hidden');
     }
 
-    function closeAvatarModal() {
-      document.getElementById('avatar-modal').classList.add('hidden');
-    }
+    function closeAvatarModal() { $('avatar-modal').classList.add('hidden'); }
+    function selectPresetAvatar(key) { pendingAvatarDataUrl = presetAvatars[key]; updateModalPreview(pendingAvatarDataUrl); }
 
-    function selectPresetAvatar(presetKey) {
-      pendingAvatarDataUrl = presetAvatars[presetKey] || null;
-      document.getElementById('avatar-error-msg').classList.add('hidden');
-      updateModalPreview(pendingAvatarDataUrl);
-    }
-
-    // Redimensiona e recorta a imagem enviada em um quadrado de 256x256px usando HTML5 Canvas
-    document.getElementById('avatar-file-input').addEventListener('change', (e) => {
+    $('avatar-file-input').addEventListener('change', e => {
       const file = e.target.files[0];
-      const errorEl = document.getElementById('avatar-error-msg');
-      if (!file) return;
-
-      if (!file.type.startsWith('image/')) {
-        errorEl.textContent = 'Selecione um arquivo de imagem válido (PNG, JPG ou WEBP).';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-
-      if (file.size > 4 * 1024 * 1024) {
-        errorEl.textContent = 'A imagem deve ter no máximo 4 MB.';
-        errorEl.classList.remove('hidden');
-        return;
-      }
-
-      errorEl.classList.add('hidden');
+      if (!file || !file.type.startsWith('image/')) return;
       const reader = new FileReader();
-      reader.onload = (event) => {
+      reader.onload = ev => {
         const img = new Image();
         img.onload = () => {
           const canvas = document.createElement('canvas');
-          const size = 256;
-          canvas.width = size;
-          canvas.height = size;
-          const ctx = canvas.getContext('2d');
-
-          const minSide = Math.min(img.width, img.height);
-          const sx = (img.width - minSide) / 2;
-          const sy = (img.height - minSide) / 2;
-          ctx.drawImage(img, sx, sy, minSide, minSide, 0, 0, size, size);
-
-          pendingAvatarDataUrl = canvas.toDataURL('image/jpeg', 0.88);
+          canvas.width = canvas.height = 256;
+          const min = Math.min(img.width, img.height);
+          canvas.getContext('2d').drawImage(img, (img.width - min) / 2, (img.height - min) / 2, min, min, 0, 0, 256, 256);
+          pendingAvatarDataUrl = canvas.toDataURL('image/jpeg', 0.85);
           updateModalPreview(pendingAvatarDataUrl);
         };
-        img.src = event.target.result;
+        img.src = ev.target.result;
       };
       reader.readAsDataURL(file);
-      e.target.value = '';
     });
 
     function saveProfileAvatar() {
       currentAvatarDataUrl = pendingAvatarDataUrl;
-      try {
-        if (currentAvatarDataUrl) {
-          localStorage.setItem('vadebike_avatar', currentAvatarDataUrl);
-        } else {
-          localStorage.removeItem('vadebike_avatar');
-        }
-      } catch (e) {}
+      currentAvatarDataUrl ? localStorage.setItem('vadebike_avatar', currentAvatarDataUrl) : localStorage.removeItem('vadebike_avatar');
       applyAvatarToUI(currentAvatarDataUrl);
       closeAvatarModal();
-
-      const feedback = document.getElementById('profile-save-feedback');
-      feedback.textContent = currentAvatarDataUrl ? 'Foto de perfil atualizada!' : 'Foto de perfil removida.';
-      feedback.classList.remove('hidden');
-      setTimeout(() => {
-        feedback.classList.add('hidden');
-        feedback.textContent = 'Dados cadastrais atualizados com sucesso!';
-      }, 3000);
     }
 
-    function removeProfileAvatar() {
-      pendingAvatarDataUrl = null;
-      updateModalPreview(null);
+    // 4. NAVEGAÇÃO E LOGIN
+    function setError(inputId, errId, msg) {
+      $(errId).textContent = msg;
+      $(errId).classList.toggle('hidden', !msg);
+      $(inputId).classList.toggle('border-red-500', !!msg);
     }
 
-
-    
-    // 5. Controle da tela de autenticação e transição para o app
-    
-    const stations = [
-      { name: 'Estação Praça Central', status: '12 bikes disponíveis • 4 vagas livres' },
-      { name: 'Estação Orla Atlântica', status: '8 bikes disponíveis • 7 vagas livres' },
-      { name: 'Estação Parque da Cidade', status: '15 bikes disponíveis • 3 vagas livres' },
-      { name: 'Estação Metrô Sul', status: '6 bikes disponíveis • 9 vagas livres' }
-    ];
-    let currentStationIndex = 0;
-
-    const cycleStationBtn = document.getElementById('cycle-station-btn');
-    if (cycleStationBtn) {
-      cycleStationBtn.addEventListener('click', () => {
-        currentStationIndex = (currentStationIndex + 1) % stations.length;
-        document.getElementById('station-name').textContent = stations[currentStationIndex].name;
-        document.getElementById('station-status').textContent = stations[currentStationIndex].status;
-      });
+    function switchView(view) {
+      ['login', 'register', 'passport-verify', 'forgot'].forEach(v => $(`view-${v}`).classList.toggle('hidden', v !== view));
     }
 
-    // Mostrar / Ocultar senha no Login
-    const passwordInput = document.getElementById('login-password');
-    const togglePasswordBtn = document.getElementById('toggle-login-password');
-    const eyeOffIcon = document.getElementById('eye-off-icon');
-    const eyeOnIcon = document.getElementById('eye-on-icon');
-
-    togglePasswordBtn.addEventListener('click', () => {
-      const isPassword = passwordInput.getAttribute('type') === 'password';
-      passwordInput.setAttribute('type', isPassword ? 'text' : 'password');
-      
-      if (isPassword) {
-        eyeOffIcon.classList.add('hidden');
-        eyeOnIcon.classList.remove('hidden');
-      } else {
-        eyeOffIcon.classList.remove('hidden');
-        eyeOnIcon.classList.add('hidden');
-      }
-    });
-
-    // Utilitário para exibir ou limpar erros de validação nos campos de formulário
-    function setFieldError(inputId, errorId, message) {
-      const input = document.getElementById(inputId);
-      const errorEl = document.getElementById(errorId);
-      if (!input || !errorEl) return;
-      if (message) {
-        errorEl.textContent = message;
-        errorEl.classList.remove('hidden');
-        input.classList.add('border-red-500', 'focus:border-red-500', 'focus:ring-red-500/15');
-      } else {
-        errorEl.textContent = '';
-        errorEl.classList.add('hidden');
-        input.classList.remove('border-red-500', 'focus:border-red-500', 'focus:ring-red-500/15');
-      }
-    }
-
-    function clearAllErrors() {
-      setFieldError('login-email', 'login-email-error', '');
-      setFieldError('login-password', 'login-password-error', '');
-      setFieldError('reg-name', 'reg-name-error', '');
-      setFieldError('reg-email', 'reg-email-error', '');
-      setFieldError('reg-doc', 'reg-doc-error', '');
-      setFieldError('reg-password', 'reg-password-error', '');
-      setFieldError('forgot-email', 'forgot-email-error', '');
-    }
-
-    // Alterna entre as sub-telas ('login', 'register', 'passport-verify', 'forgot')
-    function switchView(viewName) {
-      clearAllErrors();
-      ['login', 'register', 'passport-verify', 'forgot'].forEach(v => {
-        const el = document.getElementById(`view-${v}`);
-        if (el) {
-          el.classList.toggle('hidden', v !== viewName);
-        }
-      });
-    }
-
-    // Autentica o usuário, preenche seus dados no perfil e exibe o dashboard
-    function enterApp(email, customName = null, customDoc = null, docType = 'cpf') {
-      const safeEmail = email || 'jorgefs@hotmail.com';
-      const defaultName = safeEmail.toLowerCase() === 'jorgefs@hotmail.com'
-        ? 'Jorge Silva'
-        : (safeEmail.split('@')[0].replace(/[._-]/g, ' ').replace(/\b\w/g, l => l.toUpperCase()));
-      const displayName = customName || defaultName;
-
-      document.getElementById('desktop-user-name').textContent = displayName;
-      document.getElementById('desktop-user-email').textContent = safeEmail;
-
-      document.getElementById('profile-name-input').value = displayName;
-      document.getElementById('profile-email-input').value = safeEmail;
-
-      const docInput = document.getElementById('profile-doc-input');
-      const docLabel = document.getElementById('profile-doc-label');
-      const passportBadge = document.getElementById('profile-passport-verified-badge');
-
-      // Ajusta o campo de documento e o selo verificado caso o usuário tenha usado passaporte
-      if (docType === 'passport') {
-        docLabel.textContent = 'PASSAPORTE';
-        docInput.value = customDoc || '6767676767';
-        passportBadge.classList.remove('hidden');
-      } else {
-        docLabel.textContent = 'CPF / PASSAPORTE';
-        docInput.value = customDoc || '678.690.048-69';
-        passportBadge.classList.add('hidden');
-      }
-
+    function enterApp(email, name = null, doc = null, docType = 'cpf') {
+      $('profile-name-input').value = name || (email === 'jorgefs@hotmail.com' ? 'Jorge Silva' : email.split('@')[0]);
+      $('profile-email-input').value = email;
+      $('profile-doc-label').textContent = docType === 'passport' ? 'PASSAPORTE' : 'CPF / PASSAPORTE';
+      $('profile-doc-input').value = doc || '678.690.048-69';
+      $('profile-passport-verified-badge').classList.toggle('hidden', docType !== 'passport');
       applyAvatarToUI(currentAvatarDataUrl);
 
-      const authScreen = document.getElementById('auth-screen');
-      const appScreen = document.getElementById('app-screen');
-
-      authScreen.style.display = 'none';
-      appScreen.style.display = 'flex';
-
-      renderAllStationsGrid('');
+      $('auth-screen').style.display = 'none';
+      $('app-screen').style.display = 'flex';
+      renderStations();
       switchTab('inicio');
     }
 
-    // Encerra a sessão, limpa cronômetros ativos e retorna à tela de login
     function logoutApp() {
-      if (activeRideInterval) {
-        clearInterval(activeRideInterval);
-        activeRideInterval = null;
-      }
-      document.getElementById('active-ride-banner').classList.add('hidden');
-      document.getElementById('mobile-active-ride-pill').classList.add('hidden');
-
-      const authScreen = document.getElementById('auth-screen');
-      const appScreen = document.getElementById('app-screen');
-
-      appScreen.style.display = 'none';
-      authScreen.style.display = 'flex';
+      endActiveRide();
+      $('app-screen').style.display = 'none';
+      $('auth-screen').style.display = 'flex';
       switchView('login');
     }
 
-
-
-    // 6. Navegação entre Abas do aplicativo e Minha Conta
-
-    function switchTab(tabName) {
-      ['inicio', 'bicicletarios', 'conta'].forEach(t => {
-        const section = document.getElementById(`tab-${t}`);
-        if (section) {
-          section.classList.toggle('hidden', t !== tabName);
-        }
-      });
-
-      const mobileBrandHeader = document.getElementById('mobile-brand-header');
-      if (mobileBrandHeader) {
-        mobileBrandHeader.classList.toggle('hidden', tabName === 'conta');
-      }
-
-      // Destaca de verde o botão da aba ativa nos menus (celular e computador)
+    function switchTab(tab) {
+      ['inicio', 'bicicletarios', 'conta'].forEach(t => $(`tab-${t}`).classList.toggle('hidden', t !== tab));
+      $('mobile-brand-header').classList.toggle('hidden', tab === 'conta');
       document.querySelectorAll('.nav-btn').forEach(btn => {
-        const isTarget = btn.getAttribute('data-nav') === tabName;
-        const isDesktop = btn.closest('aside') !== null;
-
-        if (isDesktop) {
-          btn.className = isTarget
-            ? 'nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-semibold text-[#0B7A54] dark:text-emerald-300 bg-[#E8F3EE] dark:bg-emerald-950/80 transition-colors cursor-pointer'
-            : 'nav-btn w-full flex items-center gap-3 px-3.5 py-3 rounded-xl text-sm font-medium text-gray-600 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-white/5 transition-colors cursor-pointer';
-        } else {
-          btn.className = isTarget
-            ? 'nav-btn flex flex-col items-center gap-1 px-4 py-1 text-[#0B7A54] dark:text-emerald-400 font-semibold cursor-pointer'
-            : 'nav-btn flex flex-col items-center gap-1 px-4 py-1 text-gray-400 dark:text-gray-500 font-medium cursor-pointer';
-        }
+        const active = btn.dataset.nav === tab;
+        btn.className = `nav-btn flex flex-col items-center gap-0.5 px-4 py-1 cursor-pointer ${active ? 'text-[#0B7A54] font-semibold' : 'text-gray-400 font-medium'}`;
       });
     }
 
-    document.querySelectorAll('.nav-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        switchTab(btn.getAttribute('data-nav'));
-      });
+    document.querySelectorAll('.nav-btn').forEach(btn => btn.addEventListener('click', () => switchTab(btn.dataset.nav)));
+
+    $('toggle-login-password').addEventListener('click', () => {
+      const isPass = $('login-password').type === 'password';
+      $('login-password').type = isPass ? 'text' : 'password';
+      $('eye-off-icon').classList.toggle('hidden', isPass);
+      $('eye-on-icon').classList.toggle('hidden', !isPass);
     });
 
-    // Alterna o modo de edição dos dados do usuário
+    // 5. PERFIL E SUB-MODAIS
     function toggleProfileEdit() {
-      const fields = document.querySelectorAll('.profile-field');
-      const btn = document.getElementById('toggle-edit-profile-btn');
-      const badge = document.getElementById('profile-edit-badge');
-      const feedback = document.getElementById('profile-save-feedback');
-
       isEditingProfile = !isEditingProfile;
-
-      if (isEditingProfile) {
-        fields.forEach(f => {
-          f.removeAttribute('readonly');
-          f.classList.add('border-[#0B7A54]', 'ring-2', 'ring-[#0B7A54]/15');
-        });
-        badge.classList.remove('hidden');
-        feedback.classList.add('hidden');
-        btn.textContent = 'Salvar alterações';
-        document.getElementById('profile-name-input').focus();
-      } else {
-        fields.forEach(f => {
-          f.setAttribute('readonly', true);
-          f.classList.remove('border-[#0B7A54]', 'ring-2', 'ring-[#0B7A54]/15');
-        });
-        badge.classList.add('hidden');
-        btn.textContent = 'Alterar dados cadastrais';
-
-        const updatedName = document.getElementById('profile-name-input').value.trim() || 'Jorge Silva';
-        const updatedEmail = document.getElementById('profile-email-input').value.trim() || 'jorgefs@hotmail.com';
-
-        document.getElementById('desktop-user-name').textContent = updatedName;
-        document.getElementById('desktop-user-email').textContent = updatedEmail;
-        applyAvatarToUI(currentAvatarDataUrl);
-
-        feedback.classList.remove('hidden');
-        setTimeout(() => feedback.classList.add('hidden'), 3000);
+      document.querySelectorAll('.profile-field').forEach(f => {
+        f.readOnly = !isEditingProfile;
+        f.classList.toggle('border-[#0B7A54]', isEditingProfile);
+      });
+      $('profile-edit-badge').classList.toggle('hidden', !isEditingProfile);
+      $('toggle-edit-profile-btn').textContent = isEditingProfile ? 'Salvar alterações' : 'Alterar dados cadastrais';
+      if (!isEditingProfile) {
+        $('profile-save-feedback').classList.remove('hidden');
+        setTimeout(() => $('profile-save-feedback').classList.add('hidden'), 2500);
       }
     }
 
     function openAccountSubModal(type) {
-      const modal = document.getElementById('account-submodal');
-      const title = document.getElementById('submodal-title');
-      const subtitle = document.getElementById('submodal-subtitle');
-      const passForm = document.getElementById('submodal-password-form');
-      const cardForm = document.getElementById('submodal-card-form');
-
-      if (type === 'password') {
-        title.textContent = 'Alterar senha';
-        subtitle.textContent = 'Atualize sua senha de acesso ao VáDeBike.';
-        passForm.classList.remove('hidden');
-        cardForm.classList.add('hidden');
-      } else {
-        title.textContent = 'Cartão de crédito';
-        subtitle.textContent = 'Adicione ou gerencie seu método de pagamento.';
-        passForm.classList.add('hidden');
-        cardForm.classList.remove('hidden');
-      }
-      modal.classList.remove('hidden');
+      $('submodal-title').textContent = type === 'password' ? 'Alterar senha' : 'Cartão de crédito';
+      $('submodal-password-form').classList.toggle('hidden', type !== 'password');
+      $('submodal-card-form').classList.toggle('hidden', type === 'password');
+      $('account-submodal').classList.remove('hidden');
     }
 
-    function closeAccountSubModal() {
-      document.getElementById('account-submodal').classList.add('hidden');
-    }
-
-    document.getElementById('submodal-password-form').addEventListener('submit', (e) => {
+    $('submodal-password-form').addEventListener('submit', e => { e.preventDefault(); e.target.reset(); $('account-submodal').classList.add('hidden'); });
+    $('submodal-card-form').addEventListener('submit', e => {
       e.preventDefault();
+      $('saved-card-subtitle').textContent = `Mastercard •••• ${$('card-number-input').value.slice(-4) || '4289'}`;
       e.target.reset();
-      closeAccountSubModal();
-      const feedback = document.getElementById('profile-save-feedback');
-      feedback.textContent = 'Senha atualizada com sucesso!';
-      feedback.classList.remove('hidden');
-      setTimeout(() => {
-        feedback.classList.add('hidden');
-        feedback.textContent = 'Dados cadastrais atualizados com sucesso!';
-      }, 3000);
+      $('account-submodal').classList.add('hidden');
     });
 
-    document.getElementById('submodal-card-form').addEventListener('submit', (e) => {
-      e.preventDefault();
-      const raw = document.getElementById('card-number-input').value.replace(/\s+/g, '');
-      const last4 = raw.slice(-4) || '4289';
-      document.getElementById('saved-card-subtitle').textContent = `Mastercard •••• ${last4}`;
-      e.target.reset();
-      closeAccountSubModal();
-    });
-
-
-
-    // 7. CONTROLE DO MAPA, BUSCA DE ESTAÇÕES E CRONÔMETRO DA CORRIDA
-    
-    function zoomMap(delta) {
-      mapZoomLevel = Math.min(1.45, Math.max(0.9, mapZoomLevel + delta));
-      const svg = document.getElementById('fictional-map-svg');
-      if (svg) {
-        svg.style.transform = `scale(${mapZoomLevel})`;
-      }
-    }
-
-    // Renderiza dinamicamente os cards da aba "Bicicletários" conforme o termo buscado
-    function renderAllStationsGrid(filterText = '') {
-      const container = document.getElementById('all-stations-grid');
-      if (!container) return;
-
-      const query = filterText.toLowerCase().trim();
-      const items = Object.values(bikeStationsData).filter(st =>
-        st.name.toLowerCase().includes(query) || st.address.toLowerCase().includes(query)
-      );
-
-      container.innerHTML = items.map(st => `
-        <button type="button" onclick="openStationModal('${st.id}')" class="w-full text-left bg-white dark:bg-[#19201D] hover:bg-[#F9FBFA] dark:hover:bg-[#1F2824] border border-gray-200/90 dark:border-white/10 hover:border-[#0B7A54]/40 dark:hover:border-emerald-400/40 rounded-xl p-4 flex items-center justify-between shadow-sm transition-all cursor-pointer">
-          <div class="flex items-center gap-3.5">
-            <div class="w-10 h-10 rounded-xl bg-[#E8F3EE] dark:bg-emerald-950/80 text-[#0B7A54] dark:text-emerald-400 flex items-center justify-center shrink-0">
-              <svg class="w-6 h-6" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <circle cx="8.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                <circle cx="27.5" cy="24.5" r="5" stroke="currentColor" stroke-width="2.2"/>
-                <path d="M8.5 24.5L15 14H22.5L27.5 24.5M15 14L18.5 24.5H27.5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-              </svg>
-            </div>
+    // 6. ESTAÇÕES E CORRIDA
+    function renderStations(filter = '') {
+      const q = filter.toLowerCase();
+      const all = Object.values(bikeStationsData);
+      const cardHTML = (st, showAddr) => `
+        <button type="button" onclick="openStationModal('${st.id}')" class="w-full text-left bg-white hover:bg-[#F9FBFA] border border-gray-200 rounded-xl p-3.5 flex items-center justify-between shadow-xs cursor-pointer">
+          <div class="flex items-center gap-3">
+            <span class="w-9 h-9 rounded-xl bg-[#E8F3EE] text-[#0B7A54] flex items-center justify-center text-lg">🚲</span>
             <div>
-              <p class="text-sm font-bold text-[#1F2937] dark:text-gray-100">${st.name}</p>
-              <p class="text-xs text-gray-500 dark:text-gray-400">${st.address}</p>
-              <p class="text-[11px] text-[#0B7A54] dark:text-emerald-400 font-medium mt-0.5">${st.distance} • ${st.docksFree} vagas livres</p>
+              <p class="text-[14px] font-bold text-[#1F2937]">${st.name}</p>
+              ${showAddr ? `<p class="text-xs text-gray-500">${st.address}</p>` : ''}
+              <p class="text-[11px] text-[#0B7A54] font-medium">${st.distance}${showAddr ? ` • ${st.docksFree} vagas` : ''}</p>
             </div>
           </div>
-          <div class="text-right shrink-0 pl-2">
-            <span class="text-xl font-extrabold text-[#0B7A54] dark:text-emerald-400 leading-none block">${st.bikesCount}</span>
-            <span class="text-[10.5px] text-gray-400 font-medium">bicicletas</span>
-          </div>
-        </button>
-      `).join('');
+          <div class="text-right"><span class="text-xl font-extrabold text-[#0B7A54] block leading-none">${st.bikesCount}</span><span class="text-[10px] text-gray-400">bicicletas</span></div>
+        </button>`;
+
+      $('home-stations-list').innerHTML = all.slice(0, 3).map(st => cardHTML(st, false)).join('');
+      $('all-stations-grid').innerHTML = all.filter(st => st.name.toLowerCase().includes(q) || st.address.toLowerCase().includes(q)).map(st => cardHTML(st, true)).join('');
     }
 
-    const stationSearchInput = document.getElementById('station-search-input');
-    if (stationSearchInput) {
-      stationSearchInput.addEventListener('input', (e) => {
-        renderAllStationsGrid(e.target.value);
-      });
-    }
+    $('station-search-input').addEventListener('input', e => renderStations(e.target.value));
 
-    function openStationModal(stationId) {
-      const station = bikeStationsData[stationId];
-      if (!station) return;
-
-      selectedStationId = stationId;
-      selectedBikeCode = station.bikes[0].code;
-
-      document.getElementById('modal-station-name').textContent = station.name;
-      document.getElementById('modal-station-meta').textContent = `${station.distance} • ${station.bikesCount} bicicletas • ${station.docksFree} vagas livres`;
-      
-      // Gera um código numérico aleatório de 4 dígitos para destravar a trava física
-      document.getElementById('modal-unlock-pin').textContent = Math.floor(1000 + Math.random() * 9000);
-
+    function openStationModal(id) {
+      const st = bikeStationsData[id];
+      selectedStationId = id;
+      selectedBikeCode = st.bikes[0].code;
+      $('modal-station-name').textContent = st.name;
+      $('modal-station-meta').textContent = `${st.distance} • ${st.bikesCount} bicicletas • ${st.docksFree} vagas livres`;
+      $('modal-unlock-pin').textContent = Math.floor(1000 + Math.random() * 9000);
       renderModalBikes();
-      document.getElementById('station-modal').classList.remove('hidden');
+      $('station-modal').classList.remove('hidden');
     }
 
     function renderModalBikes() {
-      const station = bikeStationsData[selectedStationId];
-      const listEl = document.getElementById('modal-bikes-list');
-
-      listEl.innerHTML = station.bikes.map(b => {
-        const isSelected = b.code === selectedBikeCode;
-        return `
-          <button type="button" onclick="selectBike('${b.code}')" class="p-2.5 rounded-xl border text-left transition-all cursor-pointer ${isSelected ? 'border-[#0B7A54] dark:border-emerald-400 bg-[#E8F3EE]/70 dark:bg-emerald-950/60 ring-1 ring-[#0B7A54] dark:ring-emerald-400' : 'border-gray-200 dark:border-white/10 bg-white dark:bg-[#131816] hover:bg-gray-50 dark:hover:bg-white/5'}">
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-bold text-[#123524] dark:text-gray-100">${b.code}</span>
-              ${b.battery ? `<span class="text-[10px] font-semibold px-1.5 py-0.5 rounded bg-emerald-100 dark:bg-emerald-900/70 text-[#0B7A54] dark:text-emerald-300">⚡ ${b.battery}</span>` : `<span class="text-[10px] text-gray-400">Urbana</span>`}
-            </div>
-            <p class="text-[11px] text-gray-500 dark:text-gray-400 mt-1">${b.type}</p>
-          </button>
-        `;
-      }).join('');
+      $('modal-bikes-list').innerHTML = bikeStationsData[selectedStationId].bikes.map(b => `
+        <button type="button" onclick="selectedBikeCode='${b.code}';renderModalBikes()" class="p-2.5 rounded-xl border text-left cursor-pointer ${b.code === selectedBikeCode ? 'border-[#0B7A54] bg-[#E8F3EE]/70' : 'border-gray-200'}">
+          <div class="flex justify-between text-xs font-bold text-[#123524]"><span>${b.code}</span>${b.battery ? `<span class="text-[#0B7A54]">⚡${b.battery}</span>` : ''}</div>
+          <p class="text-[11px] text-gray-500 mt-0.5">${b.type}</p>
+        </button>`).join('');
     }
 
-    function selectBike(code) {
-      selectedBikeCode = code;
-      renderModalBikes();
-    }
-
-    function closeStationModal() {
-      document.getElementById('station-modal').classList.add('hidden');
-    }
-
-    // Inicia o cronômetro da corrida ativa usando setInterval
     function startBikeRide() {
-      const station = bikeStationsData[selectedStationId];
-      closeStationModal();
+      $('station-modal').classList.add('hidden');
       switchTab('inicio');
-
-      if (activeRideInterval) clearInterval(activeRideInterval);
+      clearInterval(activeRideInterval);
       activeRideSeconds = 0;
-
-      document.getElementById('active-bike-badge').textContent = selectedBikeCode;
-      document.getElementById('active-ride-station-label').textContent = `Retirada em ${station.name}`;
-      document.getElementById('active-ride-timer').textContent = '00:00';
-      document.getElementById('mobile-ride-timer-mini').textContent = '00:00';
-
-      document.getElementById('active-ride-banner').classList.remove('hidden');
-      const mobilePill = document.getElementById('mobile-active-ride-pill');
-      mobilePill.classList.remove('hidden');
-      mobilePill.classList.add('flex');
+      $('active-bike-badge').textContent = selectedBikeCode;
+      $('active-ride-station-label').textContent = `Retirada em ${bikeStationsData[selectedStationId].name}`;
+      $('active-ride-timer').textContent = $('mobile-ride-timer-mini').textContent = '00:00';
+      $('active-ride-banner').classList.remove('hidden');
+      $('mobile-active-ride-pill').classList.replace('hidden', 'flex');
 
       activeRideInterval = setInterval(() => {
         activeRideSeconds++;
-        const mins = String(Math.floor(activeRideSeconds / 60)).padStart(2, '0');
-        const secs = String(activeRideSeconds % 60).padStart(2, '0');
-        const formatted = `${mins}:${secs}`;
-        document.getElementById('active-ride-timer').textContent = formatted;
-        document.getElementById('mobile-ride-timer-mini').textContent = formatted;
+        const t = `${String(Math.floor(activeRideSeconds / 60)).padStart(2, '0')}:${String(activeRideSeconds % 60).padStart(2, '0')}`;
+        $('active-ride-timer').textContent = $('mobile-ride-timer-mini').textContent = t;
       }, 1000);
     }
 
-    function openActiveRideModal() {
-      switchTab('inicio');
-    }
-
     function endActiveRide() {
-      if (activeRideInterval) {
-        clearInterval(activeRideInterval);
-        activeRideInterval = null;
-      }
-      document.getElementById('active-ride-banner').classList.add('hidden');
-      const mobilePill = document.getElementById('mobile-active-ride-pill');
-      mobilePill.classList.add('hidden');
-      mobilePill.classList.remove('flex');
+      clearInterval(activeRideInterval);
+      $('active-ride-banner').classList.add('hidden');
+      $('mobile-active-ride-pill').classList.replace('flex', 'hidden');
     }
 
+    // 7. VALIDAÇÃO DOS FORMULÁRIOS
+    const isValidEmail = email => /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
 
-
-    // 8. VALIDAÇÃO E SUBMISSÃO DOS FORMULÁRIOS
-
-    const feedbackOverlay = document.getElementById('feedback-overlay');
-    const feedbackTitle = document.getElementById('feedback-title');
-    const feedbackMessage = document.getElementById('feedback-message');
-    const feedbackIconBox = document.getElementById('feedback-icon-box');
-    const feedbackIconSuccess = document.getElementById('feedback-icon-success');
-    const feedbackIconError = document.getElementById('feedback-icon-error');
-    const feedbackCloseBtn = document.getElementById('feedback-close-btn');
-
-    let onModalCloseCallback = null;
-
-    function showFeedback({ title, message, type = 'success', buttonText = 'Continuar', onClose = null }) {
-      feedbackTitle.textContent = title;
-      feedbackMessage.textContent = message;
-      feedbackCloseBtn.textContent = buttonText;
-      onModalCloseCallback = onClose;
-
-      if (type === 'error') {
-        feedbackIconBox.className = 'w-12 h-12 rounded-full mx-auto mb-3.5 flex items-center justify-center bg-red-50 dark:bg-red-950/60 text-red-600 dark:text-red-400';
-        feedbackIconSuccess.classList.add('hidden');
-        feedbackIconError.classList.remove('hidden');
-        feedbackCloseBtn.className = 'w-full py-2.5 px-4 bg-gray-800 hover:bg-gray-900 text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer';
-      } else {
-        feedbackIconBox.className = 'w-12 h-12 rounded-full mx-auto mb-3.5 flex items-center justify-center bg-[#E8F3EE] dark:bg-emerald-950/70 text-[#0B7A54] dark:text-emerald-400';
-        feedbackIconSuccess.classList.remove('hidden');
-        feedbackIconError.classList.add('hidden');
-        feedbackCloseBtn.className = 'w-full py-2.5 px-4 bg-[#0B7A54] hover:bg-[#086042] text-white font-semibold text-sm rounded-xl transition-colors cursor-pointer';
-      }
-
-      feedbackOverlay.classList.remove('hidden');
-    }
-
-    feedbackCloseBtn.addEventListener('click', () => {
-      feedbackOverlay.classList.add('hidden');
-      if (typeof onModalCloseCallback === 'function') {
-        onModalCloseCallback();
-        onModalCloseCallback = null;
-      }
-    });
-
-    // Expressão regular (Regex) para validar formato básico de e-mail
-    function isValidEmail(email) {
-      return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-    }
-
-    // Submissão do Login
-    document.getElementById('login-form').addEventListener('submit', (e) => {
+    $('login-form').addEventListener('submit', e => {
       e.preventDefault();
-      const email = document.getElementById('login-email').value.trim() || 'jorgefs@hotmail.com';
-      const password = passwordInput.value.trim();
-
-      if (!isValidEmail(email)) {
-        setFieldError('login-email', 'login-email-error', 'Informe um endereço de e-mail válido.');
-        return;
-      }
-      setFieldError('login-email', 'login-email-error', '');
-
-      if (!password) {
-        passwordInput.value = '123456';
-      }
-      setFieldError('login-password', 'login-password-error', '');
-
+      const email = $('login-email').value.trim();
+      if (!isValidEmail(email)) return setError('login-email', 'login-email-error', 'Informe um e-mail válido.');
+      setError('login-email', 'login-email-error', '');
       enterApp(email);
     });
 
-    // Submissão do Cadastro (direciona para a captura de passaporte se selecionado)
-    document.getElementById('register-form').addEventListener('submit', (e) => {
+    $('register-form').addEventListener('submit', e => {
       e.preventDefault();
-      const name = document.getElementById('reg-name').value.trim();
-      const email = document.getElementById('reg-email').value.trim();
-      const docVal = document.getElementById('reg-doc').value.trim();
-      const pass = document.getElementById('reg-password').value.trim();
-      let hasError = false;
-
-      if (!name) {
-        setFieldError('reg-name', 'reg-name-error', 'Informe seu nome completo.');
-        hasError = true;
-      } else {
-        setFieldError('reg-name', 'reg-name-error', '');
-      }
-
-      if (!isValidEmail(email)) {
-        setFieldError('reg-email', 'reg-email-error', 'Informe um e-mail válido.');
-        hasError = true;
-      } else {
-        setFieldError('reg-email', 'reg-email-error', '');
-      }
-
-      if (registerDocType === 'cpf' && !docVal) {
-        setFieldError('reg-doc', 'reg-doc-error', 'Informe o número do seu CPF.');
-        hasError = true;
-      } else {
-        setFieldError('reg-doc', 'reg-doc-error', '');
-      }
-
-      if (pass.length < 6) {
-        setFieldError('reg-password', 'reg-password-error', 'A senha deve ter pelo menos 6 caracteres.');
-        hasError = true;
-      } else {
-        setFieldError('reg-password', 'reg-password-error', '');
-      }
-
-      if (hasError) return;
+      const name = $('reg-name').value.trim(), email = $('reg-email').value.trim(), doc = $('reg-doc').value.trim(), pass = $('reg-password').value.trim();
+      setError('reg-name', 'reg-name-error', !name ? 'Informe seu nome.' : '');
+      setError('reg-email', 'reg-email-error', !isValidEmail(email) ? 'E-mail inválido.' : '');
+      setError('reg-doc', 'reg-doc-error', registerDocType === 'cpf' && !doc ? 'Informe o CPF.' : '');
+      setError('reg-password', 'reg-password-error', pass.length < 6 ? 'Mínimo 6 caracteres.' : '');
+      if (!name || !isValidEmail(email) || (registerDocType === 'cpf' && !doc) || pass.length < 6) return;
 
       if (registerDocType === 'passport') {
-        openPassportVerificationStep(name, email, docVal || '6767676767');
+        const num = (doc || '6767676767').toUpperCase();
+        pendingReg = { name, email, doc: num };
+        $('passport-holder-name').textContent = name;
+        $('passport-top-number').textContent = num;
+        $('passport-mrz-number').textContent = num.padEnd(10, '<').slice(0, 10);
+        togglePassportStage(false);
+        switchView('passport-verify');
       } else {
-        enterApp(email, name, docVal, 'cpf');
+        enterApp(email, name, doc, 'cpf');
       }
     });
 
-    // Submissão de Recuperação de Senha
-    document.getElementById('forgot-form').addEventListener('submit', (e) => {
+    $('forgot-form').addEventListener('submit', e => {
       e.preventDefault();
-      const email = document.getElementById('forgot-email').value.trim();
-
-      if (!isValidEmail(email)) {
-        setFieldError('forgot-email', 'forgot-email-error', 'Digite um e-mail válido para recuperação.');
-        return;
-      }
-      setFieldError('forgot-email', 'forgot-email-error', '');
-
-      showFeedback({
-        type: 'success',
-        title: 'E-mail enviado!',
-        message: `Enviamos um link de redefinição de senha para ${email}. Verifique sua caixa de entrada.`,
-        buttonText: 'Voltar ao login',
-        onClose: () => switchView('login')
-      });
+      const email = $('forgot-email').value.trim();
+      if (!isValidEmail(email)) return setError('forgot-email', 'forgot-email-error', 'E-mail inválido.');
+      setError('forgot-email', 'forgot-email-error', '');
+      $('feedback-message').textContent = `Enviamos um link de redefinição para ${email}.`;
+      $('feedback-overlay').classList.remove('hidden');
     });
+
+    $('feedback-close-btn').addEventListener('click', () => { $('feedback-overlay').classList.add('hidden'); switchView('login'); });
   </script>
 </body>
 </html>
